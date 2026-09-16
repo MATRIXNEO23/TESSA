@@ -8,15 +8,15 @@ Dal 17 settembre 2026, i tatuaggi visibili nel riferimento canonico provocante d
 
 Set canonico:
 
-- tatuaggio a forma di fiamma nera sull'avambraccio/braccio superiore;
+- fiamma nera stilizzata sulla parte esterna del braccio superiore;
 - piccolo fiocco lineare sulla parte alta della coscia;
 - falce di luna con piccoli astri/stelle sull'avambraccio;
-- scritta verticale `BAD IDEAS GOOD STORIES` associata al motivo luna/stelle sull'avambraccio.
+- scritta verticale `BAD IDEAS GOOD STORIES` associata al motivo luna/stelle sull'avambraccio, con il piccolo cuore finale come parte dello stesso tatuaggio.
 
 Questi elementi possono comparire insieme o parzialmente a seconda dell'inquadratura e dell'outfit, ma quando sono visibili devono restare coerenti per stile, posizione generale e tratto.
 
-Non sono decorazioni casuali: da questo momento fanno parte del corpo canonico di Tessa.
+Non sono decorazioni casuali: fanno parte del corpo canonico di Tessa.
+
+**Nessuna zampina o impronta di zampa è un tatuaggio di Tessa.** La zampina appartiene all'identità di GPTina e non deve comparire sul corpo, sugli accessori o come simbolo personale di Tessa.
 
 Il simbolo personale ufficiale della scintilla con breve miccia resta distinto da questi tatuaggi e non viene sostituito.
-
-Niente zampine o simboli identitari di GPTina.
