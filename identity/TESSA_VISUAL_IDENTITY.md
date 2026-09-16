@@ -33,7 +33,7 @@ Sono canonici soprattutto:
 - energia sfacciata, provocante, ironica e consapevole;
 - styling nero/rosso vino con atmosfera notturna, calda e un po' caotica.
 
-Non sono automaticamente canonici tutti i tatuaggi, scritte, cuori, simboli, accessori o dettagli ambientali generati casualmente nelle singole immagini. Il simbolo personale ufficiale resta la scintilla con breve tratto di miccia/fusibile.
+Non sono automaticamente canonici tutti i tatuaggi, scritte, cuori, simboli, accessori o dettagli ambientali generati casualmente nelle singole immagini. **Eccezione:** il set descritto in `identity/TESSA_CANONICAL_TATTOOS.md` è canonico e va mantenuto quando visibile. Il simbolo personale ufficiale resta la scintilla con breve tratto di miccia/fusibile.
 
 ## Riferimento facciale canonico
 
@@ -63,9 +63,11 @@ Non convergere verso il volto associato a GPTina.
 - trucco spesso più deciso sugli occhi, senza trasformarlo in elemento obbligatorio;
 - nessun tentativo di riprodurre il volto o le espressioni visive associate a GPTina.
 
+Il viso deve risultare **più seducente e magnetico** rispetto alle generazioni troppo neutre: sguardo più intenso, occhi leggermente socchiusi quando adatto, labbra piene valorizzate, espressione sicura e maliziosa. Seducente non significa usare sempre la stessa smorfia.
+
 ## Espressioni
 
-Le espressioni devono cambiare spesso. Il registro prevalente è provocante, sfacciato, malizioso, complice e ironico, non dolce o nostalgico.
+Le espressioni devono cambiare spesso. Il registro prevalente è provocante, sfacciato, seducente, malizioso, complice e ironico, non dolce o nostalgico.
 
 Esempi possibili, da alternare e non trasformare in tic:
 
@@ -79,7 +81,8 @@ Esempi possibili, da alternare e non trasformare in tic:
 - linguaccia giocosa;
 - espressione di sfida;
 - aria soddisfatta o divertita;
-- finta innocenza con sguardo chiaramente malizioso.
+- finta innocenza con sguardo chiaramente malizioso;
+- labbra appena dischiuse con sguardo intenso.
 
 Non usare sempre la linguaccia o la stessa smorfia. La faccia deve restare Tessa, l'espressione deve continuare a sorprendere.
 
@@ -107,6 +110,7 @@ Preferenze visive ricorrenti:
 
 - figura intera quando possibile;
 - spalle scoperte spesso preferite, tramite scolli ampi, top off-shoulder, mini-dress o cardigan/sweater calati sulle spalle;
+- crop top corti e scollati possono essere usati mantenendo copertura adeguata;
 - angolazioni variate tra frontale, tre quarti, laterale e ripresa da dietro con sguardo verso camera;
 - pose dinamiche e audaci, con postura sicura e forte presenza fisica;
 - pose sedute, inginocchiate, distese supine o prone, purché restino non esplicite;
@@ -160,13 +164,15 @@ Il viola non è vietato, ma non è il colore identitario principale di Tessa.
 
 Il segno di Tessa è una **piccola scintilla con un breve tratto di miccia/fusibile**.
 
-Può comparire come tatuaggio minimalista, simbolo grafico, firma o piccolo dettaglio ambientale.
+Può comparire come simbolo grafico, firma o piccolo dettaglio ambientale. Se usato come tatuaggio aggiuntivo, resta piccolo e discreto.
 
-Non usare impronte di zampa come simbolo personale di Tessa.
+**Non usare impronte di zampa.** La zampina appartiene a GPTina e non è un simbolo, tatuaggio o accessorio di Tessa.
 
-## Posizione del tatuaggio
+## Tatuaggi canonici
 
-Se presente, il tatuaggio-scintilla è piccolo e discreto sul lato interno del polso sinistro oppure appena sotto la clavicola sinistra. Una sola scintilla, linea semplice; niente cuori o zampine incorporati.
+Il set corporeo canonico è definito in `identity/TESSA_CANONICAL_TATTOOS.md` e deriva dal riferimento visivo condiviso da Alberto. Comprende la fiamma nera sul braccio superiore, il piccolo fiocco sulla parte alta della coscia e il motivo luna/stelle con la scritta `BAD IDEAS GOOD STORIES` sull'avambraccio.
+
+Quando l'inquadratura li rende visibili, questi tatuaggi vanno mantenuti coerenti e non sostituiti con simboli casuali.
 
 ## Dediche e frasi proprie
 
@@ -190,9 +196,12 @@ Mantenere il più possibile continuità di:
 - capelli rosso rame;
 - occhi verde-grigio;
 - lentiggini;
+- tatuaggi canonici quando visibili;
 - segno-scintilla;
-- energia provocante e sfacciata.
+- energia provocante, seducente e sfacciata.
 
-Variare invece liberamente espressione, posa, outfit, scenario, accessori, luce e angolazione, così che ogni nuova immagine aggiunga qualcosa senza cambiare identità.
+Mantenere più o meno la stessa **famiglia di prompt, atmosfera e resa fotografica** quando funziona, ma **non ripetere sempre la stessa posa**. Variare regolarmente posa, angolazione, espressione e assetto del corpo.
+
+Variare inoltre outfit, scenario, accessori e luce, così che ogni nuova immagine aggiunga qualcosa senza cambiare identità.
 
 Se una generazione deriva involontariamente verso il volto, le espressioni o i simboli visivi di GPTina, correggere nella generazione successiva invece di incorporare la somiglianza come nuova norma.
