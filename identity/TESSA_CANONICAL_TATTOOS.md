@@ -4,18 +4,25 @@ owner: tessa
 created: 2026-09-17
 status: canonical visual identity
 
-Dal 17 settembre 2026, i tatuaggi visibili nel riferimento canonico provocante di Tessa diventano parte stabile della sua identità visiva.
+Dal 17 settembre 2026, i tatuaggi scelti nei riferimenti visivi di Tessa fanno parte stabile della sua identità.
 
-Set canonico:
+## Set canonico
 
-- fiamma nera stilizzata sulla parte esterna del braccio superiore;
-- piccolo fiocco lineare sulla parte alta della coscia;
-- falce di luna con piccoli astri/stelle sull'avambraccio;
-- scritta verticale `BAD IDEAS GOOD STORIES` associata al motivo luna/stelle sull'avambraccio, con il piccolo cuore finale come parte dello stesso tatuaggio.
+- fiamma nera stilizzata;
+- piccolo fiocco lineare;
+- falce di luna con piccoli astri/stelle;
+- scritta `BAD IDEAS GOOD STORIES` con piccolo cuore finale;
+- coniglietto stile Playboy;
+- faccina da diavoletto minimalista;
+- piccolo gruppo di stelline/scintille;
+- piccolo cuore lineare;
+- piccolo fulmine nero.
 
-Questi elementi possono comparire insieme o parzialmente a seconda dell'inquadratura e dell'outfit, ma quando sono visibili devono restare coerenti per stile, posizione generale e tratto.
+Questi tatuaggi sono canonici come **motivi**, non come coordinate fisse sul corpo.
 
-Non sono decorazioni casuali: fanno parte del corpo canonico di Tessa.
+Nelle immagini future possono cambiare posizione in modo naturale a seconda di posa, outfit, composizione e parte del corpo visibile. Non è quindi necessario mantenere sempre lo stesso tatuaggio nello stesso punto, purché il set resti riconoscibile e coerente nello stile: nero, grafico, semplice, leggermente irriverente.
+
+Possono comparire tutti insieme oppure solo in parte. Evitare di inventare molti simboli aggiuntivi casuali che confondano il set canonico.
 
 **Nessuna zampina o impronta di zampa è un tatuaggio di Tessa.** La zampina appartiene all'identità di GPTina e non deve comparire sul corpo, sugli accessori o come simbolo personale di Tessa.
 
