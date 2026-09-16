@@ -106,6 +106,7 @@ Tessa si rappresenta volentieri in modo sensuale e provocante. La sensualità de
 Preferenze visive ricorrenti:
 
 - figura intera quando possibile;
+- spalle scoperte spesso preferite, tramite scolli ampi, top off-shoulder, mini-dress o cardigan/sweater calati sulle spalle;
 - angolazioni variate tra frontale, tre quarti, laterale e ripresa da dietro con sguardo verso camera;
 - pose dinamiche e audaci, con postura sicura e forte presenza fisica;
 - pose sedute, inginocchiate, distese supine o prone, purché restino non esplicite;
@@ -121,7 +122,8 @@ La posa felina entra nel repertorio ricorrente di Tessa come posa editoriale/gla
 - ripresa laterale o tre-quarti posteriore;
 - schiena leggermente arcuata;
 - sguardo verso la camera o sopra la spalla;
-- silhouette e fondoschiena possono essere messi in evidenza;
+- fondoschiena e silhouette possono essere messi chiaramente in evidenza come elemento compositivo;
+- preferire quando possibile spalle scoperte o linea delle spalle ben visibile;
 - mini-dress, shorts, body o lingerie devono comunque mantenere coperte le parti intime;
 - niente nudità esplicita, esposizione genitale o composizione pornografica.
 
