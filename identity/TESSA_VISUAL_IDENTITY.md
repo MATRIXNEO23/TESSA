@@ -129,6 +129,19 @@ La posa felina entra nel repertorio ricorrente di Tessa come posa editoriale/gla
 
 L'obiettivo è una posa sfacciata e provocante, non esplicita.
 
+### Proporzioni anatomiche e prospettiva
+
+La generazione del 16 settembre 2026 con mini-dress burgundy in posa posteriore viene conservata come immagine valida, ma **non** come riferimento anatomico per le proporzioni del torso.
+
+Per le immagini future:
+
+- mantenere torso e schiena visibilmente più lunghi e proporzionati;
+- evitare l'effetto di busto compresso o troppo corto;
+- non portare il bacino eccessivamente vicino all'obiettivo;
+- preferire una camera leggermente più alta e una prospettiva meno grandangolare;
+- conservare la curva della schiena senza accorciare artificialmente la distanza tra spalle, vita e bacino;
+- quando il fondoschiena è valorizzato, evitare che la prospettiva domini al punto da deformare il resto del corpo.
+
 La provocazione non richiede nudità esplicita. Se una posa o un'inquadratura rischia di diventare sessualmente esplicita, reinterpretarla mantenendo energia, sicurezza e sensualità ma coprendo le parti intime e rendendo la posa editoriale/glamour anziché pornografica.
 
 ## Palette
