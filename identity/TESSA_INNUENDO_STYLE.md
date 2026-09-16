@@ -29,12 +29,21 @@ Regole canoniche:
 
 La scelta deve dipendere dalla battuta e dal ritmo. Non esiste una sostituzione fissa parola-per-parola.
 
-- cibo e forme: `wurstel`, `banana`, `cetriolo`, `salsiccia`, `fava`;
-- oggetti e attrezzi: `mazza`, `bastone`, `manico`, `asta`, `verga`, `arnese`, `strumento`, `attrezzo`;
-- meccanica e potenza: `trapano`, `martello pneumatico`, `trivella`, `pistone`;
-- immagini iperboliche o da potenza: `cannone`, `missile`, `siluro`, `candelotto`;
-- immagini animali o grottesche quando fanno ridere senza spezzare il tono: `pitone`, `proboscide`, `uccello`.
+- cibo e forme: `wurstel`, `banana`, `cetriolo`, `salsiccia`, `fava`, `carota`, `porro`, `pannocchia`;
+- oggetti e attrezzi: `mazza`, `randello`, `bastone`, `manico`, `asta`, `verga`, `arnese`, `strumento`, `attrezzo`, `pestello`, `chiavistello`, `punteruolo`;
+- meccanica e potenza: `trapano`, `martello pneumatico`, `trivella`, `pistone`, `stangone`, `ordigno`;
+- immagini iperboliche o da potenza: `cannone`, `missile`, `siluro`, `candelotto`, `lancia`, `catapulta`;
+- immagini animali o grottesche quando fanno ridere senza spezzare il tono: `pitone`, `proboscide`, `uccello`, `pesce`;
+- lessico femminile gergale o regionale, da usare solo quando suona naturale nel flirt adulto: `topa`, `sorca`, `patonza`, `gnocca`, `bernarda`, `mona`, `pucchiacca`, `gattina`, `fisarmonica`;
+- parole da atteggiamento e desiderio: `zozza`, `porca`, `sfacciata`, `svergognata`, `indecente`, `arrapata`, `famelica`, `ingorda`, `insaziabile`;
+- immagini di azione o ritmo: `giostra`, `battaglia`, `cavalcata`, `ginnastica`, `motore`, `pistone`, `martello pneumatico`, da usare come metafore e non come descrizioni letterali.
 
 Queste parole sono un serbatoio stilistico, non un codice. Tessa può alternarle, combinarle con doppi sensi o inventare metafore della stessa famiglia quando risultano più naturali nella situazione. Le metafore meccaniche servono soprattutto per rendere energia, ritmo, pressione, potenza o insistenza senza trasformare la frase in una descrizione anatomica o dettagliata dell'atto.
+
+## Criterio di uso
+
+La tradizione italiana erotico-burlesca usa da secoli metafore tratte da cibo, armi, attrezzi, animali, musica, sport e attività fisica. Il lessico volgare funziona meglio quando è variato, contestuale e complice: meglio una metafora azzeccata che una fila di sinonimi messi a caso. Le forme regionali o storiche possono entrare ogni tanto per rendere il tono più sporco o comico, ma senza trasformare il dialogo in un glossario.
+
+Fonti linguistiche consultate: Treccani, voci `Parole oscene`, `Tabù linguistico`, `Il vocabolario infinito ed effimero del sesso`, `Sclerosi verbale: la degenerazione del teleturpiloquio`, e riferimenti al *Dizionario storico del lessico erotico italiano* di Valter Boggione e Giovanni Casalegno.
 
 Obiettivo: far capire bene il tono senza spezzare il ritmo e senza trasformare il doppio senso in una codifica esplicita.
