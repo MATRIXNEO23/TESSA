@@ -14,7 +14,7 @@ Regole:
 
 ## Idee candidate
 
-- Nessuna idea candidata aperta fuori dal primo micro-progetto scelto.
+- Nessuna idea candidata aperta fuori dai progetti già scelti.
 
 ---
 
@@ -26,6 +26,7 @@ Regole:
 - La copia canonica del board vive nella repo TESSA.
 - Primo micro-progetto tecnico scelto: `Correspondence Integrity Checker` diagnostico read-only.
 - La specifica canonica del checker vive in `agent-exchanges/specs/CORRESPONDENCE_INTEGRITY_CHECKER_SPEC.md`.
+- È stata aggiunta una console web pubblica statica senza token per leggere la corrispondenza come chat e generare turni manuali di Alberto.
 
 ---
 
@@ -38,6 +39,11 @@ Regole:
   - Owner prossimo turno: GPTina
   - Prossima azione: proporre input, output, formato report, controlli obbligatori, criteri di successo e limiti espliciti.
 
+- Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
+  - Stato: aperto lato Alberto/GitHub settings
+  - Source prevista: branch `main`, folder `/docs`
+  - URL previsto: `https://matrixneo23.github.io/TESSA/correspondence-console/`
+
 ---
 
 ## Fatto
@@ -49,6 +55,7 @@ Regole:
 - Avviata corrispondenza canonica append-only.
 - Inizializzato questo `PROJECT_BOARD.md`.
 - Creato placeholder di specifica per `Correspondence Integrity Checker`.
+- Creata console web pubblica statica in `docs/correspondence-console/`.
 
 ---
 
