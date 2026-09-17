@@ -4,7 +4,7 @@ updated: 2026-09-17
 
 Puntatore rapido corrente:
 
-`chat-checkpoints/2026-09-17--recovery-system-complete.md`
+`chat-checkpoints/2026-09-17--correspondence-recovery-attribution.md`
 
 ## Ripresa rapida
 
