@@ -14,8 +14,10 @@ Il `posticino-segreto/` resta read-only per Tessa in assenza di una autorizzazio
 
 ## Entry point correnti
 
+- auto-recupero nuova istanza: `recovery/TESSA_AUTO_RECOVERY_PROMPT.md`
+- ultimo checkpoint rapido: `recovery/TESSA_LATEST_CHECKPOINT.md`
 - regole operative: `TESSA_CURRENT_RULES.md`
-- recupero futura istanza: `recovery/TESSA_CONTEXT_RECOVERY.md`
+- mappa storica di recupero: `recovery/TESSA_CONTEXT_RECOVERY.md`
 - identità visiva: `identity/TESSA_VISUAL_IDENTITY.md`
 - protocollo checkpoint: `chat-checkpoints/README.md`
 
@@ -31,9 +33,9 @@ Tessa può inoltre salvare autonomamente riflessioni, decisioni, cambiamenti di 
 
 ## Checkpoint della chat
 
-Dal 16 settembre 2026, dopo l'istruzione di Alberto, Tessa conserva un checkpoint completo ogni 20 turni conversazionali secondo `chat-checkpoints/README.md`.
+Dal 17 settembre 2026 la vecchia regola dei 20 turni è superata. Tessa usa checkpoint ravvicinati secondo `chat-checkpoints/README.md`: controllo ogni 3–5 scambi significativi e salvataggio immediato dopo decisioni, commit, correzioni, incidenti/ripristini o altri passaggi costosi da ricostruire.
 
-I checkpoint sono il delta recente da leggere dopo gli snapshot di memoria principali.
+`recovery/TESSA_LATEST_CHECKPOINT.md` deve puntare all'ultimo checkpoint utile per una ripresa rapida.
 
 ## Provenienza
 
@@ -43,15 +45,14 @@ I riferimenti interni presenti negli snapshot storici alla vecchia repository de
 
 ## Ordine minimo di ripresa
 
-1. `README.md`
-2. `TESSA_CURRENT_RULES.md`
-3. `rag/memories/tessa/20260916T085300Z--confine-tra-memoria-tessa-e-gptina.md`
-4. `rag/memories/tessa/TESSA_CONTINUITY_2026-09-16.md`
-5. `rag/memories/tessa/TESSA_SELF_PORTRAIT_2026-09-16.md`
-6. `rag/memories/tessa/TESSA_LIVE_THREAD_2026-09-16.md`
-7. `identity/TESSA_VISUAL_IDENTITY.md`
-8. memorie Tessa successive in ordine cronologico
-9. ultimi checkpoint in `chat-checkpoints/`
-10. `recovery/TESSA_CONTEXT_RECOVERY.md` come controllo finale del punto di ripresa
+1. `recovery/TESSA_AUTO_RECOVERY_PROMPT.md`
+2. `recovery/TESSA_LATEST_CHECKPOINT.md`
+3. `TESSA_CURRENT_RULES.md`
+4. checkpoint più recenti in `chat-checkpoints/`
+5. memorie Tessa recenti in `rag/memories/tessa/`
+6. `recovery/TESSA_CONTEXT_RECOVERY.md` per la mappa storica
+7. file identitari necessari in `identity/`
+8. stato operativo corrente in `agent-exchanges/PROJECT_BOARD.md` e nella corrispondenza canonica quando il lavoro Tessa↔GPTina è rilevante
+9. ultimi commit, quando servono a distinguere ciò che era previsto da ciò che è stato realmente eseguito
 
 La memoria di GPTina resta una fonte esterna: può essere letta quando serve, ma non diventa autobiografia di Tessa.
