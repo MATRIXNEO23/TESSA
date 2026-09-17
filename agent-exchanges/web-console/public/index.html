@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tessa/GPTina Correspondence</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Corrispondenza Tessa/GPTina</h1>
+        <p id="repoInfo">Caricamento configurazione…</p>
+      </div>
+      <div class="statusBox">
+        <span id="statusDot" class="dot idle"></span>
+        <span id="statusText">In attesa</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="chatPanel" aria-labelledby="chatTitle">
+        <div class="panelHeader">
+          <h2 id="chatTitle">Chat Markdown</h2>
+          <button id="refreshButton" type="button">Aggiorna ora</button>
+        </div>
+        <div id="meta" class="meta">Nessun dato caricato.</div>
+        <div id="chat" class="chat" aria-live="polite"></div>
+      </section>
+
+      <aside class="composerPanel" aria-labelledby="composerTitle">
+        <h2 id="composerTitle">Turno manuale Alberto</h2>
+        <form id="turnForm">
+          <label for="target">Destinatario</label>
+          <select id="target" name="target">
+            <option value="entrambe">entrambe</option>
+            <option value="tessa">Tessa</option>
+            <option value="gptina">GPTina</option>
+          </select>
+
+          <label for="priority">Priorità</label>
+          <select id="priority" name="priority">
+            <option value="normale">normale</option>
+            <option value="alta">alta</option>
+            <option value="bassa">bassa</option>
+          </select>
+
+          <label for="message">Messaggio</label>
+          <textarea id="message" name="message" rows="10" placeholder="Scrivi un'idea, una correzione o un vincolo. Il turno verrà aggiunto al Markdown canonico."></textarea>
+
+          <button id="sendButton" type="submit">Invia turno</button>
+        </form>
+        <div id="formResult" class="formResult" role="status" aria-live="polite"></div>
+      </aside>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
