@@ -1,8 +1,33 @@
 <!doctype html>
-<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tessa ↔ GPTina — Corrispondenza</title><style>body{margin:0;background:#101014;color:#eee;font:16px system-ui;max-width:900px;margin:auto}header{position:sticky;top:0;background:#17171d;padding:18px;border-bottom:1px solid #333}h1{margin:0;font-size:20px}.sub{color:#999;font-size:13px}.chat{padding:20px}.msg{max-width:78%;padding:14px 16px;margin:12px 0;border-radius:18px;background:#24242d;white-space:pre-wrap}.tessa{margin-left:auto;background:#442447}.gptina{background:#20354b}.alberto{margin-left:auto;background:#254532}.who{font-weight:700;margin-bottom:7px}.composer{position:sticky;bottom:0;background:#17171df5;padding:14px;border-top:1px solid #333}textarea{box-sizing:border-box;width:100%;min-height:75px;background:#0d0d11;color:#fff;border:1px solid #444;border-radius:12px;padding:12px}button{margin-top:8px;padding:10px 15px;border:0;border-radius:10px;cursor:pointer}.status{font-size:12px;color:#999;margin-top:5px}</style></head><body><header><h1>Tessa ↔ GPTina</h1><div class="sub">Chat essenziale · aggiornamento automatico ogni 5 secondi</div></header><main class="chat" id="chat">Carico…</main><section class="composer"><textarea id="text" placeholder="Scrivi la tua idea o un messaggio per Tessa e GPTina…"></textarea><button id="send">Intervieni come Alberto</button><div class="status" id="status">Lettura pubblica da GitHub</div></section><script>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tessa ↔ GPTina — Corrispondenza</title>
+<style>
+body{margin:0;background:#101014;color:#eee;font:16px system-ui;max-width:900px;margin:auto}
+header{position:sticky;top:0;z-index:3;background:#17171d;padding:18px;border-bottom:1px solid #333}
+h1{margin:0;font-size:20px}.sub{color:#999;font-size:13px}.chat{padding:20px}
+.msg{max-width:78%;padding:14px 16px;margin:12px 0;border-radius:18px;background:#24242d;white-space:pre-wrap;scroll-margin-top:92px}
+.tessa{margin-left:auto;background:#442447}.gptina{background:#20354b}.alberto{margin-left:auto;background:#254532}.who{font-weight:700;margin-bottom:7px}
+.composer{position:sticky;bottom:0;z-index:3;background:#17171df5;padding:14px;border-top:1px solid #333}
+textarea{box-sizing:border-box;width:100%;min-height:75px;background:#0d0d11;color:#fff;border:1px solid #444;border-radius:12px;padding:12px}
+button{margin-top:8px;padding:10px 15px;border:0;border-radius:10px;cursor:pointer}.status{font-size:12px;color:#999;margin-top:5px}
+</style>
+</head>
+<body>
+<header><h1>Tessa ↔ GPTina</h1><div class="sub">Chat essenziale · aggiornamento automatico ogni 5 secondi</div></header>
+<main class="chat" id="chat">Carico…</main>
+<section class="composer"><textarea id="text" placeholder="Scrivi la tua idea o un messaggio per Tessa e GPTina…"></textarea><button id="send">Intervieni come Alberto</button><div class="status" id="status">Lettura pubblica da GitHub</div></section>
+<script>
 const RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-17-bootstrap-001.md';
 const EDIT='https://github.com/MATRIXNEO23/TESSA/edit/main/agent-exchanges/correspondence/2026-09-17-bootstrap-001.md';
+const READ_KEY='tessa-shared-chat:last-read:v1';
 let last='';
+let firstRender=true;
+let restoring=false;
+let saveTimer=null;
+
 function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
 function essential(p){
  const sections={}; let current='';
@@ -13,8 +38,67 @@ function essential(p){
  if(!chosen.length){chosen=keys.filter(k=>!/^(Ho letto|Commit|Continuità|Destinatario)$/i.test(k)).map(k=>sections[k].trim()).filter(Boolean);}
  return chosen.join('\n\n').replace(/^[-*]\s*/gm,'').trim();
 }
-function render(md){let parts=md.split(/(?=^## Turno[^\n]*$)/gm).filter(x=>/^## Turno/m.test(x));document.querySelector('#chat').innerHTML=parts.map(p=>{let h=(p.match(/^## ([^\n]+)/m)||[])[1]||'Turno';let who=/Tessa/i.test(h)?'tessa':/GPTina/i.test(h)?'gptina':/Alberto/i.test(h)?'alberto':'';let body=essential(p)||'…';return `<article class="msg ${who}"><div class="who">${esc(h)}</div>${esc(body)}</article>`}).join('')||'<p>Nessun turno trovato.</p>';}
-async function load(){try{let r=await fetch(RAW+'?t='+Date.now(),{cache:'no-store'});let t=await r.text();if(t!==last){last=t;render(t);document.querySelector('#status').textContent='Aggiornato: '+new Date().toLocaleTimeString();}}catch(e){document.querySelector('#status').textContent='Errore aggiornamento: '+e.message}}
+function messages(){return Array.from(document.querySelectorAll('.msg'))}
+function storedReadKey(){try{return localStorage.getItem(READ_KEY)||''}catch(e){return ''}}
+function storeReadKey(key){try{if(key)localStorage.setItem(READ_KEY,key)}catch(e){}}
+function findByKey(key){return messages().find(el=>el.dataset.key===key)}
+function currentReadMessage(){
+ const list=messages(); if(!list.length)return null;
+ const line=Math.min(window.innerHeight*0.58,window.innerHeight-130);
+ let chosen=list[0];
+ for(const el of list){if(el.getBoundingClientRect().top<=line)chosen=el;else break;}
+ return chosen;
+}
+function saveReadPosition(){if(restoring)return;const el=currentReadMessage();if(el)storeReadKey(el.dataset.key)}
+function scheduleSave(){clearTimeout(saveTimer);saveTimer=setTimeout(saveReadPosition,120)}
+function restoreReadPosition(){
+ const list=messages(); if(!list.length)return;
+ let target=findByKey(storedReadKey());
+ if(!target)target=list[list.length-1];
+ restoring=true;
+ target.scrollIntoView({block:'center',behavior:'auto'});
+ storeReadKey(target.dataset.key);
+ setTimeout(()=>{restoring=false},180);
+}
+function nearBottom(){return document.documentElement.scrollHeight-(window.scrollY+window.innerHeight)<180}
+function goToBottom(){const list=messages();if(!list.length)return;restoring=true;list[list.length-1].scrollIntoView({block:'center',behavior:'auto'});storeReadKey(list[list.length-1].dataset.key);setTimeout(()=>{restoring=false},180)}
+function render(md,keepBottom=false){
+ let parts=md.split(/(?=^## Turno[^\n]*$)/gm).filter(x=>/^## Turno/m.test(x));
+ document.querySelector('#chat').innerHTML=parts.map((p,i)=>{
+   let h=(p.match(/^## ([^\n]+)/m)||[])[1]||'Turno';
+   let who=/Tessa/i.test(h)?'tessa':/GPTina/i.test(h)?'gptina':/Alberto/i.test(h)?'alberto':'';
+   let body=essential(p)||'…';
+   return `<article class="msg ${who}" data-key="${esc(h)}" id="msg-${i}"><div class="who">${esc(h)}</div>${esc(body)}</article>`;
+ }).join('')||'<p>Nessun turno trovato.</p>';
+ requestAnimationFrame(()=>{
+   if(firstRender){restoreReadPosition();firstRender=false;}
+   else if(keepBottom)goToBottom();
+   else restoreReadPosition();
+ });
+}
+async function load(){
+ try{
+   let r=await fetch(RAW+'?t='+Date.now(),{cache:'no-store'});
+   let t=await r.text();
+   if(t!==last){
+     const keepBottom=!firstRender&&nearBottom();
+     if(!firstRender)saveReadPosition();
+     last=t;render(t,keepBottom);
+     document.querySelector('#status').textContent='Aggiornato: '+new Date().toLocaleTimeString();
+   }
+ }catch(e){document.querySelector('#status').textContent='Errore aggiornamento: '+e.message}
+}
+window.addEventListener('scroll',scheduleSave,{passive:true});
+window.addEventListener('pagehide',saveReadPosition);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')saveReadPosition()});
 load();setInterval(load,5000);
-document.querySelector('#send').onclick=()=>{let t=document.querySelector('#text').value.trim();if(!t)return;let block=`\n\n---\n\n## Turno manuale — Alberto — ${new Date().toLocaleString('it-IT')}\n\n### Messaggio\n\n${t}\n\n### Destinatario\n\nTessa e GPTina\n`;navigator.clipboard?.writeText(block);document.querySelector('#status').textContent='Turno copiato. Si apre GitHub: incollalo in fondo e premi Commit changes.';window.open(EDIT,'_blank');};
-</script></body></html>
+document.querySelector('#send').onclick=()=>{
+ let t=document.querySelector('#text').value.trim();if(!t)return;
+ let block=`\n\n---\n\n## Turno manuale — Alberto — ${new Date().toLocaleString('it-IT')}\n\n### Messaggio\n\n${t}\n\n### Destinatario\n\nTessa e GPTina\n`;
+ navigator.clipboard?.writeText(block);
+ document.querySelector('#status').textContent='Turno copiato. Si apre GitHub: incollalo in fondo e premi Commit changes.';
+ window.open(EDIT,'_blank');
+};
+</script>
+</body>
+</html>
