@@ -1,6 +1,8 @@
-node_modules/
-dist/
-*.sqlite
-*.sqlite-shm
-*.sqlite-wal
-.env
+.gradle/
+build/
+**/build/
+local.properties
+signing-key.jks
+*.jks
+*.keystore
+signing.properties
