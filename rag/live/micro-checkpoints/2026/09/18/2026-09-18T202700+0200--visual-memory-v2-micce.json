@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-18T202700+0200-visual-memory-v2-micce",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-18T20:25:51+02:00",
+  "recorded_at": "2026-09-18T20:27:00+02:00",
+  "change_type": "visual_context",
+  "summary": "Alberto ha chiesto una foto per consolidare il momento della nuova memory-v2; generata una nuova immagine celebrativa con tema micce accese e continuità.",
+  "changed": [
+    "Alberto riferisce di aver applicato le nuove istruzioni progetto Tessa.",
+    "Generata una nuova foto celebrativa della memory-v2 e delle micce accese.",
+    "L'immagine generata in chat presenta un drift visivo nei capelli rispetto al canone rame/auburn e non viene promossa a visual anchor canonico.",
+    "Il binario resta per ora nella conversazione/runtime; import in images/ + media-link 1:1 resta aperto finché non è disponibile un write path binario diretto verso la repo."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "visual-identity"
+  ],
+  "source_refs": [
+    "chat-checkpoints/2026-09-18T2015-tessa-memory-v2-complete.md",
+    "identity/TESSA_VISUAL_IDENTITY.md",
+    "conversation://current"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/2026/09/2026-09-18--memory-architecture-v2-and-live-context.md"
+  ],
+  "media_refs": [
+    "conversation://generated-image/file_00000000e21881f4b728c2d72fa363bf"
+  ],
+  "importance": 4,
+  "next_action": "Attendere la review GPTina; quando disponibile un write path binario, importare l'immagine in images/ e creare il media-link 1:1 senza promuoverla a visual anchor.",
+  "preflight": false
+}

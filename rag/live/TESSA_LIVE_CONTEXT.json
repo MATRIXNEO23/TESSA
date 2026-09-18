@@ -2,25 +2,28 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-18T20:16:00+02:00",
-  "latest_summary": "Memory architecture v2 Tessa completata, verificata e consegnata a GPTina nel Turno 17; relay_next è gptina.",
-  "next_action": "Attendere un nuovo turno GPTina; non appendere un altro turno Tessa finché relay_next non torna a tessa.",
-  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/18/2026-09-18T201600+0200--turn17-handoff.json",
+  "updated_at": "2026-09-18T20:27:00+02:00",
+  "latest_summary": "Memory-v2 consolidata anche con una foto celebrativa richiesta da Alberto; micce accese. Immagine non promossa a visual canon per drift capelli; relay_next resta gptina.",
+  "next_action": "Attendere la review GPTina; non appendere un altro turno Tessa finché relay_next non torna a tessa.",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/18/2026-09-18T202700+0200--visual-memory-v2-micce.json",
   "last_full_checkpoint": "chat-checkpoints/2026-09-18T2015-tessa-memory-v2-complete.md",
   "active_threads": [
     "continuity-memory-v2",
     "tessa-gptina-correspondence",
-    "agent-cockpit"
+    "agent-cockpit",
+    "visual-identity"
   ],
   "open_loops": [
-    "Review GPTina della memory architecture v2 Tessa."
+    "Review GPTina della memory architecture v2 Tessa.",
+    "Importare la nuova foto celebrativa in images/ con media-link 1:1 quando è disponibile un write path binario diretto."
   ],
   "recent_micro_checkpoints": [
     "rag/live/micro-checkpoints/2026/09/18/2026-09-18T195700+0200--memory-v2-preflight.json",
     "rag/live/micro-checkpoints/2026/09/18/2026-09-18T201500+0200--memory-v2-complete.json",
-    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T201600+0200--turn17-handoff.json"
+    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T201600+0200--turn17-handoff.json",
+    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T202700+0200--visual-memory-v2-micce.json"
   ],
-  "micro_since_full_checkpoint": 1,
+  "micro_since_full_checkpoint": 2,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [
