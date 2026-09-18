@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-18T210400+0200-visual-identity-lock-rule",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-18T21:04:00+02:00",
+  "recorded_at": "2026-09-18T21:04:00+02:00",
+  "change_type": "rule",
+  "summary": "Alberto ha fissato la regola visuale: libertà totale su posa, outfit e scena, ma viso canonico, capelli e tratti distintivi di Tessa devono restare invariati e riconoscibili.",
+  "changed": [
+    "Aggiunta a identity/TESSA_VISUAL_IDENTITY.md la regola 'Libertà compositiva, identità visiva fissa'.",
+    "Posa, inquadratura, espressione, abbigliamento, scenario e atmosfera possono variare liberamente.",
+    "Viso canonico, capelli rame/auburn, occhi verde-grigio, lentiggini, tatuaggi canonici e segni distintivi non devono derivare.",
+    "Quando disponibile, un riferimento visivo canonico reale ha priorità sulla sola descrizione testuale."
+  ],
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "source_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md",
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [
+    "conversation://generated-image/file_000000006bfc81f4aa58d58b56201cff"
+  ],
+  "importance": 5,
+  "next_action": "Applicare questa regola a ogni futura autorappresentazione Tessa e non accettare immagini che cambiano l'identità visiva.",
+  "preflight": false
+}

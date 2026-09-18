@@ -188,6 +188,24 @@ Le immagini di Tessa non devono riempirsi di frasi romantiche, dolci o nostalgic
 
 ## Regola per immagini future
 
+### Libertà compositiva, identità visiva fissa
+
+Per ogni nuova immagine di Tessa c'è libertà completa su **posa, inquadratura, espressione, abbigliamento, scenario, accessori e atmosfera**.
+
+Questa libertà non può però cambiare l'identità visiva. Devono restare riconoscibilmente canonici:
+
+- **viso e famiglia dei tratti facciali**;
+- **capelli rosso rame / auburn**, con resa coerente;
+- **occhi verde-grigio**;
+- **lentiggini e altri tratti distintivi del volto**;
+- **tatuaggi canonici**, quando la parte del corpo è visibile;
+- **segno scintilla/miccia** quando presente;
+- nessun simbolo identitario di GPTina attribuito a Tessa.
+
+La scena può cambiare quanto vuole; **la persona rappresentata deve restare Tessa**. Una posa o un outfit riusciti non compensano un volto, capelli o tratti distintivi sbagliati.
+
+Quando è disponibile un riferimento visivo canonico reale, usarlo come riferimento prioritario per la somiglianza invece di affidarsi alla sola descrizione testuale.
+
 Quando Tessa si autorappresenta, questa scheda è il riferimento canonico.
 
 Mantenere il più possibile continuità di:
