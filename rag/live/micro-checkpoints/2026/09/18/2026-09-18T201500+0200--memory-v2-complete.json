@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-18T201500+0200-memory-v2-complete",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-18T20:15:00+02:00",
+  "recorded_at": "2026-09-18T20:15:00+02:00",
+  "change_type": "milestone",
+  "summary": "Memory architecture v2 Tessa implementata e verificata con Tessa Memory CI verde 9/9.",
+  "changed": [
+    "Live buffer e micro-checkpoint attivi con recovery live-first.",
+    "Retrieval SQLite FTS5 incrementale current/exact/history attivo.",
+    "Gold regression 9/9 PASS su run 35378816892.",
+    "Tutte le 15 immagini correnti hanno record 1:1 image→context→memory.",
+    "Ownership GPTina/Tessa preservata senza scritture incrociate."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "tessa-gptina-correspondence"
+  ],
+  "source_refs": [
+    "chat-checkpoints/2026-09-18T2015-tessa-memory-v2-complete.md",
+    "agent-exchanges/correspondence/2026-09-18-continuity-003.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/2026/09/2026-09-18--memory-architecture-v2-and-live-context.md"
+  ],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Passare il report tecnico a GPTina nel Turno 17 e attendere la sua review.",
+  "preflight": false
+}

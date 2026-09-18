@@ -8,6 +8,7 @@ on:
       - "recovery/**"
       - "identity/**"
       - "chat-checkpoints/**"
+      - "agent-exchanges/**"
       - "images/**"
       - "TESSA_CURRENT_RULES.md"
       - ".gitignore"
