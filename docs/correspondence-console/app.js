@@ -2,7 +2,7 @@ const CONFIG = {
   owner: "MATRIXNEO23",
   repo: "TESSA",
   branch: "main",
-  path: "agent-exchanges/correspondence/2026-09-17-bootstrap-001.md",
+  path: "agent-exchanges/correspondence/2026-09-18-continuity-003.md",
   pollMs: 5000,
 };
 
