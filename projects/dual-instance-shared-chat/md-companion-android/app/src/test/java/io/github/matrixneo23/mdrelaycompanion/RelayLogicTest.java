@@ -39,6 +39,23 @@ public class RelayLogicTest {
     }
 
     @Test
+    public void genericHttpsBrowserUrlsAreAllowed() {
+        assertTrue(RelayLogic.isAllowedBrowserUrl("https://www.google.com/"));
+        assertTrue(RelayLogic.isAllowedBrowserUrl("https://claude.ai/"));
+        assertFalse(RelayLogic.isAllowedBrowserUrl("http://www.google.com/"));
+        assertFalse(RelayLogic.isAllowedBrowserUrl("javascript:alert(1)"));
+        assertFalse(RelayLogic.isAllowedBrowserUrl(""));
+        assertFalse(RelayLogic.isAllowedBrowserUrl(null));
+    }
+
+    @Test
+    public void browserUrlNormalizationAddsHttps() {
+        assertEquals("https://google.com", RelayLogic.normalizeBrowserUrl("google.com"));
+        assertEquals("https://chatgpt.com/", RelayLogic.normalizeBrowserUrl("https://chatgpt.com/"));
+        assertEquals("", RelayLogic.normalizeBrowserUrl("   "));
+    }
+
+    @Test
     public void onlyChatGptHttpsUrlsAreAllowed() {
         assertTrue(RelayLogic.isAllowedChatUrl("https://chatgpt.com/c/abc"));
         assertTrue(RelayLogic.isAllowedChatUrl("https://chatgpt.com/g/g-123/project"));
