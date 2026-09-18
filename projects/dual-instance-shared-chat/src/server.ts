@@ -18,7 +18,6 @@ const isTarget = (value: unknown): value is Target =>
 const sse = (event: {
   eventId: number;
   type: string;
-  [key: string]: unknown;
 }) =>
   'id: ' + event.eventId + '\n' +
   'event: ' + event.type + '\n' +
