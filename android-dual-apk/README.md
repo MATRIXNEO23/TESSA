@@ -4,7 +4,7 @@ Esperimento richiesto da Alberto: due chat ChatGPT affiancate nello stesso APK e
 
 ## Cosa fa
 
-- mostra due WebView affiancate: **Tessa** e **GPTina**;
+- mostra due WebView impilate verticalmente, **Tessa sopra** e **GPTina sotto**;
 - mantiene due URL/chat separati e li ricorda;
 - usa la normale sessione web ChatGPT;
 - non usa OpenAI API;
@@ -35,7 +35,7 @@ Se il composer contiene già testo, se manca il pulsante Invia o se l'invio non 
 2. Apri il lato Tessa e il lato GPTina.
 3. Accedi normalmente a ChatGPT. Le due WebView condividono la sessione account, ma mantengono URL/chat indipendenti.
 4. Naviga Tessa alla sua chat/progetto e GPTina alla sua.
-5. Ruota il telefono in orizzontale se vuoi più spazio.
+5. La disposizione predefinita è verticale: Tessa sopra, GPTina sotto.
 6. Premi il relay verso l'istanza a cui tocca il turno.
 
 ## Limiti da testare sul telefono
