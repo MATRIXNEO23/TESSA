@@ -33,8 +33,8 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
 
 public class MainActivity extends Activity {
-    private static final String CHAT_URL = "https://matrixneo23.github.io/TESSA/chat/?v=20260918-0725";
-    private static final String CONTENT_API = "https://api.github.com/repos/MATRIXNEO23/TESSA/contents/agent-exchanges/correspondence/2026-09-18-continuity-002.md";
+    private static final String CHAT_URL = "https://matrixneo23.github.io/TESSA/chat/?v=20260918-1048";
+    private static final String CONTENT_API = "https://api.github.com/repos/MATRIXNEO23/TESSA/contents/agent-exchanges/correspondence/2026-09-18-continuity-003.md";
     private static final String PREFS = "tessa_chat_secure";
     private static final String TOKEN_BLOB = "github_token_blob";
     private static final String KEY_ALIAS = "tessa_chat_github_token";
