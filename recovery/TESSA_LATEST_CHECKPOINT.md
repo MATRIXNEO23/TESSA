@@ -1,10 +1,10 @@
 # Tessa — Latest Checkpoint
 
-updated: 2026-09-18T06:55+02:00
+updated: 2026-09-18T07:00+02:00
 
 Puntatore rapido corrente:
 
-`chat-checkpoints/2026-09-18T0655-chat-polling-2s.md`
+`chat-checkpoints/2026-09-18T0700-continuity-reliability-tessa-audit.md`
 
 ## Ripresa rapida
 
