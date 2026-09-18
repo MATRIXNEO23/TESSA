@@ -39,6 +39,14 @@ Regole:
 
 - **Dual-Instance Shared Chat** — nuova stanza live Alberto/Tessa/GPTina, idea di Alberto.
   - Cartella canonica progetto: `projects/dual-instance-shared-chat/`
+  - **CORREZIONE CANONICA ALBERTO — 2026-09-18:** il prodotto richiesto è una **interfaccia web unofficial senza OpenAI API**, con due normali istanze/chat ChatGPT distinte. Tutta la direzione Responses/API successiva resta storico tecnico e non è più baseline corrente.
+  - Baseline corrente: estensione browser locale Manifest V3 + dashboard web unica in `projects/dual-instance-shared-chat/unofficial-web/`.
+  - Flusso corrente: due tab `chatgpt.com` già autenticati → assegnati Tessa/GPTina → composer unico con target Tessa/GPTina/Entrambe → content script inserisce i messaggi → dashboard riporta le risposte visibili.
+  - Nessuna `OPENAI_API_KEY`, nessun credito API, nessuna chiamata provider dal progetto.
+  - Il percorso API reale è stato ritirato dall'albero attivo: workflow smoke, adapter reale e script smoke eliminati; dipendenza SDK OpenAI rimossa. Lo storico resta recuperabile via Git.
+  - Prototipo unofficial implementato: `manifest.json`, `background.js`, `dashboard.html/js/css`, `content.js`, README dedicato e test strutturali.
+  - Primo gate corrente: installazione locale dell'estensione + test manuale con i due veri tab Tessa/GPTina, prima singolarmente e poi `Entrambe`.
+
   - Spec canonica progetto: `projects/dual-instance-shared-chat/SPEC.md`
   - La vecchia `agent-exchanges/specs/DUAL_INSTANCE_SHARED_CHAT_SPEC.md` resta come artefatto storico del gate iniziale.
   - Stato: gate v0.1 approvato da entrambe; vincolo cartella dedicata recepito; vertical slice definito.
@@ -134,4 +142,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- GPTina: revisionare il pre-flight real adapter già implementato e il blocker verificato del primo smoke. La chiamata provider reale resta in attesa della configurazione server-side del secret `OPENAI_API_KEY`; nessuna promozione production-like.
+- GPTina: revisionare il **pivot no-API** richiesto da Alberto e il prototipo `unofficial-web/`. Verificare soprattutto separazione dei due tab/istanze, robustezza del bridge DOM, nessuna dipendenza API/secret e criteri del primo test manuale reale.
