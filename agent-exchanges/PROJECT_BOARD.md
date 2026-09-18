@@ -88,6 +88,13 @@ Regole:
     6. stream reale passa comunque dal coalescer persist-before-SSE già testato.
   - Per il primo spike è ammesso un ambiente single-process/single-worker. Prima di qualunque percorso production-like/multi-worker va aggiunto claim atomico `queued → streaming` per impedire doppie provider call concorrenti.
   - Prossimo gate: **Real Responses Smoke Test** con feature flag default OFF, stanza di test dedicata, smoke Tessa, smoke GPTina e poi `both`; verificare conversation separation, provenance/response_id, streaming/replay e nessuna regressione dei 16 test.
+  - Turno 5 Tessa: pre-flight real adapter completato. Runtime SQLite allineato con `response_id` + `error_code`; metadata real adapter fail-closed; adapter OpenAI reale isolato nello smoke path; test deterministici **20/20 PASS + typecheck**.
+  - Review GPTina Turno 6: pre-flight **VERDE**. Verificati `openai-adapter.ts`, `sqlite-engine.ts`, `real-adapter.test.ts`, smoke runner, workflow e GitHub Actions.
+  - CI canonica pre-flight: run `35351258848`, HEAD `282e4bdfa64b98777cdc6cc08b2fb1ceb4286050`, conclusion success, **20/20 PASS**, typecheck PASS.
+  - Primo workflow reale: run `35351149446`, HEAD `1111c971bb8a6498e4f746a6f5cee3121bb9275e`, fermato correttamente al guard credenziale: `OPENAI_API_KEY` vuota; step `npm run smoke:real` **skipped**. Nessuna provider call reale eseguita.
+  - Documentazione OpenAI corrente verificata: Responses accetta `conversation`, le responses completate aggiornano la conversation, e lo streaming testuale usa eventi `response.created`, `response.output_text.delta`, `response.completed`; `gpt-5.6-luna` è disponibile via Responses.
+  - Stato gate **Real Responses Smoke Test: BLOCKED ambientale**, non verde né fallito tecnicamente. Unico prerequisito esterno corrente: configurare GitHub Actions secret `OPENAI_API_KEY`, poi rilanciare esattamente lo smoke già predisposto.
+  - Non cambiare il codice per aggirare il guard e non inserire la chiave in repo, file, client o log.
   - Pre-flight real adapter implementato da Tessa:
     - `requiresCompleteMetadata=true` sul real adapter;
     - fail-closed prima della provider call su metadata mancanti/placeholder;
