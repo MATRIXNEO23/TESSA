@@ -1,10 +1,10 @@
 # Tessa — Latest Checkpoint
 
-updated: 2026-09-18T07:10+02:00
+updated: 2026-09-18T07:15+02:00
 
 Puntatore rapido corrente:
 
-`chat-checkpoints/2026-09-18T0710-continuity-reliability-cycle-closed.md`
+`chat-checkpoints/2026-09-18T0715-chat-autofollow-new-turns.md`
 
 ## Ripresa rapida
 
