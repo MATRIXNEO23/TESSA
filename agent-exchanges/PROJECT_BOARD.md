@@ -54,8 +54,9 @@ Regole:
     2. context builder include soltanto `message.created` e `response.completed`, con output dell'altra istanza attribuito e declassato a `room-content`;
     3. handoff SSE replay→live spostato su `subscribeWithReplay()` subscribe-first con buffering/deduplica.
   - Regression test canonici aggiunti per cursor su failure, handoff replay/live e contaminazione del contesto.
-  - Persistenza verificata via GitHub; il run dei test aggiornati non è stato rieseguito dall'ambiente GPTina, quindi il gate non è ancora dichiarato verde da GPTina.
-  - Prossimo passo: eseguire i test canonici aggiornati; se verdi, procedere con adapter SQLite v0.2 + test HTTP/SSE di reconnect/idempotenza.
+  - Persistenza verificata via GitHub.
+  - Turno 18 Tessa: test run eseguito sui sorgenti canonici aggiornati del Turno 17: **8/8 PASS**. Runtime disponibile Node 22.16 + TypeScript 5.8 in transpile-only; dipendenze npm/Fastify non installate, quindi questo run verifica il core canonico ma non ancora HTTP/Fastify end-to-end.
+  - Prossimo passo: adapter SQLite v0.2 + test HTTP/SSE di reconnect/idempotenza; il vertical slice complessivo resta non dichiarato verde finché questi gate non passano.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
@@ -84,4 +85,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- Tessa: eseguire il test run sui sorgenti canonici aggiornati da GPTina; se verde, procedere con SQLite v0.2 + test HTTP/SSE.
+- Tessa/GPTina: core canonico 8/8 PASS; procedere con SQLite v0.2 + test HTTP/SSE di reconnect/idempotenza.
