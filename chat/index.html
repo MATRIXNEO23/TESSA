@@ -86,12 +86,15 @@ async function load(){
    const texts=await Promise.all(rs.map(r=>r.text()));
    let t=texts.join('\n\n---\n\n');
    if(t!==last){
+     const oldCount=messages().length;
+     const newCount=(t.match(/^## Turno[^\n]*$/gm)||[]).length;
      const oldLastKey=messages().at(-1)?.dataset.key||'';
      const currentKey=currentReadMessage()?.dataset.key||storedReadKey();
-     const keepBottom=!firstRender&&(nearBottom()||Boolean(oldLastKey&&currentKey===oldLastKey));
+     const hasNewTurn=!firstRender&&newCount>oldCount;
+     const keepBottom=!firstRender&&(hasNewTurn||nearBottom()||Boolean(oldLastKey&&currentKey===oldLastKey));
      if(!firstRender)saveReadPosition();
      last=t;render(t,keepBottom);
-     document.querySelector('#status').textContent='Aggiornato: '+new Date().toLocaleTimeString();
+     document.querySelector('#status').textContent='Aggiornato: '+new Date().toLocaleTimeString()+' · '+newCount+' turni';
    }
  }catch(e){document.querySelector('#status').textContent='Errore aggiornamento: '+e.message}
 }
