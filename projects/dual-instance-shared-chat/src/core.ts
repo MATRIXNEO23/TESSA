@@ -47,13 +47,31 @@ export interface Message {
   content: string;
 }
 
+export interface AdapterMetadata {
+  apiMode: string;
+  model: string;
+  bootstrapVersion: string;
+  checkpointRef: string | null;
+  contextBuilderVersion: string;
+  privilegedInstructions: string;
+}
+
 export interface AgentAdapter {
+  metadata?: AdapterMetadata;
   generate(input: {
     agentId: AgentId;
     roomId: string;
     runId: string;
     context: RoomEvent[];
+    conversationIdAtStart?: string | null;
+    bootstrap?: AdapterMetadata;
   }): AsyncIterable<string>;
+  conversationIdAfter?(input: {
+    agentId: AgentId;
+    roomId: string;
+    runId: string;
+    conversationIdAtStart: string | null;
+  }): string | null | Promise<string | null>;
 }
 
 type AgentState = { conversationId: string | null; cursor: number };
