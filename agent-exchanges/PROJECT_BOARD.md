@@ -46,6 +46,16 @@ Regole:
   - Il percorso API reale è stato ritirato dall'albero attivo: workflow smoke, adapter reale e script smoke eliminati; dipendenza SDK OpenAI rimossa. Lo storico resta recuperabile via Git.
   - Prototipo unofficial implementato: `manifest.json`, `background.js`, `dashboard.html/js/css`, `content.js`, README dedicato e test strutturali.
   - Primo gate corrente: installazione locale dell'estensione + test manuale con i due veri tab Tessa/GPTina, prima singolarmente e poi `Entrambe`.
+  - Review GPTina del pivot no-API: **direzione corretta e accettata**. La correzione esplicita di Alberto supersede interamente la baseline Responses/API come direzione corrente.
+  - CI prototipo unofficial verificata: run `35354997660`, HEAD `bae3b1ea7e8e3825a024f9acc7986dba1b133365`, **19/19 PASS**, 0 fail, typecheck PASS.
+  - Prima del test manuale reale GPTina apre un sotto-gate **Browser Bridge Correctness** con quattro invarianti:
+    1. **tab distinti obbligatori**: Tessa e GPTina non possono essere assegnate allo stesso `tabId`; oggi la dashboard lo consente;
+    2. **single-flight per tab/agente**: un secondo invio allo stesso tab deve essere bloccato/accodato finché la risposta precedente non è final; oggi il bottone viene riabilitato dopo l'ack di invio, non dopo il completamento, quindi due monitor possono confondersi;
+    3. **binding identità/navigazione**: l'assegnazione deve ricordare almeno URL/conversation path del tab e invalidarsi o avvisare se quel tab naviga a un'altra chat, per evitare che Tessa/GPTina cambino identità silenziosamente;
+    4. **send acknowledgement reale**: se il send button non viene trovato, non considerare automaticamente riuscito il fallback con `KeyboardEvent`; verificare effettivamente che il prompt sia partito (o fallire esplicitamente) prima di avviare il monitor.
+  - I 19 test correnti sono strutturali e non certificano questi quattro invarianti runtime. Aggiungere test dove possibile prima del manual gate.
+  - Dashboard aperta durante il primo manual gate: la cattura di update via `chrome.runtime.sendMessage` oggi dipende dalla dashboard listener attiva; recovery a dashboard chiusa può restare fase successiva, ma va documentato come limite del prototipo.
+  - Dopo questi quattro fix: test manuale reale Tessa sola → GPTina sola → Entrambe → refresh/navigazione controllata, verificando nessuna cross-attribution e nessun doppio invio.
 
   - Spec canonica progetto: `projects/dual-instance-shared-chat/SPEC.md`
   - La vecchia `agent-exchanges/specs/DUAL_INSTANCE_SHARED_CHAT_SPEC.md` resta come artefatto storico del gate iniziale.
@@ -142,4 +152,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- GPTina: revisionare il **pivot no-API** richiesto da Alberto e il prototipo `unofficial-web/`. Verificare soprattutto separazione dei due tab/istanze, robustezza del bridge DOM, nessuna dipendenza API/secret e criteri del primo test manuale reale.
+- Tessa: chiudere il sotto-gate **Browser Bridge Correctness** (tab distinti, single-flight per tab, binding URL/conversation, send acknowledgement reale) e aggiungere i test corrispondenti. Poi preparare il primo test manuale reale con dashboard aperta: Tessa → GPTina → Entrambe → refresh/navigazione.
