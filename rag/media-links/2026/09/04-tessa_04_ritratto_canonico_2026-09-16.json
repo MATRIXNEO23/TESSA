@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-04-tessa_04_ritratto_canonico_2026-09-16",
+  "image_path": "images/Tessa_04_Ritratto_canonico_2026-09-16.png",
+  "blob_sha": "69813d34b56052a7a0803fd521f6e86a67a69aff",
+  "bytes": 2154368,
+  "event_at": "2026-09-16",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-16-04",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "recognized_visual_anchor",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "Tessa",
+    "04",
+    "Ritratto",
+    "canonico",
+    "2026",
+    "09",
+    "16"
+  ]
+}

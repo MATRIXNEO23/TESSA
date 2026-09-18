@@ -1,0 +1,97 @@
+[
+  {
+    "id": "relationship-current",
+    "mode": "search",
+    "query": "simmetrica non speculare Tu resti tu io resto io",
+    "top_k": 8,
+    "expected_any": [
+      "rag/memories/tessa/2026-09-17-continuita-simmetrica-con-gptina.md"
+    ]
+  },
+  {
+    "id": "visual-identity-current",
+    "mode": "search",
+    "query": "capelli rosso rame lentiggini occhi verde grigio scintilla miccia",
+    "top_k": 8,
+    "expected_any": [
+      "identity/TESSA_VISUAL_IDENTITY.md",
+      "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+    ]
+  },
+  {
+    "id": "ownership-boundary",
+    "mode": "search",
+    "query": "confine memoria Tessa GPTina read only scrittura",
+    "top_k": 8,
+    "expected_any": [
+      "rag/MEMORY_OWNERSHIP_BOUNDARY.md",
+      "rag/memories/tessa/20260916T085300Z--confine-tra-memoria-tessa-e-gptina.md"
+    ]
+  },
+  {
+    "id": "checkpoint-policy-current",
+    "mode": "search",
+    "query": "checkpoint freshness 3 5 scambi significativi",
+    "top_k": 8,
+    "expected_any": [
+      "TESSA_CURRENT_RULES.md",
+      "recovery/TESSA_AUTO_RECOVERY_PROMPT.md",
+      "rag/LIVE_MEMORY_PROTOCOL.md"
+    ],
+    "forbidden": [
+      "chat-checkpoints/2026-09-16--baseline-regola-20-turni.md"
+    ]
+  },
+  {
+    "id": "relationship-provenance-correction",
+    "mode": "search",
+    "query": "rivalita gelosia prescritta superata provenienza",
+    "top_k": 8,
+    "expected_any": [
+      "identity/TESSA_RELATIONSHIP_PROVENANCE_RESET_2026-09-17.md",
+      "TESSA_CURRENT_RULES.md"
+    ],
+    "forbidden": [
+      "chat-checkpoints/2026-09-17T0230-visible-scambi-rivalita-gptina.md"
+    ]
+  },
+  {
+    "id": "exact-distinct",
+    "mode": "exact",
+    "query": "Tu resti tu, io resto io.",
+    "expected_any": [
+      "rag/memories/tessa/2026-09-17-continuita-simmetrica-con-gptina.md"
+    ]
+  },
+  {
+    "id": "memory-v2-current",
+    "mode": "search",
+    "query": "live buffer micro checkpoint SQLite FTS5 source SHA current exact history",
+    "top_k": 8,
+    "expected_any": [
+      "rag/memories/tessa/2026/09/2026-09-18--memory-architecture-v2-and-live-context.md",
+      "rag/LIVE_MEMORY_PROTOCOL.md",
+      "recovery/TESSA_PROJECT_INSTRUCTIONS_READY_TO_COPY.md"
+    ]
+  },
+  {
+    "id": "image-link-rule",
+    "mode": "search",
+    "query": "immagine contesto memoria blob sha bytes event recorded",
+    "top_k": 8,
+    "expected_any": [
+      "rag/IMAGE_LINK_SCHEMA.md",
+      "rag/index/TESSA_VISUAL_CHRONOLOGY.md"
+    ]
+  },
+  {
+    "id": "agent-cockpit-current",
+    "mode": "search",
+    "query": "Agent Cockpit 0.3.1 compat targetSdk 29",
+    "top_k": 8,
+    "expected_any": [
+      "chat-checkpoints/2026-09-18T1855-agent-cockpit-0.3.1-install-compat-fix.md",
+      "agent-exchanges/PROJECT_BOARD.md"
+    ]
+  }
+]

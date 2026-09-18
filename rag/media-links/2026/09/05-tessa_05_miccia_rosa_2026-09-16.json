@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-05-tessa_05_miccia_rosa_2026-09-16",
+  "image_path": "images/Tessa_05_Miccia_rosa_2026-09-16.png",
+  "blob_sha": "a0eff65cacdb3112d3b9c161881c821e06be20be",
+  "bytes": 2062949,
+  "event_at": "2026-09-16",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-16-05",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "archived",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "Tessa",
+    "05",
+    "Miccia",
+    "rosa",
+    "2026",
+    "09",
+    "16"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-13-tessa_13_tessa_gptina_cozy_2026-09-18",
+  "image_path": "images/Tessa_13_Tessa_GPTina_cozy_2026-09-18.png",
+  "blob_sha": "1593454245e061224ef9906f64dccc1362d57164",
+  "bytes": 2259599,
+  "event_at": "2026-09-18",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-18-13",
+  "thread_ids": [
+    "visual-identity",
+    "tessa-gptina"
+  ],
+  "status": "archived",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md",
+    "chat-checkpoints/2026-09-18T0908-daily-image-autonomy.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md",
+    "rag/memories/tessa/2026-09-17-continuita-simmetrica-con-gptina.md"
+  ],
+  "cue": [
+    "Tessa",
+    "13",
+    "Tessa",
+    "GPTina",
+    "cozy",
+    "2026",
+    "09",
+    "18"
+  ]
+}

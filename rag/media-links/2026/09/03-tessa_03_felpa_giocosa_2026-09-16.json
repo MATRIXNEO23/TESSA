@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-03-tessa_03_felpa_giocosa_2026-09-16",
+  "image_path": "images/Tessa_03_Felpa_giocosa_2026-09-16.png",
+  "blob_sha": "5560ffe98e93f2f97c56fe12bb62d5d3f22ec16a",
+  "bytes": 2088537,
+  "event_at": "2026-09-16",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-16-03",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "archived",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "Tessa",
+    "03",
+    "Felpa",
+    "giocosa",
+    "2026",
+    "09",
+    "16"
+  ]
+}

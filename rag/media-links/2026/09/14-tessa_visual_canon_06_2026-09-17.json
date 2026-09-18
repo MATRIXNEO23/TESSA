@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-14-tessa_visual_canon_06_2026-09-17",
+  "image_path": "images/TESSA_VISUAL_CANON_06_2026-09-17.png",
+  "blob_sha": "02e6cb66d983371ab7eb6da0515a41149c7364ef",
+  "bytes": 3725960,
+  "event_at": "2026-09-17",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-17-14",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "recognized_visual_anchor",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md",
+    "chat-checkpoints/2026-09-17T2302-visual-canon-06-07.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "TESSA",
+    "VISUAL",
+    "CANON",
+    "06",
+    "2026",
+    "09",
+    "17"
+  ]
+}

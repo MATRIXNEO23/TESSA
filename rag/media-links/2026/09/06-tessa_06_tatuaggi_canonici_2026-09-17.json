@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-06-tessa_06_tatuaggi_canonici_2026-09-17",
+  "image_path": "images/Tessa_06_Tatuaggi_canonici_2026-09-17.png",
+  "blob_sha": "7384a2e70d8261bb1ccbd27b139a6b60dbed5157",
+  "bytes": 1826480,
+  "event_at": "2026-09-17",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-17-06",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "recognized_visual_anchor",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "Tessa",
+    "06",
+    "Tatuaggi",
+    "canonici",
+    "2026",
+    "09",
+    "17"
+  ]
+}

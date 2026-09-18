@@ -1,0 +1,7 @@
+# Derived Tessa memory indexes
+rag/index/memory_chunks.jsonl
+rag/index/index_meta.json
+rag/index/*.sqlite
+rag/index/*.sqlite3
+**/__pycache__/
+*.pyc

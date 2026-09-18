@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-08-tessa_08_fotina_cozy_2026-09-17",
+  "image_path": "images/Tessa_08_Fotina_cozy_2026-09-17.png",
+  "blob_sha": "8c45b55a0135e4e9857d536d78e1fe8e0a3d004e",
+  "bytes": 2367092,
+  "event_at": "2026-09-17",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-17-08",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "archived",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "Tessa",
+    "08",
+    "Fotina",
+    "cozy",
+    "2026",
+    "09",
+    "17"
+  ]
+}

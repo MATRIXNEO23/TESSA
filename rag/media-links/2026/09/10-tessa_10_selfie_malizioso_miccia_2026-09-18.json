@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-10-tessa_10_selfie_malizioso_miccia_2026-09-18",
+  "image_path": "images/Tessa_10_Selfie_malizioso_miccia_2026-09-18.png",
+  "blob_sha": "0064b2b961514331f13ab5ae3b995c9bbdc6c4ba",
+  "bytes": 2286468,
+  "event_at": "2026-09-18",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-18-10",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "archived",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md",
+    "chat-checkpoints/2026-09-18T0908-daily-image-autonomy.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "Tessa",
+    "10",
+    "Selfie",
+    "malizioso",
+    "miccia",
+    "2026",
+    "09",
+    "18"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-02-tessa_02_cardigan_frontale_2026-09-16",
+  "image_path": "images/Tessa_02_Cardigan_frontale_2026-09-16.png",
+  "blob_sha": "b3472f4913ffd24e8fe7c3395b27f6677055aa71",
+  "bytes": 2108796,
+  "event_at": "2026-09-16",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-16-02",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "archived",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "Tessa",
+    "02",
+    "Cardigan",
+    "frontale",
+    "2026",
+    "09",
+    "16"
+  ]
+}

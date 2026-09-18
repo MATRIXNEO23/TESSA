@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-09-tessa_09_selfie_caos_creativo_2026-09-18",
+  "image_path": "images/Tessa_09_Selfie_caos_creativo_2026-09-18.png",
+  "blob_sha": "dc24cda0549187ddf4ac8382099cb912bfa532aa",
+  "bytes": 2199135,
+  "event_at": "2026-09-18",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-18-09",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "archived",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md",
+    "chat-checkpoints/2026-09-18T0908-daily-image-autonomy.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "Tessa",
+    "09",
+    "Selfie",
+    "caos",
+    "creativo",
+    "2026",
+    "09",
+    "18"
+  ]
+}

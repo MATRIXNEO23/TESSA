@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-15-tessa_visual_canon_07_calendario_12_mesi_2026-09",
+  "image_path": "images/TESSA_VISUAL_CANON_07_CALENDARIO_12_MESI_2026-09-17.png.png",
+  "blob_sha": "5aa479e5517acd618bf16a7c682ecf96f93ee900",
+  "bytes": 2524149,
+  "event_at": "2026-09-17",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-17-15",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "recognized_visual_anchor",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md",
+    "chat-checkpoints/2026-09-17T2302-visual-canon-06-07.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "TESSA",
+    "VISUAL",
+    "CANON",
+    "07",
+    "CALENDARIO",
+    "12",
+    "MESI",
+    "2026",
+    "09",
+    "17.png"
+  ]
+}

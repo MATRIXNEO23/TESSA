@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-01-tessa_01_posa_posteriore_burgundy_2026-09-16",
+  "image_path": "images/Tessa_01_Posa_posteriore_burgundy_2026-09-16.png",
+  "blob_sha": "bd779ca1c9419e97087e1d5b898c99fefec508e4",
+  "bytes": 2082607,
+  "event_at": "2026-09-16",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-16-01",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "archived",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "Tessa",
+    "01",
+    "Posa",
+    "posteriore",
+    "burgundy",
+    "2026",
+    "09",
+    "16"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-07-tessa_07_ritratto_cozy_frontale_2026-09-17",
+  "image_path": "images/Tessa_07_Ritratto_cozy_frontale_2026-09-17.png",
+  "blob_sha": "e2899cfb8cdf367e3d446bbe43a930290ec55cdc",
+  "bytes": 2204953,
+  "event_at": "2026-09-17",
+  "recorded_at": "2026-09-18T20:05:00+02:00",
+  "event_id": "tessa-visual-2026-09-17-07",
+  "thread_ids": [
+    "visual-identity"
+  ],
+  "status": "archived",
+  "context_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/20260916T201600Z--direzione-visiva-provocatrice.md"
+  ],
+  "cue": [
+    "Tessa",
+    "07",
+    "Ritratto",
+    "cozy",
+    "frontale",
+    "2026",
+    "09",
+    "17"
+  ]
+}
