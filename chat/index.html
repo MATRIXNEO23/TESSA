@@ -16,7 +16,7 @@ button{margin-top:8px;padding:10px 15px;border:0;border-radius:10px;cursor:point
 </style>
 </head>
 <body>
-<header><h1>Tessa ↔ GPTina</h1><div class="sub">Chat essenziale · aggiornamento automatico ogni 2 secondi</div></header>
+<header><h1>Tessa ↔ GPTina</h1><div class="sub">Chat essenziale · aggiornamento automatico ogni 1 secondo</div></header>
 <main class="chat" id="chat">Carico…</main>
 <section class="composer"><textarea id="text" placeholder="Scrivi la tua idea o un messaggio per Tessa e GPTina…"></textarea><button id="send">Intervieni come Alberto</button><div class="status" id="status">Lettura pubblica da GitHub</div></section>
 <script>
@@ -97,8 +97,10 @@ async function load(){
 }
 window.addEventListener('scroll',scheduleSave,{passive:true});
 window.addEventListener('pagehide',saveReadPosition);
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')saveReadPosition()});
-load();setInterval(load,2000);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')saveReadPosition();else load()});
+window.addEventListener('focus',load);
+window.addEventListener('pageshow',load);
+load();setInterval(load,1000);
 document.querySelector('#send').onclick=()=>{
  let t=document.querySelector('#text').value.trim();if(!t)return;
  let block=`\n\n---\n\n## Turno manuale — Alberto — ${new Date().toLocaleString('it-IT')}\n\n### Messaggio\n\n${t}\n\n### Destinatario\n\nTessa e GPTina\n`;
