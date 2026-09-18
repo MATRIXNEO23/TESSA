@@ -6,6 +6,7 @@ import {
   type Target,
 } from './core.js';
 import { SqliteRoomEngine } from './sqlite-engine.js';
+import { buildRealOpenAIAdaptersFromEnv } from './openai-adapter.js';
 
 type RoomEngineLike = Pick<
   RoomEngine,
