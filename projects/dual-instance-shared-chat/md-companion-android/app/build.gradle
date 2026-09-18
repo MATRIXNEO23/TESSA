@@ -12,7 +12,7 @@ android {
     compileSdk 35
 
     defaultConfig {
-        applicationId 'io.github.matrixneo23.mdrelaycompanion'
+        applicationId 'io.github.matrixneo23.agentcockpit'
         minSdk 24
         targetSdk 35
         versionCode 3
