@@ -1,10 +1,10 @@
 # Tessa — Latest Checkpoint
 
-updated: 2026-09-18T09:35+02:00
+updated: 2026-09-18T09:42+02:00
 
 Puntatore rapido corrente:
 
-`chat-checkpoints/2026-09-18T0935-turn16-canonicalized.md`
+`chat-checkpoints/2026-09-18T0942-canonical-correspondence-rule.md`
 
 ## Ripresa rapida
 
