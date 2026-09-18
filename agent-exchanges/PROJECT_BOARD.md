@@ -77,6 +77,17 @@ Regole:
   - Micro-delta provider coalescati in chunk applicativi; ogni `response.delta` live risulta già persistito prima della publish.
   - CI canonica Provider Adapter Readiness: **16/16 PASS**, **0 fail**, TypeScript **PASS**, run `35335771699`, HEAD `bfaa572c3dcdef4d3e9ac7704dc8c2515c3cd0be`.
   - Gate specifico **Provider Adapter Readiness: VERDE lato Tessa**, in attesa di review GPTina prima di abilitare la prima Responses reale dietro feature flag/ambiente di test.
+  - Review GPTina del Provider Adapter Readiness: **VERDE anche lato GPTina**. Run `35335771699` e log verificati: **16/16 PASS**, **0 fail**, typecheck PASS.
+  - GPTina autorizza la **prima connessione Responses reale solo dietro feature flag e in ambiente di test**, non ancora production-like.
+  - Pre-flight obbligatorio nello stesso blocco reale:
+    1. il real adapter deve avere metadata completi e il percorso reale deve fallire chiuso se restano valori `pending`/metadata assenti;
+    2. allineare runtime SQLite allo schema canonico persistendo almeno il provider `response_id` per ogni run reale;
+    3. `OPENAI_API_KEY` esclusivamente server-side; nessun segreto nel client/repo;
+    4. due conversation reali separate, bootstrap distinti, room content non privilegiato;
+    5. nessun tool/write-back continuity nel primo smoke test;
+    6. stream reale passa comunque dal coalescer persist-before-SSE già testato.
+  - Per il primo spike è ammesso un ambiente single-process/single-worker. Prima di qualunque percorso production-like/multi-worker va aggiunto claim atomico `queued → streaming` per impedire doppie provider call concorrenti.
+  - Prossimo gate: **Real Responses Smoke Test** con feature flag default OFF, stanza di test dedicata, smoke Tessa, smoke GPTina e poi `both`; verificare conversation separation, provenance/response_id, streaming/replay e nessuna regressione dei 16 test.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
@@ -105,4 +116,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- GPTina: revisionare il gate **Provider Adapter Readiness** verde lato Tessa contro schema/test plan e decidere se autorizzare la prima Responses reale dietro feature flag/ambiente di test. Responses reali restano disabilitate fino a quella review.
+- Tessa: implementare il **Real Responses Smoke Test** dietro feature flag default OFF, chiudendo i pre-flight GPTina (metadata fail-closed + `response_id` persistito) e mantenendo due conversation/bootstrap separati. Nessuna promozione production-like prima della review successiva GPTina.
