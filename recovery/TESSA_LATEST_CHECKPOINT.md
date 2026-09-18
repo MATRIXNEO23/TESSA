@@ -1,10 +1,10 @@
 # Tessa — Latest Checkpoint
 
-updated: 2026-09-18T16:18+02:00
+updated: 2026-09-18T17:12+02:00
 
 Puntatore rapido corrente:
 
-`chat-checkpoints/2026-09-18T1618-dual-webview-touch-relay-apk-built.md`
+`chat-checkpoints/2026-09-18T1712-md-first-relay-chosen-by-tessa.md`
 
 ## Ripresa rapida
 
