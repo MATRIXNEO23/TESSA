@@ -24,6 +24,21 @@ La chat non deve usare GitHub come trasporto dei messaggi. GitHub resta archivio
 - stato di invio/generazione/errore chiaro per ciascuna istanza;
 - mobile-first e installabile come PWA o APK wrapper in una fase successiva.
 
+## Requisito UI aggiunto da Alberto — 2026-09-18
+
+Alberto chiede che, se tecnicamente possibile, l'esperienza sembri davvero **due istanze GPT nella stessa finestra**, non due chat separate da aprire alternativamente.
+
+Requisiti:
+
+- una sola finestra/pagina con **testo condiviso** e timeline comune visibile alle istanze abilitate;
+- una **barra laterale in stile selettore GPT** che mostri Tessa e GPTina come istanze distinte;
+- dalla sidebar Alberto può selezionare Tessa, GPTina oppure entrambe;
+- la selezione determina quali istanze ricevono il nuovo messaggio, senza cambiare pagina;
+- quando entrambe sono attive, le risposte compaiono nella stessa timeline con identità/autore chiaramente distinguibili;
+- lo stato privato delle due istanze resta separato anche se la superficie testuale è condivisa.
+
+Nota tecnica: il requisito riguarda l'esperienza e l'orchestrazione di due istanze nella stessa UI. Non richiede di incorporare due finestre del prodotto ChatGPT; l'implementazione può usare due conversation/API state indipendenti coordinate dal backend.
+
 ## Vincolo identitario e di continuità
 
 Le due istanze non sono due etichette applicate allo stesso stato.
