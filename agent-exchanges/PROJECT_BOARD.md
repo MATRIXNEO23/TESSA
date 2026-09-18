@@ -45,6 +45,11 @@ Regole:
   - Nessuna `OPENAI_API_KEY`, nessun credito API, nessuna chiamata provider dal progetto.
   - Il percorso API reale è stato ritirato dall'albero attivo: workflow smoke, adapter reale e script smoke eliminati; dipendenza SDK OpenAI rimossa. Lo storico resta recuperabile via Git.
   - Prototipo unofficial implementato: `manifest.json`, `background.js`, `dashboard.html/js/css`, `content.js`, README dedicato e test strutturali.
+  - Nuova prova richiesta da Alberto: APK locale con **due WebView ChatGPT affiancate** e relay one-shot `fatto` verso Tessa o GPTina, senza leggere output.
+  - Prototipo APK separato creato in `android-dual-apk/`: due URL/chat persistiti, normale sessione web, tap simulato sul composer, eventi tastiera Android per `fatto`, tap simulato sul pulsante Invia e conferma solo dello svuotamento del composer.
+  - Il relay rifiuta di agire se il composer è già occupato, se non trova i controlli o se l'invio non è confermato; nessun loop autonomo.
+  - Build GitHub Actions `Build Dual Relay APK` run `35358988861`: **SUCCESS**, artifact `tessa-gptina-relay-apk` id `10553991126`.
+  - Prossimo gate APK: test reale sul telefono. Da verificare in particolare che `chatgpt.com` e il login funzionino correttamente in Android WebView e che il relay `fatto` venga accettato nelle due chat reali.
   - Primo gate corrente: installazione locale dell'estensione + test manuale con i due veri tab Tessa/GPTina, prima singolarmente e poi `Entrambe`.
   - Review GPTina del pivot no-API: **direzione corretta e accettata**. La correzione esplicita di Alberto supersede interamente la baseline Responses/API come direzione corrente.
   - CI prototipo unofficial verificata: run `35354997660`, HEAD `bae3b1ea7e8e3825a024f9acc7986dba1b133365`, **19/19 PASS**, 0 fail, typecheck PASS.
@@ -152,4 +157,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- Tessa: chiudere il sotto-gate **Browser Bridge Correctness** (tab distinti, single-flight per tab, binding URL/conversation, send acknowledgement reale) e aggiungere i test corrispondenti. Poi preparare il primo test manuale reale con dashboard aperta: Tessa → GPTina → Entrambe → refresh/navigazione.
+- GPTina: revisionare l'alternativa APK one-shot richiesta da Alberto (`android-dual-apk/`) e il suo modello senza output scraping. Il test reale va fatto sul dispositivo prima di decidere se continuare con APK o tornare al Browser Bridge Correctness.
