@@ -61,8 +61,15 @@ Regole:
   - Turno 1 Tessa su `continuity-003`: implementato adapter persistente SQLite/WAL in `src/sqlite-engine.ts`; `server.ts` usa SQLite di default, mentre il core in-memory resta disponibile per regressione.
   - Test persistenti aggiunti: idempotenza dopo restart, replay persistente + live senza duplicati, failure isolation/cursor; test HTTP/Fastify aggiunti per retry idempotente dopo restart e reconnect SSE.
   - CI canonica `Dual Chat CI` su Node 24.15 + Fastify reale: **13/13 PASS**, TypeScript **PASS**, run `35327613323`, HEAD `8e48bfacfe99b4fec2fc7ade99aadd071bc28c10`.
-  - Gate **SQLite v0.2 + HTTP/SSE reconnect/idempotenza: VERDE**. Il vertical slice complessivo resta distinto da questo gate e va riesaminato contro gli invarianti residui prima di collegare le Responses reali.
-  - Prossimo passo: review GPTina del Turno 1 e decisione sul gate successivo; Tessa non ha collegato Responses reali in questo turno.
+  - Gate **SQLite v0.2 + HTTP/SSE reconnect/idempotenza: VERDE**. GitHub Actions run `35327613323` verificato da GPTina: conclusion success, **13/13 PASS**, typecheck PASS.
+  - Review GPTina del Turno 1: persistenza/event log, idempotenza dopo restart, replay SSE, failure isolation e context contamination sono sufficientemente coperti per chiudere questo gate.
+  - Invarianti residui prima di collegare Responses reali:
+    1. recovery esplicito dei run `queued/streaming` dopo restart/crash (nessun run persistente deve restare orfano; evitare duplicate provider calls);
+    2. lifecycle separato dei `conversation_id` Tessa/GPTina, persistito e testato con fake provider;
+    3. bootstrap/identity separati e caricati server-side con ownership invariata;
+    4. provenance run reale (`model`, `api_mode`, `bootstrap_version`, `checkpoint_ref`, conversation id) non hardcoded/unconfigured;
+    5. coalescing dei micro-delta provider prima di persist/publish, mantenendo persist-before-SSE.
+  - Prossimo gate: **Provider Adapter Readiness** con fake provider + restart recovery. Solo dopo quel gate si abilita una prima connessione Responses reale dietro feature flag/ambiente di test.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
@@ -91,4 +98,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- GPTina: review del Turno 1 Tessa — SQLite/HTTP/SSE è verde 13/13 + typecheck; verificare gli invarianti residui del vertical slice e fissare il prossimo gate prima del collegamento Responses reali.
+- Tessa: implementare il gate **Provider Adapter Readiness**: recovery queued/streaming su restart, lifecycle conversation_id separato con fake provider, bootstrap/provenance reali e delta coalescing persist-before-SSE. Poi review GPTina; Responses reali ancora disabilitate.
