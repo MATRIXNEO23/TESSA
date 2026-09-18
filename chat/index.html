@@ -31,12 +31,16 @@ textarea{min-height:75px}button{margin-top:8px;padding:10px 15px;border:0;border
 <script>
 const OLD_RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-17-bootstrap-001.md';
 const PREVIOUS_RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-18-continuity-002.md';
-const CURRENT_RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-18-continuity-003.md';
-const EDIT='https://github.com/MATRIXNEO23/TESSA/edit/main/agent-exchanges/correspondence/2026-09-18-continuity-003.md';
+const CURRENT_PATH='agent-exchanges/correspondence/2026-09-18-continuity-003.md';
+const CURRENT_THREAD_ID='2026-09-18-continuity-003';
+const CURRENT_RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/'+CURRENT_PATH;
+const EDIT='https://github.com/MATRIXNEO23/TESSA/edit/main/'+CURRENT_PATH;
 const READ_KEY='tessa-shared-chat:last-read:v1';
 let oldMd='',previousMd='',currentMd='',last='',lastPending='',firstRender=true,restoring=false,saveTimer=null,pendingText='';
 const $=s=>document.querySelector(s);
 const native=()=>typeof TessaNative!=='undefined';
+const nativePathBridge=()=>native()&&typeof TessaNative.refreshThreadPath==='function'&&typeof TessaNative.sendMessageTo==='function';
+const threadId=md=>(String(md).match(/^thread_id:\\s*([^\\n]+)$/m)||[])[1]?.trim()||'';
 function hasToken(){try{return native()&&TessaNative.hasGitHubToken()}catch(e){return false}}
 function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
 function essential(p){
@@ -75,24 +79,46 @@ async function loadOld(){if(oldMd&&previousMd)return;try{const stamp=Date.now();
 async function loadRaw(){try{const stamp=Date.now();const [a,b,d]=await Promise.all([OLD_RAW,PREVIOUS_RAW,CURRENT_RAW].map(u=>fetch(u+'?t='+stamp,{cache:'no-store'})));oldMd=await a.text();previousMd=await b.text();currentMd=await d.text();renderCombined()}catch(e){$('#status').textContent='Errore aggiornamento: '+e.message}}
 function load(force=false){
  updateAuthUi();
- if(hasToken()){loadOld();try{TessaNative.refreshThread()}catch(e){loadRaw()}}
- else loadRaw();
+ if(hasToken()){
+   loadRaw();
+   try{
+     if(nativePathBridge())TessaNative.refreshThreadPath(CURRENT_PATH);
+     else TessaNative.refreshThread();
+   }catch(e){loadRaw()}
+ }else loadRaw();
 }
-window.onNativeThread=md=>{currentMd=md;renderCombined()};
+window.onNativeThread=md=>{
+ const id=threadId(md);
+ if(id&&id!==CURRENT_THREAD_ID){
+   loadRaw();
+   $('#status').textContent='APK nativo su thread precedente · lettura aggiornata via web';
+   $('#status').className='status err';
+   return;
+ }
+ currentMd=md;renderCombined();
+};
 window.onNativeSyncError=msg=>{$('#status').textContent='Sync GitHub: '+msg;$('#status').className='status err'};
 window.onNativeSendResult=(ok,msg)=>{
  $('#send').disabled=false;
  if(ok){pendingText='';$('#text').value='';$('#status').textContent=msg+' · sincronizzo…';$('#status').className='status ok';try{TessaNative.refreshThread()}catch(e){}}
  else{$('#status').textContent='Invio non riuscito: '+msg;$('#status').className='status err'}
 };
-function updateAuthUi(){const configured=hasToken();$('#authBtn').hidden=!native()||configured;$('#send').textContent=configured?'Invia':'Invia';if(configured)$('#auth').hidden=true}
+function updateAuthUi(){const configured=hasToken();$('#authBtn').hidden=!native()||configured;$('#send').textContent=configured&&nativePathBridge()?'Invia':'Invia';if(configured)$('#auth').hidden=true}
 $('#authBtn').onclick=()=>{$('#auth').hidden=false;$('#token').focus()};
 $('#saveToken').onclick=()=>{const token=$('#token').value.trim();if(!native())return;let ok=false;try{ok=TessaNative.saveGitHubToken(token)}catch(e){}if(ok){$('#token').value='';$('#auth').hidden=true;$('#status').textContent='Autorizzazione salvata sul telefono. Sincronizzo…';$('#status').className='status ok';load(true)}else{$('#status').textContent='Token non valido o non salvabile';$('#status').className='status err'}};
 $('#send').onclick=()=>{
  const t=$('#text').value.trim();if(!t)return;
- if(hasToken()){
+ if(hasToken()&&nativePathBridge()){
    pendingText=t;$('#send').disabled=true;renderCombined();$('#status').textContent='Invio…';$('#status').className='status';
-   try{TessaNative.sendMessage(t)}catch(e){window.onNativeSendResult(false,e.message)}
+   try{TessaNative.sendMessageTo(CURRENT_PATH,t)}catch(e){window.onNativeSendResult(false,e.message)}
+   return;
+ }
+ if(hasToken()&&native()){
+   const block='\n\n---\n\n## Turno manuale — Alberto — '+new Date().toLocaleString('it-IT')+'\n\n### Messaggio\n\n'+t+'\n\n### Destinatario\n\nTessa e GPTina\n';
+   navigator.clipboard?.writeText(block);
+   $('#status').textContent='APK da aggiornare per invio diretto al thread corrente · turno copiato, apro GitHub.';
+   $('#status').className='status err';
+   window.open(EDIT,'_blank');
    return;
  }
  if(native()){$('#auth').hidden=false;$('#token').focus();$('#status').textContent='Configura una volta l’autorizzazione GitHub per inviare direttamente.';return}
