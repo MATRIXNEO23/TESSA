@@ -14,9 +14,9 @@ android {
     defaultConfig {
         applicationId 'io.github.matrixneo23.agentcockpit'
         minSdk 24
-        targetSdk 35
-        versionCode 3
-        versionName '0.3-browser'
+        targetSdk 29
+        versionCode 4
+        versionName '0.3.1-compat'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
