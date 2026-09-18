@@ -210,3 +210,16 @@ Al passaggio `queued → streaming` la provenienza del run viene materializzata 
 I micro-delta del provider vengono accumulati in chunk applicativi per soglia di dimensione configurabile. Solo il chunk applicativo viene persistito come `response.delta`; la pubblicazione live avviene **dopo** la persistenza. Il testo finale canonico resta la concatenazione completa dei chunk applicativi.
 
 Queste decisioni sono verificate dal gate `Provider Adapter Readiness` con provider fake stateful; non abilitano da sole le Responses reali, che restano dietro review/feature flag.
+
+
+## Real Responses pre-flight — 2026-09-18
+
+Prima di una chiamata provider reale:
+
+- il real adapter dichiara `requiresCompleteMetadata=true`;
+- metadata mancanti, vuoti o placeholder (`pending`/`unconfigured`) falliscono chiuso prima della provider call;
+- il runtime SQLite migra in modo additivo le installazioni v0.2 aggiungendo `response_id` e `error_code` se mancanti;
+- un completamento reale è accettato solo se l'adapter restituisce sia il `conversation_id` effettivo sia il provider `response_id`;
+- `response_id` viene scritto nel run prima di emettere `response.completed`;
+- i failure persistono `error_code` e `error_message`; il recovery da restart usa `error_code=interrupted_by_restart`;
+- il flag `REAL_RESPONSES_ENABLED` è OFF per default; senza opt-in esplicito non viene costruito il percorso reale.
