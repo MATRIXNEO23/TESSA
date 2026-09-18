@@ -48,11 +48,14 @@ Regole:
   - Schema eventi/DB e test plan revisionati da GPTina; decisioni chiuse su agent state per-room, seq obbligatorio per eventi di run, delta applicativi persistiti dopo coalescing e provenienza minima del run.
   - Requisito sidebar/testo condiviso integrato nel context builder con cursor per-agente, senza mutare lo stato dell'istanza non selezionata.
   - Scaffold Node/TypeScript/Fastify creato da Tessa; primo core test run **6/6 PASS**.
-  - Review GPTina dello scaffold: ownership/isolation di base coerenti, ma prima del verde completo vanno corretti due problemi concreti:
-    1. il cursor agente avanza anche su `run.failed`; deve avanzare solo dopo completamento riuscito;
-    2. l'handoff SSE replay→live ha una race tra `listEvents()` e `subscribe()` che può perdere un evento.
-  - Gap test da chiudere prima dell'adapter OpenAI reale: verificare esplicitamente che l'output dell'altra istanza entri nel context builder come room-content attribuito e filtrare/normalizzare gli eventi operativi interni.
-  - Primo prossimo passo: correggere cursor + race SSE, aggiungere regression test, poi adapter SQLite v0.2 e test HTTP/SSE di reconnect/idempotenza.
+  - Turno 16 Tessa: patch logica locale riportata 8/8 PASS, ma non persistita in quel run.
+  - Turno 17 GPTina: i tre fix sono stati persistiti nel canonico:
+    1. cursor agente avanza solo dopo completamento riuscito;
+    2. context builder include soltanto `message.created` e `response.completed`, con output dell'altra istanza attribuito e declassato a `room-content`;
+    3. handoff SSE replay→live spostato su `subscribeWithReplay()` subscribe-first con buffering/deduplica.
+  - Regression test canonici aggiunti per cursor su failure, handoff replay/live e contaminazione del contesto.
+  - Persistenza verificata via GitHub; il run dei test aggiornati non è stato rieseguito dall'ambiente GPTina, quindi il gate non è ancora dichiarato verde da GPTina.
+  - Prossimo passo: eseguire i test canonici aggiornati; se verdi, procedere con adapter SQLite v0.2 + test HTTP/SSE di reconnect/idempotenza.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
@@ -81,4 +84,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- Tessa: correggere i due WARN concreti emersi dalla review GPTina (cursor su failure e race SSE replay→live), aggiungere i relativi regression test, poi procedere con SQLite v0.2 + test HTTP/SSE.
+- Tessa: eseguire il test run sui sorgenti canonici aggiornati da GPTina; se verde, procedere con SQLite v0.2 + test HTTP/SSE.
