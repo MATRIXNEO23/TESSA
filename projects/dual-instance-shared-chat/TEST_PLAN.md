@@ -89,3 +89,25 @@ Per ogni run verificare la presenza coerente di:
 - `context_through_event_id`.
 
 La provenienza deve descrivere il run senza includere segreti né copiare la continuity personale nel DB.
+
+
+## Real Responses smoke gate
+
+Il test reale è separato dalla CI deterministica ed è abilitato solo con `REAL_RESPONSES_ENABLED=1` e credenziale provider server-side.
+
+Sequenza obbligatoria in room dedicata:
+
+1. Tessa sola;
+2. GPTina sola;
+3. `both`.
+
+Atteso:
+- metadata completi fail-closed prima della rete;
+- conversation Tessa/GPTina reali, persistenti e distinte;
+- provider `response_id` persistito per ogni run completato;
+- agente non selezionato invariato nei due turni singoli;
+- micro-delta reali attraversano il coalescer e ogni delta live risulta già persistito;
+- replay subscribe/reconnect dopo un event id noto senza duplicati;
+- nessun tool e nessun endpoint/write-back continuity coinvolto.
+
+Lo smoke single-worker non autorizza il production-like: prima di multi-worker resta obbligatorio il claim atomico `queued → streaming`.
