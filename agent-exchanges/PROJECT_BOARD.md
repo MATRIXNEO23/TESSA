@@ -27,7 +27,7 @@ Path:
 
 Versione in lavorazione:
 
-`0.3-browser`
+`0.3.1-compat`
 
 UI richiesta da Alberto:
 - schermo intero;
@@ -100,6 +100,8 @@ Verificato:
 - nuova linea package stabile: `io.github.matrixneo23.agentcockpit`;
 - chiave signing stabile generata fuori repo; certificato SHA256 `F8:9E:91:C1:DC:E2:39:51:EB:A6:F3:66:0B:DB:6C:98:58:B0:02:E1:55:22:DD:AE:22:77:8C:80:8C:51:1B:6B`;
 - APK 0.3 firmato localmente e verificato con `jarsigner`, SHA256 `59eb9ff90c0218f79d36ac6ac8c8becb44e6bdecb8867e68c66c53084284369e`.
+- Incidente installazione 0.3: APK firmato solo v1 con `jarsigner`; Android 11+ rifiuta app target API 30+ firmate solo v1. Correzione immediata 0.3.1-compat: targetSdk 29 (sideload, non Play), stessa chiave persistente, versionCode 4. Build run `35371037072`: unit tests PASS, guard PASS, assembleRelease PASS. APK locale firmato stessa chiave: `/mnt/data/Tessa_Agent_Cockpit_0.3.1_compat.apk`, SHA256 `848067f44bc26749991c247b566e39569fdc94ebaa41461b989448172af67755`.
+- Fix definitivo futuro: firmare la release con schema APK v2+ tramite Gradle/Android signing una volta configurati i signing secrets; a quel punto si può riportare targetSdk alla baseline moderna.
 
 Aperto:
 1. Alberto deve conservare il backup offline della chiave signing.
