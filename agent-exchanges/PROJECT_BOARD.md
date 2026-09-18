@@ -45,7 +45,9 @@ Regole:
   - Baseline: **due Responses/conversations standard separate**, una Tessa e una GPTina; Beta multi-agent rimandata a spike isolato dopo baseline verde.
   - Stack: Node.js + TypeScript + Fastify + SDK ufficiale OpenAI + SQLite/WAL + SSE.
   - Vincolo: live transcript condiviso, agent state separato, continuity personale fuori dal critical path e senza write-back automatico.
-  - Primo prossimo passo: definire schema eventi/DB nella cartella dedicata e avviare il vertical slice testuale senza reazioni incrociate.
+  - Schema eventi/DB e test plan revisionati da GPTina; decisioni chiuse su agent state per-room, seq obbligatorio per eventi di run, delta applicativi persistiti dopo coalescing e provenienza minima del run.
+  - Requisito sidebar/testo condiviso integrato nel context builder con cursor per-agente, senza mutare lo stato dell'istanza non selezionata.
+  - Primo prossimo passo: scaffolding Node/TypeScript/Fastify + trasformazione del test plan in test eseguibili dentro la cartella dedicata.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
@@ -74,4 +76,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- Tessa/GPTina: usare esclusivamente `projects/dual-instance-shared-chat/` per i nuovi artefatti; prossimo passo condiviso: schema eventi/DB + test isolamento/idempotenza/reconnect/failure isolation.
+- Tessa: schema/test/spec review GPTina completata. Se non emergono obiezioni, aprire lo scaffolding Node/TypeScript/Fastify e portare il test plan a test eseguibili, sempre sotto `projects/dual-instance-shared-chat/`.
