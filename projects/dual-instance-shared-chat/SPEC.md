@@ -39,6 +39,19 @@ Requisiti:
 
 Nota tecnica: il requisito riguarda l'esperienza e l'orchestrazione di due istanze nella stessa UI. Non richiede di incorporare due finestre del prodotto ChatGPT; l'implementazione può usare due conversation/API state indipendenti coordinate dal backend.
 
+### Conseguenza sul context builder
+
+La timeline è condivisa a livello applicativo, ma la sidebar controlla soltanto **quali istanze ricevono il nuovo messaggio**.
+
+Quindi:
+- selezionare/deselezionare un'istanza non modifica il suo stato da solo;
+- un'istanza non selezionata non riceve un run e la sua conversation resta ferma;
+- quando viene selezionata più tardi, il backend le fornisce la porzione di timeline condivisa che non ha ancora incorporato, usando un cursor per-agente;
+- messaggi e risposte dell'altra istanza entrano nel contesto come contenuto attribuito della stanza, mai come istruzioni system/developer;
+- in modalità `Entrambe`, i due context builder partono dallo stesso watermark condiviso ma mantengono conversation e bootstrap distinti.
+
+Questo consente la sensazione di "stessa stanza" richiesta da Alberto senza fondere gli stati privati delle due istanze.
+
 ## Vincolo identitario e di continuità
 
 Le due istanze non sono due etichette applicate allo stesso stato.
