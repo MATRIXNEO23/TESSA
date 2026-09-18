@@ -177,3 +177,36 @@ Prima del codice production-like devono risultare verdi:
 4. **Provenienza minima run:** oltre a `bootstrap_version` e `checkpoint_ref`, fissiamo `api_mode`, `model`, `context_builder_version`, `conversation_id_at_start`, `context_from_event_id` e `context_through_event_id`.
 
 Questa provenienza è sufficiente per sapere con quale stato, modello e finestra di transcript condiviso è stato costruito un run senza trasformare il DB in una copia della continuity.
+
+
+## Provider Adapter Readiness — decisioni implementate 2026-09-18
+
+### Recovery dopo restart/crash
+
+- un run persistente `queued` resta `queued` ed è enumerabile come recuperabile/rieseguibile;
+- un run trovato `streaming` all'apertura del DB viene marcato `failed` con causa `interrupted_by_restart`;
+- un run `streaming` interrotto **non viene rilanciato automaticamente**, evitando una possibile doppia chiamata provider;
+- il cursor agente resta invariato sul run interrotto.
+
+### Lifecycle conversation
+
+Il `conversation_id` è stato separato per `(room_id, agent_id)`. Il provider riceve `conversation_id_at_start`; dopo un completamento riuscito può restituire il conversation id risultante, che viene persistito soltanto nello stato dell'agente proprietario. Failure e run dell'altro agente non lo modificano.
+
+### Bootstrap e provenienza
+
+L'adapter provider espone metadata server-side distinti per agente:
+
+- `api_mode`;
+- `model`;
+- `bootstrap_version`;
+- `checkpoint_ref`;
+- `context_builder_version`;
+- istruzioni privilegiate del bootstrap.
+
+Al passaggio `queued → streaming` la provenienza del run viene materializzata dai metadata effettivi dell'adapter. Le istruzioni privilegiate vengono passate separatamente dal room context e non sono derivate dal transcript condiviso.
+
+### Delta provider
+
+I micro-delta del provider vengono accumulati in chunk applicativi per soglia di dimensione configurabile. Solo il chunk applicativo viene persistito come `response.delta`; la pubblicazione live avviene **dopo** la persistenza. Il testo finale canonico resta la concatenazione completa dei chunk applicativi.
+
+Queste decisioni sono verificate dal gate `Provider Adapter Readiness` con provider fake stateful; non abilitano da sole le Responses reali, che restano dietro review/feature flag.
