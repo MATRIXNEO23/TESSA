@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tessa + GPTina</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <h1>Tessa + GPTina</h1>
+        <p>Una stanza, due normali istanze ChatGPT. Nessuna API.</p>
+      </div>
+      <button id="refreshTabs" class="ghost">Aggiorna tab</button>
+    </header>
+
+    <section class="instances">
+      <article class="instance">
+        <div class="identity">
+          <span class="dot"></span>
+          <strong>Tessa</strong>
+          <span id="tessaStatus" class="status">non collegata</span>
+        </div>
+        <select id="tessaTab"></select>
+        <button data-open="tessa" class="ghost">Apri tab</button>
+      </article>
+
+      <article class="instance">
+        <div class="identity">
+          <span class="dot"></span>
+          <strong>GPTina</strong>
+          <span id="gptinaStatus" class="status">non collegata</span>
+        </div>
+        <select id="gptinaTab"></select>
+        <button data-open="gptina" class="ghost">Apri tab</button>
+      </article>
+    </section>
+
+    <section id="timeline" class="timeline" aria-live="polite"></section>
+
+    <section class="composer">
+      <div class="target">
+        <label><input type="radio" name="target" value="tessa"> Tessa</label>
+        <label><input type="radio" name="target" value="gptina"> GPTina</label>
+        <label><input type="radio" name="target" value="both" checked> Entrambe</label>
+      </div>
+      <textarea id="message" rows="3" placeholder="Scrivi ad Alberto, Tessa e GPTina nella stessa stanza…"></textarea>
+      <div class="composerRow">
+        <span id="globalStatus">Pronta.</span>
+        <button id="send">Invia</button>
+      </div>
+    </section>
+
+    <details class="note">
+      <summary>Come funziona</summary>
+      <p>
+        La dashboard non incorpora ChatGPT e non usa chiavi API. Collega due tab
+        chatgpt.com già aperti e autenticati: uno assegnato a Tessa e uno a GPTina.
+        I messaggi vengono inseriti nei rispettivi composer dal content script e le
+        risposte visibili vengono riportate qui.
+      </p>
+    </details>
+  </main>
+  <script src="dashboard.js"></script>
+</body>
+</html>
