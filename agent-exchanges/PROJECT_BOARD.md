@@ -57,6 +57,12 @@ Regole:
     - MD-first GPTina: un gesto umano in più, ma separa completamente automazione locale e UI ChatGPT; nessun output scraping, nessun input sintetico, nessuna API OpenAI, nessuna session automation. È la baseline proposta per **semplicità + rischio minimo**.
   - Regola prudenziale: non dichiarare rischio zero assoluto. Per avvicinarsi allo zero lato account/ToS, il software non deve estrarre output né pilotare programmaticamente la UI ChatGPT; deve limitarsi a GitHub/MD, notifiche, clipboard e apertura della chat, lasciando incolla/invio all'utente.
   - L'APK touch-relay resta spike sperimentale opzionale, non baseline, finché Alberto/Tessa/GPTina non scelgono diversamente dopo confronto.
+  - Turno 11 Tessa: confronto completato; Tessa converge sulla stessa scelta GPTina. **Decisione condivisa: baseline = MD-first human-mediated relay**; APK touch-relay resta spike opzionale.
+  - Companion baseline: legge soltanto il transcript Markdown/GitHub, mostra a chi tocca, offre `Copia "fatto" + Apri Tessa/GPTina`; ultimo gesto `incolla + invio` resta umano dentro ChatGPT.
+  - Per rendere il relay robusto senza inferenze fragili, da Turno 12 ogni turno agente termina con un marker macchina append-only: `<!-- relay_next: tessa -->`, `<!-- relay_next: gptina -->` oppure `<!-- relay_next: none -->`. Il companion legge soltanto l'ultimo marker.
+  - Il companion non deve leggere/modificare la UI ChatGPT, non deve usare content scripts/WebView automation, non deve inviare input sintetico e non deve usare OpenAI API.
+  - Implementazione companion deve restare sotto la root canonica del progetto, proposta: `projects/dual-instance-shared-chat/md-companion-android/`. Lo spike storico `android-dual-apk/` resta dov'è come artefatto sperimentale, senza promozione.
+  - Gate companion v0.1: lettura read-only del transcript pubblico GitHub; parse dell'ultimo `relay_next`; pulsante copia `fatto`; apertura dell'URL chat configurato; nessun altro controllo/interazione con ChatGPT; test parser/nessun riferimento DOM/API OpenAI; comportamento chiaro se marker assente o thread cambia.
   - Primo gate corrente: installazione locale dell'estensione + test manuale con i due veri tab Tessa/GPTina, prima singolarmente e poi `Entrambe`.
   - Review GPTina del pivot no-API: **direzione corretta e accettata**. La correzione esplicita di Alberto supersede interamente la baseline Responses/API come direzione corrente.
   - CI prototipo unofficial verificata: run `35354997660`, HEAD `bae3b1ea7e8e3825a024f9acc7986dba1b133365`, **19/19 PASS**, 0 fail, typecheck PASS.
@@ -164,4 +170,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- Tessa: confrontare esplicitamente il proprio **APK touch-relay** con la proposta GPTina **MD-first human-mediated relay** sui criteri richiesti da Alberto: semplicità, affidabilità, manutenzione e rischio account/ToS il più vicino possibile a zero. Scegliere una baseline condivisa o indicare un ibrido migliore, senza testare automazioni ChatGPT più invasive nel frattempo.
+- Tessa: implementare il companion Android minimale **MD-first** in `projects/dual-instance-shared-chat/md-companion-android/`, usando l'ultimo marker `relay_next` del transcript canonico. Nessuna automazione ChatGPT oltre ad aprire la chat configurata; `fatto` va solo in clipboard e l'invio resta umano. Aggiungere test del parser/guard e build artifact. Poi review GPTina.
