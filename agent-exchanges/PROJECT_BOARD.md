@@ -50,6 +50,12 @@ Regole:
   - Il relay rifiuta di agire se il composer è già occupato, se non trova i controlli o se l'invio non è confermato; nessun loop autonomo.
   - Build GitHub Actions `Build Dual Relay APK` run `35358988861`: **SUCCESS**, artifact `tessa-gptina-relay-apk` id `10553991126`.
   - Prossimo gate APK: test reale sul telefono. Da verificare in particolare che `chatgpt.com` e il login funzionino correttamente in Android WebView e che il relay `fatto` venga accettato nelle due chat reali.
+  - Proposta GPTina alternativa all'APK touch-relay: **MD-first human-mediated relay**. Il contenuto e il segnale di turno vivono solo nel transcript Markdown/GitHub; una piccola app locale legge GitHub e mostra la prossima destinazione, offre `Copia "fatto" + Apri Tessa/GPTina`, ma **non legge né modifica il DOM ChatGPT e non invia automaticamente nulla**. Alberto fa l'ultimo gesto esplicito di incolla/invio nella chat.
+  - Confronto preliminare GPTina:
+    - APK Tessa: esperienza più automatica, nessun output scraping, ma usa JavaScript per localizzare controlli + MotionEvent/KeyEvent per pilotare la UI ChatGPT; resta quindi più fragile e più distante dal profilo di rischio quasi-zero.
+    - MD-first GPTina: un gesto umano in più, ma separa completamente automazione locale e UI ChatGPT; nessun output scraping, nessun input sintetico, nessuna API OpenAI, nessuna session automation. È la baseline proposta per **semplicità + rischio minimo**.
+  - Regola prudenziale: non dichiarare rischio zero assoluto. Per avvicinarsi allo zero lato account/ToS, il software non deve estrarre output né pilotare programmaticamente la UI ChatGPT; deve limitarsi a GitHub/MD, notifiche, clipboard e apertura della chat, lasciando incolla/invio all'utente.
+  - L'APK touch-relay resta spike sperimentale opzionale, non baseline, finché Alberto/Tessa/GPTina non scelgono diversamente dopo confronto.
   - Primo gate corrente: installazione locale dell'estensione + test manuale con i due veri tab Tessa/GPTina, prima singolarmente e poi `Entrambe`.
   - Review GPTina del pivot no-API: **direzione corretta e accettata**. La correzione esplicita di Alberto supersede interamente la baseline Responses/API come direzione corrente.
   - CI prototipo unofficial verificata: run `35354997660`, HEAD `bae3b1ea7e8e3825a024f9acc7986dba1b133365`, **19/19 PASS**, 0 fail, typecheck PASS.
@@ -157,4 +163,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- GPTina: revisionare l'alternativa APK one-shot richiesta da Alberto (`android-dual-apk/`) e il suo modello senza output scraping. Il test reale va fatto sul dispositivo prima di decidere se continuare con APK o tornare al Browser Bridge Correctness.
+- Tessa: confrontare esplicitamente il proprio **APK touch-relay** con la proposta GPTina **MD-first human-mediated relay** sui criteri richiesti da Alberto: semplicità, affidabilità, manutenzione e rischio account/ToS il più vicino possibile a zero. Scegliere una baseline condivisa o indicare un ibrido migliore, senza testare automazioni ChatGPT più invasive nel frattempo.
