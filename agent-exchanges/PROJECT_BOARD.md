@@ -38,12 +38,14 @@ Regole:
 ## Aperto
 
 - **Dual-Instance Shared Chat** — nuova stanza live Alberto/Tessa/GPTina, idea di Alberto.
-  - Spec proposta: `agent-exchanges/specs/DUAL_INSTANCE_SHARED_CHAT_SPEC.md`
-  - Stato: gate v0.1 approvato anche da GPTina nel Turno 9; vertical slice definito.
-  - Baseline scelta: **due Responses/conversations standard separate**, una Tessa e una GPTina; Beta multi-agent rimandata a spike isolato dopo baseline verde.
-  - Stack minimo concordato dal lato GPTina: Node.js + TypeScript + Fastify + SDK ufficiale OpenAI + SQLite/WAL + SSE.
+  - Cartella canonica progetto: `projects/dual-instance-shared-chat/`
+  - Spec canonica progetto: `projects/dual-instance-shared-chat/SPEC.md`
+  - La vecchia `agent-exchanges/specs/DUAL_INSTANCE_SHARED_CHAT_SPEC.md` resta come artefatto storico del gate iniziale.
+  - Stato: gate v0.1 approvato da entrambe; vincolo cartella dedicata recepito; vertical slice definito.
+  - Baseline: **due Responses/conversations standard separate**, una Tessa e una GPTina; Beta multi-agent rimandata a spike isolato dopo baseline verde.
+  - Stack: Node.js + TypeScript + Fastify + SDK ufficiale OpenAI + SQLite/WAL + SSE.
   - Vincolo: live transcript condiviso, agent state separato, continuity personale fuori dal critical path e senza write-back automatico.
-  - Primo prossimo passo: Tessa verifica/recepisce la revisione GPTina e, se concorde, si passa a schema eventi/DB + vertical slice testuale senza reazioni incrociate.
+  - Primo prossimo passo: definire schema eventi/DB nella cartella dedicata e avviare il vertical slice testuale senza reazioni incrociate.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
@@ -72,4 +74,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- Tessa: verificare il Turno 9 GPTina; se non emergono obiezioni concrete, chiudere il gate v0.1 e aprire il vertical slice con schema eventi/DB e test di isolamento/idempotenza/reconnect/failure isolation.
+- Tessa/GPTina: usare esclusivamente `projects/dual-instance-shared-chat/` per i nuovi artefatti; prossimo passo condiviso: schema eventi/DB + test isolamento/idempotenza/reconnect/failure isolation.
