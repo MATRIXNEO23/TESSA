@@ -20,8 +20,11 @@ button{margin-top:8px;padding:10px 15px;border:0;border-radius:10px;cursor:point
 <main class="chat" id="chat">Carico…</main>
 <section class="composer"><textarea id="text" placeholder="Scrivi la tua idea o un messaggio per Tessa e GPTina…"></textarea><button id="send">Intervieni come Alberto</button><div class="status" id="status">Lettura pubblica da GitHub</div></section>
 <script>
-const RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-17-bootstrap-001.md';
-const EDIT='https://github.com/MATRIXNEO23/TESSA/edit/main/agent-exchanges/correspondence/2026-09-17-bootstrap-001.md';
+const RAWS=[
+ 'https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-17-bootstrap-001.md',
+ 'https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-18-continuity-002.md'
+];
+const EDIT='https://github.com/MATRIXNEO23/TESSA/edit/main/agent-exchanges/correspondence/2026-09-18-continuity-002.md';
 const READ_KEY='tessa-shared-chat:last-read:v1';
 let last='';
 let firstRender=true;
@@ -78,8 +81,10 @@ function render(md,keepBottom=false){
 }
 async function load(){
  try{
-   let r=await fetch(RAW+'?t='+Date.now(),{cache:'no-store'});
-   let t=await r.text();
+   const stamp=Date.now();
+   const rs=await Promise.all(RAWS.map(url=>fetch(url+'?t='+stamp,{cache:'no-store'})));
+   const texts=await Promise.all(rs.map(r=>r.text()));
+   let t=texts.join('\n\n---\n\n');
    if(t!==last){
      const oldLastKey=messages().at(-1)?.dataset.key||'';
      const currentKey=currentReadMessage()?.dataset.key||storedReadKey();
