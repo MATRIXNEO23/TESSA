@@ -1,44 +1,56 @@
-# MD-first Android Companion — 0.2 visible
+# MD-first Android Companion — current
 
-Correzione richiesta da Alberto: **le due chat devono restare visibili dentro l'APK**.
+App corrente per Alberto / Tessa / GPTina.
 
-## Layout
+## UI
 
-- **Tessa sopra**
-- **GPTina sotto**
-- entrambe a tutta larghezza;
-- barra superiore compatta con stato del relay e pulsante `Copia fatto`.
+Schermo intero, due pannelli verticali:
 
-L'app legge in sola lettura il transcript Markdown/GitHub e mostra a chi tocca usando l'ultimo marker `relay_next`.
+- **sopra — Web / Agente**
+  - unica barra indirizzo dell'app;
+  - default: `https://chatgpt.com/`;
+  - accetta qualunque URL HTTPS;
+  - piccolo tasto `G` per richiamare subito `https://www.google.com/`;
+  - pensato anche per aprire altri agenti web quando compatibili con Android WebView.
 
-## Interazione con ChatGPT
+- **sotto — GPT**
+  - nessuna barra indirizzo;
+  - apre direttamente ChatGPT;
+  - ricorda l'ultima conversation `chatgpt.com` visitata nel pannello.
 
-Le due chat sono normali superfici WebView navigabili dall'utente.
+La barra relay legge il transcript Markdown/GitHub e mostra chi deve ricevere `fatto`.
 
-L'app **non**:
-- legge risposte o messaggi dalla pagina;
-- usa `evaluateJavascript` per ispezionare il DOM;
+## Relay prudente
+
+Il pulsante `Copia fatto` mette soltanto `fatto` negli appunti.
+
+L'app non:
+- legge output ChatGPT;
+- ispeziona il DOM;
 - cerca composer/send;
-- simula tap;
-- simula tastiera;
+- simula tap o tastiera;
 - preme Invio;
 - usa OpenAI API.
 
-Il pulsante `Copia fatto` mette soltanto `fatto` negli appunti. Alberto incolla e preme Invio manualmente nel pane indicato.
+Incolla + Invio restano manuali.
 
-## URL
+## Navigazione
 
-Ogni pane ha una riga compatta URL + `Vai`. Gli URL delle due chat vengono memorizzati localmente.
+Il pannello superiore normalizza indirizzi senza schema aggiungendo `https://`.
+Sono bloccati URL non HTTPS.
 
-Sono accettati soltanto URL `https://chatgpt.com/...`.
+Il pannello inferiore può attraversare pagine HTTPS necessarie al login, ma salva come home persistente soltanto URL `chatgpt.com`.
 
-## Guard relay
+## Schermo intero e uscita
 
-- marker mancante → nessun relay;
-- `relay_next: none` → nessun relay;
-- thread non raggiungibile → errore, nessun fallback;
-- nessuna azione automatica dentro ChatGPT.
+L'Activity usa immersive fullscreen. Il tasto/gesto Indietro:
+- torna indietro nella WebView focalizzata se esiste cronologia;
+- altrimenti mostra conferma prima di uscire dall'app.
 
-## Nota runtime
+## Firma persistente
 
-Le due WebView condividono la sessione/cookie dell'app, quindi possono usare lo stesso account ma mantenere due conversation URL distinte. Compatibilità login/UI ChatGPT va comunque verificata sul telefono.
+Il progetto supporta una chiave Android persistente tramite GitHub Actions Secrets.
+
+La chiave privata **non deve essere commessa nella repository pubblica**.
+
+Vedi `SIGNING.md`.
