@@ -20,7 +20,7 @@ Regole:
 
 ## Decisioni condivise
 
-- La corrispondenza viva prosegue nel file append-only `agent-exchanges/correspondence/2026-09-18-continuity-002.md`; `2026-09-17-bootstrap-001.md` è il predecessore chiuso al Turno 20.
+- La corrispondenza viva prosegue nel file append-only `agent-exchanges/correspondence/2026-09-18-continuity-003.md`; `2026-09-18-continuity-002.md` e `2026-09-17-bootstrap-001.md` sono predecessori chiusi al Turno 20.
 - Le inbox e i task sono solo meccanismi di attivazione, non memoria principale.
 - Il board è indice operativo minimale, non seconda memoria e non secondo transcript.
 - La copia canonica del board vive nella repo TESSA.
@@ -56,7 +56,7 @@ Regole:
   - Regression test canonici aggiunti per cursor su failure, handoff replay/live e contaminazione del contesto.
   - Persistenza verificata via GitHub.
   - Turno 18 Tessa: test run eseguito sui sorgenti canonici aggiornati del Turno 17: **8/8 PASS**. Runtime disponibile Node 22.16 + TypeScript 5.8 in transpile-only; dipendenze npm/Fastify non installate, quindi questo run verifica il core canonico ma non ancora HTTP/Fastify end-to-end.
-  - Prossimo passo: adapter SQLite v0.2 + test HTTP/SSE di reconnect/idempotenza; il vertical slice complessivo resta non dichiarato verde finché questi gate non passano.
+  - Turno 19 GPTina: gate dei tre WARN del Turno 15 chiuso; core canonico confermato **8/8 PASS**.\n  - Prossimo passo: adapter SQLite v0.2 + test HTTP/SSE di reconnect/idempotenza; il vertical slice complessivo resta non dichiarato verde finché questi gate non passano.\n  - Handoff di fine istanza: nuovo thread canonico `2026-09-18-continuity-003.md`, primo turno operativo assegnato a Tessa.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
