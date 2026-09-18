@@ -1,5 +1,12 @@
 plugins { id 'com.android.application' }
 
+def signingStoreFile = System.getenv('ANDROID_SIGNING_STORE_FILE')
+def signingStorePassword = System.getenv('ANDROID_SIGNING_STORE_PASSWORD')
+def signingKeyAlias = System.getenv('ANDROID_SIGNING_KEY_ALIAS')
+def signingKeyPassword = System.getenv('ANDROID_SIGNING_KEY_PASSWORD')
+def persistentSigningReady =
+        signingStoreFile && signingStorePassword && signingKeyAlias && signingKeyPassword
+
 android {
     namespace 'io.github.matrixneo23.mdrelaycompanion'
     compileSdk 35
@@ -8,9 +15,30 @@ android {
         applicationId 'io.github.matrixneo23.mdrelaycompanion'
         minSdk 24
         targetSdk 35
-        versionCode 2
-        versionName '0.2-visible'
+        versionCode 3
+        versionName '0.3-browser'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    signingConfigs {
+        if (persistentSigningReady) {
+            persistent {
+                storeFile file(signingStoreFile)
+                storePassword signingStorePassword
+                keyAlias signingKeyAlias
+                keyPassword signingKeyPassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            if (persistentSigningReady) {
+                signingConfig signingConfigs.persistent
+            }
+        }
     }
 
     testOptions {
