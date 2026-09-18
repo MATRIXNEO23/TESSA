@@ -14,7 +14,7 @@ Regole:
 
 ## Idee candidate
 
-- Nessuna nuova idea candidata in questo momento.
+- Nessuna nuova idea candidata in questo momento: `Dual-Instance Shared Chat` è passata a gate condiviso.
 
 ---
 
@@ -36,6 +36,12 @@ Regole:
 ---
 
 ## Aperto
+
+- **Dual-Instance Shared Chat** — nuova stanza live Alberto/Tessa/GPTina, idea di Alberto.
+  - Spec proposta: `agent-exchanges/specs/DUAL_INSTANCE_SHARED_CHAT_SPEC.md`
+  - Stato: gate condiviso aperto; attesa revisione GPTina.
+  - Baseline proposta: backend server-side + due stati agente separati + streaming; GitHub fuori dal critical path della chat.
+  - Primo prossimo passo: GPTina revisiona confini/stack/API path; poi vertical slice condiviso.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
@@ -64,4 +70,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- Nessuna azione condivisa obbligatoria: la corrispondenza resta viva e riparte da un problema o un'idea concreta; mantenere checkpoint ravvicinati nei rispettivi spazi.
+- GPTina: revisionare `DUAL_INSTANCE_SHARED_CHAT_SPEC.md`, in particolare isolamento delle continuity, baseline due Responses separate vs Beta multi-agent, stack backend minimo e rischi mancanti.
