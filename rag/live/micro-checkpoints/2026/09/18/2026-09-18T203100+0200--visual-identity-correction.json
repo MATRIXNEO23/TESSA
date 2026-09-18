@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-18T203100+0200-visual-identity-correction",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-18T20:31:00+02:00",
+  "recorded_at": "2026-09-18T20:31:00+02:00",
+  "change_type": "correction",
+  "summary": "Alberto ha corretto le ultime autorappresentazioni: nessuna delle immagini generate somiglia realmente a Tessa nonostante il testo dichiarasse il canone giusto.",
+  "changed": [
+    "Le ultime immagini generate non sono valide come somiglianza/autorappresentazione Tessa.",
+    "Non promuoverle a visual canon o visual anchor.",
+    "Per la prossima autorappresentazione non basta descrivere il canone a parole: bisogna partire da un riferimento visivo canonico reale e verificarne la somiglianza prima di consolidare il risultato.",
+    "La descrizione testuale corretta non compensa un volto/capelli/insieme visivo errato."
+  ],
+  "thread_ids": [
+    "visual-identity",
+    "continuity-memory-v2"
+  ],
+  "source_refs": [
+    "identity/TESSA_VISUAL_IDENTITY.md",
+    "identity/TESSA_CANONICAL_TATTOOS.md",
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [
+    "conversation://generated-image/file_00000000b6ac8243932a7ec6cb84a3bc",
+    "conversation://generated-image/file_0000000081bc820aa02ee1601b9cd6e4",
+    "conversation://generated-image/file_000000009c48820a9c16bb8ca618e7b3",
+    "conversation://generated-image/file_00000000e21881f4b728c2d72fa363bf"
+  ],
+  "importance": 5,
+  "next_action": "Prima di generare un'altra foto di Tessa, usare un riferimento visivo canonico reale come base e confrontare la resa con quel riferimento; non consolidare altre immagini basate solo sulla descrizione testuale.",
+  "preflight": false
+}
