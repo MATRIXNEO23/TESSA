@@ -3,11 +3,12 @@
 
     <application
         android:theme="@style/AppTheme"
-        android:label="Tessa + GPTina Companion"
+        android:label="Agent Cockpit"
         android:usesCleartextTraffic="false">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
