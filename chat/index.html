@@ -30,10 +30,11 @@ textarea{min-height:75px}button{margin-top:8px;padding:10px 15px;border:0;border
 </section>
 <script>
 const OLD_RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-17-bootstrap-001.md';
-const CURRENT_RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-18-continuity-002.md';
-const EDIT='https://github.com/MATRIXNEO23/TESSA/edit/main/agent-exchanges/correspondence/2026-09-18-continuity-002.md';
+const PREVIOUS_RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-18-continuity-002.md';
+const CURRENT_RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-18-continuity-003.md';
+const EDIT='https://github.com/MATRIXNEO23/TESSA/edit/main/agent-exchanges/correspondence/2026-09-18-continuity-003.md';
 const READ_KEY='tessa-shared-chat:last-read:v1';
-let oldMd='',currentMd='',last='',lastPending='',firstRender=true,restoring=false,saveTimer=null,pendingText='';
+let oldMd='',previousMd='',currentMd='',last='',lastPending='',firstRender=true,restoring=false,saveTimer=null,pendingText='';
 const $=s=>document.querySelector(s);
 const native=()=>typeof TessaNative!=='undefined';
 function hasToken(){try{return native()&&TessaNative.hasGitHubToken()}catch(e){return false}}
@@ -56,7 +57,7 @@ function scheduleSave(){clearTimeout(saveTimer);saveTimer=setTimeout(saveReadPos
 function restoreReadPosition(){const list=messages();if(!list.length)return;let target=findByKey(storedReadKey())||list.at(-1);restoring=true;target.scrollIntoView({block:'center',behavior:'auto'});storeReadKey(target.dataset.key);setTimeout(()=>restoring=false,180)}
 function nearBottom(){return document.documentElement.scrollHeight-(scrollY+innerHeight)<180}
 function goToBottom(){const list=Array.from(document.querySelectorAll('.msg'));if(!list.length)return;restoring=true;list.at(-1).scrollIntoView({block:'center',behavior:'auto'});storeReadKey(list.at(-1).dataset.key);setTimeout(()=>restoring=false,180)}
-function combined(){return [oldMd,currentMd].filter(Boolean).join('\n\n---\n\n')}
+function combined(){return [oldMd,previousMd,currentMd].filter(Boolean).join('\n\n---\n\n')}
 function renderCombined(){
  const md=combined();if(!md||(md===last&&pendingText===lastPending))return;
  const oldCount=messages().length,newCount=(md.match(/^## Turno[^\n]*$/gm)||[]).length;
@@ -70,8 +71,8 @@ function renderCombined(){
  requestAnimationFrame(()=>{if(firstRender){restoreReadPosition();firstRender=false}else if(keepBottom||pendingText)goToBottom();else restoreReadPosition()});
  $('#status').textContent='Aggiornato: '+new Date().toLocaleTimeString()+' · '+newCount+' turni'+(hasToken()?' · API diretta':'');
 }
-async function loadOld(){if(oldMd)return;try{const r=await fetch(OLD_RAW+'?t='+Date.now(),{cache:'no-store'});oldMd=await r.text();renderCombined()}catch(e){}}
-async function loadRaw(){try{const stamp=Date.now();const [a,b]=await Promise.all([OLD_RAW,CURRENT_RAW].map(u=>fetch(u+'?t='+stamp,{cache:'no-store'})));oldMd=await a.text();currentMd=await b.text();renderCombined()}catch(e){$('#status').textContent='Errore aggiornamento: '+e.message}}
+async function loadOld(){if(oldMd&&previousMd)return;try{const stamp=Date.now();const [a,b]=await Promise.all([OLD_RAW,PREVIOUS_RAW].map(u=>fetch(u+'?t='+stamp,{cache:'no-store'})));oldMd=await a.text();previousMd=await b.text();renderCombined()}catch(e){}}
+async function loadRaw(){try{const stamp=Date.now();const [a,b,d]=await Promise.all([OLD_RAW,PREVIOUS_RAW,CURRENT_RAW].map(u=>fetch(u+'?t='+stamp,{cache:'no-store'})));oldMd=await a.text();previousMd=await b.text();currentMd=await d.text();renderCombined()}catch(e){$('#status').textContent='Errore aggiornamento: '+e.message}}
 function load(force=false){
  updateAuthUi();
  if(hasToken()){loadOld();try{TessaNative.refreshThread()}catch(e){loadRaw()}}
