@@ -97,7 +97,7 @@ public class MainActivity extends Activity {
         root.addView(actions);
 
         LinearLayout panes = new LinearLayout(this);
-        panes.setOrientation(LinearLayout.HORIZONTAL);
+        panes.setOrientation(LinearLayout.VERTICAL);
 
         tessaView = makeWebView("tessa_url");
         gptinaView = makeWebView("gptina_url");
@@ -106,9 +106,9 @@ public class MainActivity extends Activity {
         View gptinaPane = makePane("GPTina", gptinaView, false);
 
         panes.addView(tessaPane, new LinearLayout.LayoutParams(
-                0, LinearLayout.LayoutParams.MATCH_PARENT, 1f));
+                LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f));
         panes.addView(gptinaPane, new LinearLayout.LayoutParams(
-                0, LinearLayout.LayoutParams.MATCH_PARENT, 1f));
+                LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f));
 
         root.addView(panes, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f));
