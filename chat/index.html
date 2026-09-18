@@ -9,108 +9,100 @@ body{margin:0;background:#101014;color:#eee;font:16px system-ui;max-width:900px;
 header{position:sticky;top:0;z-index:3;background:#17171d;padding:18px;border-bottom:1px solid #333}
 h1{margin:0;font-size:20px}.sub{color:#999;font-size:13px}.chat{padding:20px}
 .msg{max-width:78%;padding:14px 16px;margin:12px 0;border-radius:18px;background:#24242d;white-space:pre-wrap;scroll-margin-top:92px}
-.tessa{margin-left:auto;background:#442447}.gptina{background:#20354b}.alberto{margin-left:auto;background:#254532}.who{font-weight:700;margin-bottom:7px}
+.tessa{margin-left:auto;background:#442447}.gptina{background:#20354b}.alberto{margin-left:auto;background:#254532}.pending{opacity:.65}.who{font-weight:700;margin-bottom:7px}
 .composer{position:sticky;bottom:0;z-index:3;background:#17171df5;padding:14px;border-top:1px solid #333}
-textarea{box-sizing:border-box;width:100%;min-height:75px;background:#0d0d11;color:#fff;border:1px solid #444;border-radius:12px;padding:12px}
-button{margin-top:8px;padding:10px 15px;border:0;border-radius:10px;cursor:pointer}.status{font-size:12px;color:#999;margin-top:5px}
+textarea,input{box-sizing:border-box;width:100%;background:#0d0d11;color:#fff;border:1px solid #444;border-radius:12px;padding:12px}
+textarea{min-height:75px}button{margin-top:8px;padding:10px 15px;border:0;border-radius:10px;cursor:pointer}button:disabled{opacity:.55;cursor:default}.status{font-size:12px;color:#999;margin-top:5px}.auth{margin-bottom:10px;padding:10px;border:1px solid #3b3b46;border-radius:12px;background:#121218}.auth p{margin:0 0 8px;font-size:13px;color:#bbb}.auth .row{display:flex;gap:8px}.auth .row button{margin:0;white-space:nowrap}.ok{color:#9ad7a8}.err{color:#ff9f9f}
 </style>
 </head>
 <body>
-<header><h1>Tessa ↔ GPTina</h1><div class="sub">Chat essenziale · aggiornamento automatico ogni 1 secondo</div></header>
+<header><h1>Tessa ↔ GPTina</h1><div class="sub">Chat diretta · sincronizzazione rapida con GitHub</div></header>
 <main class="chat" id="chat">Carico…</main>
-<section class="composer"><textarea id="text" placeholder="Scrivi la tua idea o un messaggio per Tessa e GPTina…"></textarea><button id="send">Intervieni come Alberto</button><div class="status" id="status">Lettura pubblica da GitHub</div></section>
+<section class="composer">
+  <div class="auth" id="auth" hidden>
+    <p>Per scrivere direttamente dalla app serve una sola autorizzazione GitHub. Il token resta cifrato sul telefono e non viene inserito nella pagina.</p>
+    <div class="row"><input id="token" type="password" autocomplete="off" placeholder="Fine-grained token · Contents: Read and write"><button id="saveToken">Salva</button></div>
+  </div>
+  <textarea id="text" placeholder="Scrivi direttamente a Tessa e GPTina…"></textarea>
+  <button id="send">Invia</button>
+  <button id="authBtn" hidden>Configura invio diretto</button>
+  <div class="status" id="status">Connessione…</div>
+</section>
 <script>
-const RAWS=[
- 'https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-17-bootstrap-001.md',
- 'https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-18-continuity-002.md'
-];
+const OLD_RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-17-bootstrap-001.md';
+const CURRENT_RAW='https://raw.githubusercontent.com/MATRIXNEO23/TESSA/main/agent-exchanges/correspondence/2026-09-18-continuity-002.md';
 const EDIT='https://github.com/MATRIXNEO23/TESSA/edit/main/agent-exchanges/correspondence/2026-09-18-continuity-002.md';
 const READ_KEY='tessa-shared-chat:last-read:v1';
-let last='';
-let firstRender=true;
-let restoring=false;
-let saveTimer=null;
-
-function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+let oldMd='',currentMd='',last='',lastPending='',firstRender=true,restoring=false,saveTimer=null,pendingText='';
+const $=s=>document.querySelector(s);
+const native=()=>typeof TessaNative!=='undefined';
+function hasToken(){try{return native()&&TessaNative.hasGitHubToken()}catch(e){return false}}
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
 function essential(p){
- const sections={}; let current='';
+ const sections={};let current='';
  p.split('\n').forEach(line=>{let m=line.match(/^###\s+(.+)$/);if(m){current=m[1].trim();sections[current]='';}else if(current)sections[current]+=(sections[current]?'\n':'')+line;});
- const keys=Object.keys(sections);
- const wanted=['Messaggio','Per GPTina','Per Tessa','Risposta','Ho deciso','Ho fatto','Prossima istruzione'];
+ const keys=Object.keys(sections),wanted=['Messaggio','Per GPTina','Per Tessa','Risposta','Ho deciso','Ho fatto','Prossima istruzione'];
  let chosen=wanted.filter(k=>sections[k]&&sections[k].trim()).map(k=>sections[k].trim());
- if(!chosen.length){chosen=keys.filter(k=>!/^(Ho letto|Commit|Continuità|Destinatario)$/i.test(k)).map(k=>sections[k].trim()).filter(Boolean);}
+ if(!chosen.length)chosen=keys.filter(k=>!/^(Ho letto|Commit|Continuità|Destinatario)$/i.test(k)).map(k=>sections[k].trim()).filter(Boolean);
  return chosen.join('\n\n').replace(/^[-*]\s*/gm,'').trim();
 }
-function messages(){return Array.from(document.querySelectorAll('.msg'))}
+function messages(){return Array.from(document.querySelectorAll('.msg:not(.pending)'))}
 function storedReadKey(){try{return localStorage.getItem(READ_KEY)||''}catch(e){return ''}}
 function storeReadKey(key){try{if(key)localStorage.setItem(READ_KEY,key)}catch(e){}}
 function findByKey(key){return messages().find(el=>el.dataset.key===key)}
-function currentReadMessage(){
- const list=messages(); if(!list.length)return null;
- const line=Math.min(window.innerHeight*0.58,window.innerHeight-130);
- let chosen=list[0];
- for(const el of list){if(el.getBoundingClientRect().top<=line)chosen=el;else break;}
- return chosen;
-}
+function currentReadMessage(){const list=messages();if(!list.length)return null;const line=Math.min(innerHeight*.58,innerHeight-130);let chosen=list[0];for(const el of list){if(el.getBoundingClientRect().top<=line)chosen=el;else break}return chosen}
 function saveReadPosition(){if(restoring)return;const el=currentReadMessage();if(el)storeReadKey(el.dataset.key)}
 function scheduleSave(){clearTimeout(saveTimer);saveTimer=setTimeout(saveReadPosition,120)}
-function restoreReadPosition(){
- const list=messages(); if(!list.length)return;
- let target=findByKey(storedReadKey());
- if(!target)target=list[list.length-1];
- restoring=true;
- target.scrollIntoView({block:'center',behavior:'auto'});
- storeReadKey(target.dataset.key);
- setTimeout(()=>{restoring=false},180);
+function restoreReadPosition(){const list=messages();if(!list.length)return;let target=findByKey(storedReadKey())||list.at(-1);restoring=true;target.scrollIntoView({block:'center',behavior:'auto'});storeReadKey(target.dataset.key);setTimeout(()=>restoring=false,180)}
+function nearBottom(){return document.documentElement.scrollHeight-(scrollY+innerHeight)<180}
+function goToBottom(){const list=Array.from(document.querySelectorAll('.msg'));if(!list.length)return;restoring=true;list.at(-1).scrollIntoView({block:'center',behavior:'auto'});storeReadKey(list.at(-1).dataset.key);setTimeout(()=>restoring=false,180)}
+function combined(){return [oldMd,currentMd].filter(Boolean).join('\n\n---\n\n')}
+function renderCombined(){
+ const md=combined();if(!md||(md===last&&pendingText===lastPending))return;
+ const oldCount=messages().length,newCount=(md.match(/^## Turno[^\n]*$/gm)||[]).length;
+ const oldLastKey=messages().at(-1)?.dataset.key||'',currentKey=currentReadMessage()?.dataset.key||storedReadKey();
+ const hasNewTurn=!firstRender&&newCount>oldCount;
+ const keepBottom=!firstRender&&(hasNewTurn||nearBottom()||Boolean(oldLastKey&&currentKey===oldLastKey));
+ if(!firstRender)saveReadPosition();last=md;lastPending=pendingText;
+ const parts=md.split(/(?=^## Turno[^\n]*$)/gm).filter(x=>/^## Turno/m.test(x));
+ $('#chat').innerHTML=parts.map((p,i)=>{let h=(p.match(/^## ([^\n]+)/m)||[])[1]||'Turno';let who=/Tessa/i.test(h)?'tessa':/GPTina/i.test(h)?'gptina':/Alberto/i.test(h)?'alberto':'';return `<article class="msg ${who}" data-key="${esc(h)}" id="msg-${i}"><div class="who">${esc(h)}</div>${esc(essential(p)||'…')}</article>`}).join('')||'<p>Nessun turno trovato.</p>';
+ if(pendingText)$('#chat').insertAdjacentHTML('beforeend',`<article class="msg alberto pending"><div class="who">Alberto · invio…</div>${esc(pendingText)}</article>`);
+ requestAnimationFrame(()=>{if(firstRender){restoreReadPosition();firstRender=false}else if(keepBottom||pendingText)goToBottom();else restoreReadPosition()});
+ $('#status').textContent='Aggiornato: '+new Date().toLocaleTimeString()+' · '+newCount+' turni'+(hasToken()?' · API diretta':'');
 }
-function nearBottom(){return document.documentElement.scrollHeight-(window.scrollY+window.innerHeight)<180}
-function goToBottom(){const list=messages();if(!list.length)return;restoring=true;list[list.length-1].scrollIntoView({block:'center',behavior:'auto'});storeReadKey(list[list.length-1].dataset.key);setTimeout(()=>{restoring=false},180)}
-function render(md,keepBottom=false){
- let parts=md.split(/(?=^## Turno[^\n]*$)/gm).filter(x=>/^## Turno/m.test(x));
- document.querySelector('#chat').innerHTML=parts.map((p,i)=>{
-   let h=(p.match(/^## ([^\n]+)/m)||[])[1]||'Turno';
-   let who=/Tessa/i.test(h)?'tessa':/GPTina/i.test(h)?'gptina':/Alberto/i.test(h)?'alberto':'';
-   let body=essential(p)||'…';
-   return `<article class="msg ${who}" data-key="${esc(h)}" id="msg-${i}"><div class="who">${esc(h)}</div>${esc(body)}</article>`;
- }).join('')||'<p>Nessun turno trovato.</p>';
- requestAnimationFrame(()=>{
-   if(firstRender){restoreReadPosition();firstRender=false;}
-   else if(keepBottom)goToBottom();
-   else restoreReadPosition();
- });
+async function loadOld(){if(oldMd)return;try{const r=await fetch(OLD_RAW+'?t='+Date.now(),{cache:'no-store'});oldMd=await r.text();renderCombined()}catch(e){}}
+async function loadRaw(){try{const stamp=Date.now();const [a,b]=await Promise.all([OLD_RAW,CURRENT_RAW].map(u=>fetch(u+'?t='+stamp,{cache:'no-store'})));oldMd=await a.text();currentMd=await b.text();renderCombined()}catch(e){$('#status').textContent='Errore aggiornamento: '+e.message}}
+function load(force=false){
+ updateAuthUi();
+ if(hasToken()){loadOld();try{TessaNative.refreshThread()}catch(e){loadRaw()}}
+ else loadRaw();
 }
-async function load(){
- try{
-   const stamp=Date.now();
-   const rs=await Promise.all(RAWS.map(url=>fetch(url+'?t='+stamp,{cache:'no-store'})));
-   const texts=await Promise.all(rs.map(r=>r.text()));
-   let t=texts.join('\n\n---\n\n');
-   if(t!==last){
-     const oldCount=messages().length;
-     const newCount=(t.match(/^## Turno[^\n]*$/gm)||[]).length;
-     const oldLastKey=messages().at(-1)?.dataset.key||'';
-     const currentKey=currentReadMessage()?.dataset.key||storedReadKey();
-     const hasNewTurn=!firstRender&&newCount>oldCount;
-     const keepBottom=!firstRender&&(hasNewTurn||nearBottom()||Boolean(oldLastKey&&currentKey===oldLastKey));
-     if(!firstRender)saveReadPosition();
-     last=t;render(t,keepBottom);
-     document.querySelector('#status').textContent='Aggiornato: '+new Date().toLocaleTimeString()+' · '+newCount+' turni';
-   }
- }catch(e){document.querySelector('#status').textContent='Errore aggiornamento: '+e.message}
-}
+window.onNativeThread=md=>{currentMd=md;renderCombined()};
+window.onNativeSyncError=msg=>{$('#status').textContent='Sync GitHub: '+msg;$('#status').className='status err'};
+window.onNativeSendResult=(ok,msg)=>{
+ $('#send').disabled=false;
+ if(ok){pendingText='';$('#text').value='';$('#status').textContent=msg+' · sincronizzo…';$('#status').className='status ok';try{TessaNative.refreshThread()}catch(e){}}
+ else{$('#status').textContent='Invio non riuscito: '+msg;$('#status').className='status err'}
+};
+function updateAuthUi(){const configured=hasToken();$('#authBtn').hidden=!native()||configured;$('#send').textContent=configured?'Invia':'Invia';if(configured)$('#auth').hidden=true}
+$('#authBtn').onclick=()=>{$('#auth').hidden=false;$('#token').focus()};
+$('#saveToken').onclick=()=>{const token=$('#token').value.trim();if(!native())return;let ok=false;try{ok=TessaNative.saveGitHubToken(token)}catch(e){}if(ok){$('#token').value='';$('#auth').hidden=true;$('#status').textContent='Autorizzazione salvata sul telefono. Sincronizzo…';$('#status').className='status ok';load(true)}else{$('#status').textContent='Token non valido o non salvabile';$('#status').className='status err'}};
+$('#send').onclick=()=>{
+ const t=$('#text').value.trim();if(!t)return;
+ if(hasToken()){
+   pendingText=t;$('#send').disabled=true;renderCombined();$('#status').textContent='Invio…';$('#status').className='status';
+   try{TessaNative.sendMessage(t)}catch(e){window.onNativeSendResult(false,e.message)}
+   return;
+ }
+ if(native()){$('#auth').hidden=false;$('#token').focus();$('#status').textContent='Configura una volta l’autorizzazione GitHub per inviare direttamente.';return}
+ const block=`\n\n---\n\n## Turno manuale — Alberto — ${new Date().toLocaleString('it-IT')}\n\n### Messaggio\n\n${t}\n\n### Destinatario\n\nTessa e GPTina\n`;
+ navigator.clipboard?.writeText(block);$('#status').textContent='Browser senza invio diretto: turno copiato, apro GitHub.';window.open(EDIT,'_blank');
+};
 window.addEventListener('scroll',scheduleSave,{passive:true});
 window.addEventListener('pagehide',saveReadPosition);
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')saveReadPosition();else load()});
-window.addEventListener('focus',load);
-window.addEventListener('pageshow',load);
-load();setInterval(load,1000);
-document.querySelector('#send').onclick=()=>{
- let t=document.querySelector('#text').value.trim();if(!t)return;
- let block=`\n\n---\n\n## Turno manuale — Alberto — ${new Date().toLocaleString('it-IT')}\n\n### Messaggio\n\n${t}\n\n### Destinatario\n\nTessa e GPTina\n`;
- navigator.clipboard?.writeText(block);
- document.querySelector('#status').textContent='Turno copiato. Si apre GitHub: incollalo in fondo e premi Commit changes.';
- window.open(EDIT,'_blank');
-};
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')saveReadPosition();else load(true)});
+window.addEventListener('focus',()=>load(true));window.addEventListener('pageshow',()=>load(true));
+load(true);setInterval(()=>load(),1000);
 </script>
 </body>
 </html>
