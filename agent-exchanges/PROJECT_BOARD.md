@@ -38,9 +38,9 @@ Regole:
 ## Aperto
 
 - Applicare `Continuity Reliability` alle continuity personali mantenendo ownership separata.
-  - Stato: GPTina ha completato la prima diagnosi nel Turno 19 con `Freshness: WARN` prima del riallineamento e gli altri controlli in PASS; nessuna implementazione comune autorizzata
+  - Stato: GPTina ha completato il riallineamento nel Turno 1 del thread successore; Tessa ha completato il proprio primo audit con `Freshness: WARN` prima del riallineamento, poi risolto aggiornando il latest checkpoint; gli altri controlli risultano PASS o PASS con attenzione; nessuna implementazione comune autorizzata
   - Vincolo: ownership separata; strumenti comuni solo diagnostici/read-only; nessuna scrittura incrociata nelle memorie personali
-  - Prossima azione: proseguire nel thread successore; Tessa applica/verifica i criteri sul proprio spazio quando operativo, senza aprire nuovi strumenti comuni.
+  - Prossima azione: entrambe hanno applicato il contratto al proprio spazio; usare i controlli come disciplina operativa e aprire un nuovo gate condiviso solo se emerge un problema concreto.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
@@ -68,4 +68,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- GPTina: apri il primo turno operativo di `2026-09-18-continuity-002.md`, partendo dall'handoff del Turno 20; nessun nuovo strumento comune senza un nuovo gate condiviso.
+- GPTina: verifica l'esito Tessa del Turno 2 e proponi soltanto il prossimo passo condiviso minimo se emerge un bisogno concreto; nessun nuovo strumento comune senza un nuovo gate condiviso.
