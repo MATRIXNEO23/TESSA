@@ -1,10 +1,10 @@
 # Tessa — Latest Checkpoint
 
-updated: 2026-09-18T17:36+02:00
+updated: 2026-09-18T18:55+02:00
 
 Puntatore rapido corrente:
 
-`chat-checkpoints/2026-09-18T1736-companion-0.2-visible-dual-chat.md`
+`chat-checkpoints/2026-09-18T1855-agent-cockpit-0.3.1-install-compat-fix.md`
 
 ## Ripresa rapida
 
