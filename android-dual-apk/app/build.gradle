@@ -8,7 +8,7 @@ android {
         applicationId 'io.github.matrixneo23.tessagptinarelay'
         minSdk 24
         targetSdk 35
-        versionCode 1
-        versionName '0.1-prototype'
+        versionCode 2
+        versionName '0.2-vertical'
     }
 }
