@@ -81,7 +81,9 @@ async function load(){
    let r=await fetch(RAW+'?t='+Date.now(),{cache:'no-store'});
    let t=await r.text();
    if(t!==last){
-     const keepBottom=!firstRender&&nearBottom();
+     const oldLastKey=messages().at(-1)?.dataset.key||'';
+     const currentKey=currentReadMessage()?.dataset.key||storedReadKey();
+     const keepBottom=!firstRender&&(nearBottom()||Boolean(oldLastKey&&currentKey===oldLastKey));
      if(!firstRender)saveReadPosition();
      last=t;render(t,keepBottom);
      document.querySelector('#status').textContent='Aggiornato: '+new Date().toLocaleTimeString();
