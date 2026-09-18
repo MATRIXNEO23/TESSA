@@ -189,6 +189,8 @@ def query_profile(query: str) -> tuple[set[str], str | None]:
         profile.add("temporal")
     if any(w in lower for w in ("adesso", "ora", "corrente", "stato attuale", "ultimo", "ultima")):
         profile.add("current")
+    if any(w in lower for w in ("ownership", "confine", "scrittura incrociata", "read only", "memoria tessa gptina")):
+        profile.add("ownership")
     if '"' in query or any(w in lower for w in ("esattamente", "testo esatto", "parole esatte", "cosa avevi detto", "che parole")):
         profile.add("exact")
     return profile, query_date_hint(query)
@@ -709,6 +711,8 @@ def sqlite_search(
                 score *= 0.70
         if "exact" in profile and kind in {"tessa_transcript", "raw_session"}:
             score *= 1.25
+        if "ownership" in profile and kind == "ownership_policy":
+            score *= 2.10
 
         if requested_date:
             date_hint = d.get("date_hint")
@@ -940,6 +944,8 @@ def bm25_search(
                 score *= 0.70
         if "exact" in profile and kind in {"tessa_transcript", "raw_session"}:
             score *= 1.25
+        if "ownership" in profile and kind == "ownership_policy":
+            score *= 2.10
 
         if requested_date:
             date_hint = d.get("date_hint")
