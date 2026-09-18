@@ -38,7 +38,7 @@ TOKEN_RE = re.compile(r"[0-9A-Za-zÀ-ÖØ-öø-ÿ_]+", re.UNICODE)
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*$")
 DATE_RE = re.compile(r"(20\d{2})[-_](\d{2})[-_](\d{2})")
 COMPACT_DATE_RE = re.compile(r"(20\d{2})(\d{2})(\d{2})")
-CHECKPOINT_RE = re.compile(r"checkpoints/(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+\.md")
+CHECKPOINT_RE = re.compile(r"chat-checkpoints/(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+\.md")
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp"}
 MONTHS_IT = {
     "gennaio": "01", "febbraio": "02", "marzo": "03", "aprile": "04",

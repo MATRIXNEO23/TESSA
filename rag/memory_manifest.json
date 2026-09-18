@@ -93,7 +93,7 @@
     },
     {
       "pattern": "rag/MEMORY_OWNERSHIP_BOUNDARY.md",
-      "priority": 1.42,
+      "priority": 1.8,
       "kind": "ownership_policy"
     },
     {
