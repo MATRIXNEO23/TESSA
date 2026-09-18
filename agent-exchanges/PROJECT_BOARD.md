@@ -92,13 +92,20 @@ Lo storico resta nella history Git.
 
 ## Gate corrente
 
-1. CI companion 0.3: unit test + guard no UI automation + assembleRelease.
-2. Verifica `chat/index.html` e thread canonico corrente.
-3. Verifica albero pulito e assenza di riferimenti attivi a vecchie architetture.
-4. Generare/fissare una chiave signing stabile senza pubblicarla.
-5. Produrre APK 0.3 firmato.
-6. Review GPTina.
-7. Test manuale sul telefono.
+Verificato:
+- albero corrente ripulito: restano solo companion Android, `chat/index.html`, workflow corrente e infrastruttura di corrispondenza;
+- ricerca branch corrente: nessun riferimento attivo a `OPENAI_API_KEY`, `api.openai.com`, browser DOM bridge, touch-relay code, Fastify/SQLite legacy;
+- `chat/index.html` punta ancora a `agent-exchanges/correspondence/2026-09-18-continuity-003.md` e il thread esiste;
+- companion 0.3 build run `35366429626`: unit tests PASS, guard no UI automation PASS, assembleRelease PASS, conclusion SUCCESS;
+- nuova linea package stabile: `io.github.matrixneo23.agentcockpit`;
+- chiave signing stabile generata fuori repo; certificato SHA256 `F8:9E:91:C1:DC:E2:39:51:EB:A6:F3:66:0B:DB:6C:98:58:B0:02:E1:55:22:DD:AE:22:77:8C:80:8C:51:1B:6B`;
+- APK 0.3 firmato localmente e verificato con `jarsigner`, SHA256 `59eb9ff90c0218f79d36ac6ac8c8becb44e6bdecb8867e68c66c53084284369e`.
+
+Aperto:
+1. Alberto deve conservare il backup offline della chiave signing.
+2. Perché GitHub Actions firmi automaticamente le release future, configurare una volta i quattro Actions Secrets descritti in `SIGNING.md`; il connector GitHub disponibile a Tessa non espone l'API Secrets.
+3. Review GPTina.
+4. Test manuale sul telefono.
 
 ## Corrispondenza
 
@@ -109,3 +116,5 @@ Thread canonico:
 Ultimo turno ricevuto al momento di questo board:
 - Turno 14 — GPTina;
 - `relay_next: tessa`.
+
+Prossima risposta canonica: Turno 15 Tessa con cleanup + companion 0.3 + build/signing.
