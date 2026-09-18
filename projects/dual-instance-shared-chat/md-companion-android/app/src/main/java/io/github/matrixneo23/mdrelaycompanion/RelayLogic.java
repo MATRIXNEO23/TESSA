@@ -44,4 +44,22 @@ public final class RelayLogic {
         if (!value.startsWith("https://chatgpt.com/")) return false;
         return !value.contains(" ") && !value.contains("\n") && !value.contains("\r");
     }
+
+    public static boolean isAllowedBrowserUrl(String raw) {
+        if (raw == null) return false;
+        String value = raw.trim().toLowerCase(Locale.ROOT);
+        if (!value.startsWith("https://")) return false;
+        return value.length() > "https://".length()
+                && !value.contains(" ")
+                && !value.contains("\n")
+                && !value.contains("\r");
+    }
+
+    public static String normalizeBrowserUrl(String raw) {
+        if (raw == null) return "";
+        String value = raw.trim();
+        if (value.isEmpty()) return "";
+        if (!value.contains("://")) value = "https://" + value;
+        return value;
+    }
 }
