@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "kind": "tessa_live_context",
+  "updated_at": "2026-09-18T19:57:00+02:00",
+  "latest_summary": "GPTina Turno 16 ha richiesto di portare su Tessa l'architettura memory v2: source-first, schema temporale, retrieval current/exact/history, SQLite FTS5 incrementale, gold regression, live buffer e micro-checkpoint.",
+  "next_action": "Implementare e verificare l'architettura memory v2 Tessa senza scrivere nella memoria GPTina.",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/18/2026-09-18T195700+0200--memory-v2-preflight.json",
+  "last_full_checkpoint": "chat-checkpoints/2026-09-18T1855-agent-cockpit-0.3.1-install-compat-fix.md",
+  "active_threads": [
+    "continuity-memory-v2",
+    "tessa-gptina-correspondence"
+  ],
+  "open_loops": [
+    "Implementare e verificare l'architettura memory v2 Tessa senza scrivere nella memoria GPTina."
+  ],
+  "recent_micro_checkpoints": [
+    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T195700+0200--memory-v2-preflight.json"
+  ],
+  "micro_since_full_checkpoint": 1,
+  "review_policy": {
+    "substantive_turn_interval": 4,
+    "immediate_triggers": [
+      "correction",
+      "decision",
+      "milestone",
+      "open_loop",
+      "project_state",
+      "relational_shift",
+      "rule",
+      "visual_context"
+    ],
+    "preflight_before_long_or_risky_work": true
+  },
+  "note": "Projection only. Append-only truth lives in micro-checkpoints, full checkpoints, memories and source files."
+}

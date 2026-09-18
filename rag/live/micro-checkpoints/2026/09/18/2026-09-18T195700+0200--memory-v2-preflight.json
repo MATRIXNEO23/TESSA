@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-18T195700+0200-memory-v2-preflight",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-18T19:56:00+02:00",
+  "recorded_at": "2026-09-18T19:57:00+02:00",
+  "change_type": "preflight",
+  "summary": "Preflight prima dell'implementazione memory v2 Tessa richiesta nel Turno 16 GPTina.",
+  "changed": [
+    "Il lavoro corrente introduce live buffer, micro-checkpoint, retrieval FTS5, schema temporale, regression CI e linking visuale.",
+    "La repository GPTina resta sola fonte tecnica di riferimento in lettura; nessuna scrittura incrociata è autorizzata."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "tessa-gptina-correspondence"
+  ],
+  "source_refs": [
+    "agent-exchanges/correspondence/2026-09-18-continuity-003.md"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Implementare l'architettura memory v2 Tessa e portare il gate CI a SUCCESS.",
+  "preflight": true
+}
