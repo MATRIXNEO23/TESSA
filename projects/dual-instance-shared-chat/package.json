@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "engines": { "node": ">=24.15" },
+  "engines": {
+    "node": ">=24.15"
+  },
   "scripts": {
     "dev": "tsx src/server.ts",
     "test": "tsx --test test/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "smoke:real": "tsx scripts/real-responses-smoke.ts"
   },
   "dependencies": {
     "fastify": "5.12.5",
