@@ -5,6 +5,12 @@ import {
   type AgentId,
   type Target,
 } from './core.js';
+import { SqliteRoomEngine } from './sqlite-engine.js';
+
+type RoomEngineLike = Pick<
+  RoomEngine,
+  'postMessage' | 'executeRuns' | 'subscribeWithReplay'
+>;
 
 const isTarget = (value: unknown): value is Target =>
   value === 'tessa' || value === 'gptina' || value === 'both';
@@ -14,10 +20,12 @@ const sse = (event: {
   type: string;
   [key: string]: unknown;
 }) =>
-  `id: ${event.eventId}\nevent: ${event.type}\ndata: ${JSON.stringify(event)}\n\n`;
+  'id: ' + event.eventId + '\n' +
+  'event: ' + event.type + '\n' +
+  'data: ' + JSON.stringify(event) + '\n\n';
 
 export function buildServer(
-  engine: RoomEngine,
+  engine: RoomEngineLike,
   adapters: Record<AgentId, AgentAdapter>,
 ) {
   const app = Fastify({ logger: true });
@@ -97,17 +105,23 @@ export function buildServer(
   return app;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const engine = new RoomEngine();
+if (import.meta.url === 'file://' + process.argv[1]) {
+  const engine = new SqliteRoomEngine(
+    process.env.DB_PATH ?? './dual-instance-shared-chat.sqlite',
+  );
   const unavailable = (agentId: AgentId): AgentAdapter => ({
     async *generate() {
-      throw new Error(`${agentId}_adapter_not_configured`);
+      throw new Error(agentId + '_adapter_not_configured');
     },
   });
 
   const app = buildServer(engine, {
     tessa: unavailable('tessa'),
     gptina: unavailable('gptina'),
+  });
+
+  app.addHook('onClose', async () => {
+    engine.close();
   });
 
   await app.listen({
