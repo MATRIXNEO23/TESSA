@@ -26,7 +26,7 @@ const schema = [
   'CREATE TABLE IF NOT EXISTS rooms(room_id TEXT PRIMARY KEY, created_at TEXT NOT NULL);',
   "CREATE TABLE IF NOT EXISTS agents(room_id TEXT NOT NULL REFERENCES rooms(room_id), agent_id TEXT NOT NULL CHECK(agent_id IN ('tessa','gptina')), conversation_id TEXT, bootstrap_version TEXT NOT NULL, checkpoint_ref TEXT, context_cursor_event_id INTEGER NOT NULL DEFAULT 0, updated_at TEXT NOT NULL, PRIMARY KEY(room_id,agent_id));",
   "CREATE TABLE IF NOT EXISTS messages(message_id TEXT PRIMARY KEY, room_id TEXT NOT NULL REFERENCES rooms(room_id), client_message_id TEXT NOT NULL, author_id TEXT NOT NULL CHECK(author_id IN ('alberto','tessa','gptina')), target TEXT NOT NULL CHECK(target IN ('tessa','gptina','both')), content TEXT NOT NULL, created_at TEXT NOT NULL, UNIQUE(room_id,client_message_id));",
-  "CREATE TABLE IF NOT EXISTS runs(run_id TEXT PRIMARY KEY, room_id TEXT NOT NULL REFERENCES rooms(room_id), source_message_id TEXT NOT NULL REFERENCES messages(message_id), agent_id TEXT NOT NULL, status TEXT NOT NULL CHECK(status IN ('queued','streaming','completed','failed','cancelled')), bootstrap_version TEXT NOT NULL, checkpoint_ref TEXT, api_mode TEXT NOT NULL, model TEXT NOT NULL, context_builder_version TEXT NOT NULL, conversation_id_at_start TEXT, context_from_event_id INTEGER NOT NULL, context_through_event_id INTEGER NOT NULL, error_message TEXT, created_at TEXT NOT NULL, started_at TEXT, finished_at TEXT, UNIQUE(source_message_id,agent_id), FOREIGN KEY(room_id,agent_id) REFERENCES agents(room_id,agent_id));",
+  "CREATE TABLE IF NOT EXISTS runs(run_id TEXT PRIMARY KEY, room_id TEXT NOT NULL REFERENCES rooms(room_id), source_message_id TEXT NOT NULL REFERENCES messages(message_id), agent_id TEXT NOT NULL, status TEXT NOT NULL CHECK(status IN ('queued','streaming','completed','failed','cancelled')), bootstrap_version TEXT NOT NULL, checkpoint_ref TEXT, api_mode TEXT NOT NULL, model TEXT NOT NULL, context_builder_version TEXT NOT NULL, conversation_id_at_start TEXT, context_from_event_id INTEGER NOT NULL, context_through_event_id INTEGER NOT NULL, response_id TEXT, error_code TEXT, error_message TEXT, created_at TEXT NOT NULL, started_at TEXT, finished_at TEXT, UNIQUE(source_message_id,agent_id), FOREIGN KEY(room_id,agent_id) REFERENCES agents(room_id,agent_id));",
   'CREATE TABLE IF NOT EXISTS events(event_id INTEGER PRIMARY KEY AUTOINCREMENT, room_id TEXT NOT NULL REFERENCES rooms(room_id), message_id TEXT, run_id TEXT, agent_id TEXT, type TEXT NOT NULL, seq INTEGER, payload_json TEXT NOT NULL, created_at TEXT NOT NULL, UNIQUE(run_id,seq), CHECK((run_id IS NULL AND seq IS NULL) OR (run_id IS NOT NULL AND seq IS NOT NULL AND seq >= 0 AND agent_id IS NOT NULL)), FOREIGN KEY(message_id) REFERENCES messages(message_id), FOREIGN KEY(run_id) REFERENCES runs(run_id));',
   'CREATE INDEX IF NOT EXISTS idx_events_room_event ON events(room_id,event_id);',
 ].join('\n');
@@ -39,12 +39,27 @@ export class SqliteRoomEngine {
   constructor(path: string, options: SqliteRoomEngineOptions = {}) {
     this.db = new DatabaseSync(path);
     this.db.exec(schema);
+    this.migrateSchema();
     this.deltaChunkChars = Math.max(1, options.deltaChunkChars ?? 64);
     this.recoverInterruptedRuns();
   }
 
   close() {
     this.db.close();
+  }
+
+  private migrateSchema() {
+    const columns = new Set(
+      (this.db.prepare('PRAGMA table_info(runs)').all() as Row[]).map((row) =>
+        String(row.name),
+      ),
+    );
+    if (!columns.has('response_id')) {
+      this.db.exec('ALTER TABLE runs ADD COLUMN response_id TEXT;');
+    }
+    if (!columns.has('error_code')) {
+      this.db.exec('ALTER TABLE runs ADD COLUMN error_code TEXT;');
+    }
   }
 
   private tx<T>(fn: () => T): T {
@@ -107,6 +122,10 @@ export class SqliteRoomEngine {
         row.conversation_id_at_start == null
           ? null
           : String(row.conversation_id_at_start),
+      responseId:
+        row.response_id == null ? null : String(row.response_id),
+      errorCode:
+        row.error_code == null ? null : String(row.error_code),
       contextFromEventId: Number(row.context_from_event_id),
       contextThroughEventId: Number(row.context_through_event_id),
     };
@@ -147,9 +166,15 @@ export class SqliteRoomEngine {
         const t = iso();
         this.db
           .prepare(
-            "UPDATE runs SET status='failed',error_message=?,finished_at=? WHERE run_id=?",
+            "UPDATE runs SET status='failed',error_code=?,error_message=?,finished_at=? WHERE run_id=?",
           )
-          .run('interrupted_by_restart', t, run.runId);
+          .run(
+            'interrupted_by_restart',
+            'interrupted_by_restart',
+            t,
+            run.runId,
+          );
+        run.errorCode = 'interrupted_by_restart';
         run.status = 'failed';
         this.runEvent(run, 'run.failed', {
           message: 'interrupted_by_restart',
@@ -256,6 +281,8 @@ export class SqliteRoomEngine {
             state.conversation_id == null
               ? null
               : String(state.conversation_id),
+          responseId: null,
+          errorCode: null,
           contextFromEventId: Number(state.context_cursor_event_id) + 1,
           contextThroughEventId: messageEvent.eventId,
         };
@@ -354,8 +381,35 @@ export class SqliteRoomEngine {
     });
   }
 
-  private stampMetadata(run: Run, metadata?: AdapterMetadata) {
-    if (!metadata) return;
+  private codedError(code: string, message = code) {
+    const error = new Error(message) as Error & { code: string };
+    error.code = code;
+    return error;
+  }
+
+  private errorCode(error: unknown, fallback: string) {
+    if (typeof error === 'object' && error !== null && 'code' in error) {
+      const code = (error as { code?: unknown }).code;
+      if (
+        typeof code === 'string' &&
+        /^[A-Za-z0-9_.-]{1,80}$/.test(code)
+      ) {
+        return code;
+      }
+    }
+    return fallback;
+  }
+
+  private stampMetadata(
+    run: Run,
+    metadata: AdapterMetadata | undefined,
+    required: boolean,
+  ) {
+    if (!metadata) {
+      if (required) throw this.codedError('adapter_metadata_missing');
+      return;
+    }
+
     const values = [
       metadata.apiMode,
       metadata.model,
@@ -363,8 +417,13 @@ export class SqliteRoomEngine {
       metadata.contextBuilderVersion,
       metadata.privilegedInstructions,
     ];
-    if (values.some((value) => !value.trim())) {
-      throw new Error('invalid_adapter_metadata');
+    const placeholder = (value: string) =>
+      ['pending', 'unconfigured'].includes(value.trim().toLowerCase());
+    if (
+      values.some((value) => !value.trim()) ||
+      (required && values.some(placeholder))
+    ) {
+      throw this.codedError('invalid_adapter_metadata');
     }
 
     run.apiMode = metadata.apiMode;
@@ -399,6 +458,20 @@ export class SqliteRoomEngine {
       );
   }
 
+  private failRun(run: Run, error: unknown, fallbackCode: string) {
+    const message =
+      error instanceof Error ? error.message : 'unknown_error';
+    const code = this.errorCode(error, fallbackCode);
+    this.db
+      .prepare(
+        "UPDATE runs SET status='failed',error_code=?,error_message=?,finished_at=? WHERE run_id=?",
+      )
+      .run(code, message, iso(), run.runId);
+    run.status = 'failed';
+    run.errorCode = code;
+    return this.runEvent(run, 'run.failed', { code, message });
+  }
+
   private async *coalesce(source: AsyncIterable<string>) {
     let buffer = '';
     for await (const chunk of source) {
@@ -423,21 +496,37 @@ export class SqliteRoomEngine {
     const adapter = adapters[run.agentId];
     const metadata = adapter.metadata;
 
-    const started = this.tx(() => {
-      this.stampMetadata(run, metadata);
-      this.db
-        .prepare("UPDATE runs SET status='streaming',started_at=? WHERE run_id=?")
-        .run(iso(), runId);
-      run.status = 'streaming';
-      return this.runEvent(run, 'run.started', {
-        apiMode: run.apiMode,
-        model: run.model,
-        bootstrapVersion: run.bootstrapVersion,
-        checkpointRef: run.checkpointRef,
-        contextBuilderVersion: run.contextBuilderVersion,
-        conversationIdAtStart: run.conversationIdAtStart,
+    let started: RoomEvent;
+    try {
+      started = this.tx(() => {
+        this.stampMetadata(
+          run,
+          metadata,
+          adapter.requiresCompleteMetadata === true,
+        );
+        this.db
+          .prepare(
+            "UPDATE runs SET status='streaming',started_at=?,error_code=NULL,error_message=NULL WHERE run_id=?",
+          )
+          .run(iso(), runId);
+        run.status = 'streaming';
+        run.errorCode = null;
+        return this.runEvent(run, 'run.started', {
+          apiMode: run.apiMode,
+          model: run.model,
+          bootstrapVersion: run.bootstrapVersion,
+          checkpointRef: run.checkpointRef,
+          contextBuilderVersion: run.contextBuilderVersion,
+          conversationIdAtStart: run.conversationIdAtStart,
+        });
       });
-    });
+    } catch (error) {
+      const failed = this.tx(() =>
+        this.failRun(run, error, 'adapter_preflight_failed'),
+      );
+      this.publish(failed);
+      return;
+    }
     this.publish(started);
 
     try {
@@ -466,14 +555,27 @@ export class SqliteRoomEngine {
           runId,
           conversationIdAtStart: run.conversationIdAtStart,
         })) ?? run.conversationIdAtStart;
+      const responseId =
+        (await adapter.responseIdAfter?.({
+          agentId: run.agentId,
+          roomId: run.roomId,
+          runId,
+        })) ?? null;
+
+      if (adapter.requiresCompleteMetadata && !conversationId) {
+        throw this.codedError('missing_provider_conversation_id');
+      }
+      if (adapter.requiresCompleteMetadata && !responseId) {
+        throw this.codedError('missing_provider_response_id');
+      }
 
       const done = this.tx(() => {
         const t = iso();
         this.db
           .prepare(
-            "UPDATE runs SET status='completed',finished_at=? WHERE run_id=?",
+            "UPDATE runs SET status='completed',response_id=?,error_code=NULL,error_message=NULL,finished_at=? WHERE run_id=?",
           )
-          .run(t, runId);
+          .run(responseId, t, runId);
         this.db
           .prepare(
             'UPDATE agents SET conversation_id=?,context_cursor_event_id=?,updated_at=? WHERE room_id=? AND agent_id=?',
@@ -486,24 +588,19 @@ export class SqliteRoomEngine {
             run.agentId,
           );
         run.status = 'completed';
+        run.responseId = responseId;
+        run.errorCode = null;
         return this.runEvent(run, 'response.completed', {
           text,
           conversationId,
+          responseId,
         });
       });
       this.publish(done);
     } catch (error) {
-      const failed = this.tx(() => {
-        const message =
-          error instanceof Error ? error.message : 'unknown_error';
-        this.db
-          .prepare(
-            "UPDATE runs SET status='failed',error_message=?,finished_at=? WHERE run_id=?",
-          )
-          .run(message, iso(), runId);
-        run.status = 'failed';
-        return this.runEvent(run, 'run.failed', { message });
-      });
+      const failed = this.tx(() =>
+        this.failRun(run, error, 'provider_error'),
+      );
       this.publish(failed);
     }
   }
