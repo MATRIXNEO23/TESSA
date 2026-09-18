@@ -4,6 +4,7 @@ import {
   RoomEngine,
   type AgentAdapter,
   type AgentId,
+  type RoomEvent,
 } from '../src/core.js';
 
 const chunks = (parts: string[], fail = false): AgentAdapter => ({
@@ -130,9 +131,70 @@ test('agent output cannot create recursive runs', async () => {
   );
 });
 
+test('failed run leaves the agent cursor unchanged', async () => {
+  const engine = new RoomEngine();
+
+  let result = engine.postMessage({
+    roomId: 'room',
+    clientMessageId: 'cursor-ok',
+    target: 'tessa',
+    content: 'prima',
+  });
+  await engine.executeRuns(result.runs.map((run) => run.runId), adapters());
+
+  const cursorAfterSuccess = engine.getAgentCursor('room', 'tessa');
+
+  result = engine.postMessage({
+    roomId: 'room',
+    clientMessageId: 'cursor-fail',
+    target: 'tessa',
+    content: 'seconda',
+  });
+  await engine.executeRuns(
+    result.runs.map((run) => run.runId),
+    adapters(chunks([], true), chunks(['unused'])),
+  );
+
+  assert.equal(engine.getAgentCursor('room', 'tessa'), cursorAfterSuccess);
+});
+
+test('subscribeWithReplay bridges replay to live without gaps or duplicates', () => {
+  const engine = new RoomEngine();
+
+  engine.postMessage({
+    roomId: 'room',
+    clientMessageId: 'replay-first',
+    target: 'tessa',
+    content: 'prima',
+  });
+
+  const delivered: number[] = [];
+  let injected = false;
+
+  const unsubscribe = engine.subscribeWithReplay('room', 0, (event) => {
+    delivered.push(event.eventId);
+
+    if (!injected) {
+      injected = true;
+      engine.postMessage({
+        roomId: 'room',
+        clientMessageId: 'replay-during-handoff',
+        target: 'gptina',
+        content: 'durante',
+      });
+    }
+  });
+
+  unsubscribe();
+
+  const expected = engine.listEvents('room').map((event) => event.eventId);
+  assert.deepEqual(delivered, expected);
+  assert.equal(new Set(delivered).size, delivered.length);
+});
+
 test('reselected agent catches up from its own cursor as room content', async () => {
   const engine = new RoomEngine();
-  let seen: Array<{ payload: Record<string, unknown> }> = [];
+  let seen: RoomEvent[] = [];
 
   const capture: AgentAdapter = {
     async *generate(input) {
@@ -161,6 +223,22 @@ test('reselected agent catches up from its own cursor as room content', async ()
   );
 
   assert.ok(seen.some((event) => event.payload.content === 'solo tessa'));
+  assert.ok(
+    seen.some(
+      (event) =>
+        event.type === 'response.completed' &&
+        event.agentId === 'tessa' &&
+        event.payload.text === 'T' &&
+        event.payload.authorId === 'tessa',
+    ),
+  );
+  assert.ok(
+    seen.every(
+      (event) =>
+        event.type === 'message.created' ||
+        event.type === 'response.completed',
+    ),
+  );
   assert.ok(
     seen.every((event) => event.payload.privilege === 'room-content'),
   );
