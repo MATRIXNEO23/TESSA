@@ -33,14 +33,16 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
 
 public class MainActivity extends Activity {
-    private static final String CHAT_URL = "https://matrixneo23.github.io/TESSA/chat/?v=20260918-1048";
-    private static final String CONTENT_API = "https://api.github.com/repos/MATRIXNEO23/TESSA/contents/agent-exchanges/correspondence/2026-09-18-continuity-003.md";
+    private static final String CHAT_URL = "https://matrixneo23.github.io/TESSA/chat/?v=20260918-1223";
+    private static final String CONTENTS_API_BASE = "https://api.github.com/repos/MATRIXNEO23/TESSA/contents/";
+    private static final String DEFAULT_THREAD_PATH = "agent-exchanges/correspondence/2026-09-18-continuity-003.md";
     private static final String PREFS = "tessa_chat_secure";
     private static final String TOKEN_BLOB = "github_token_blob";
     private static final String KEY_ALIAS = "tessa_chat_github_token";
 
     private WebView webView;
     private volatile String etag = null;
+    private volatile String etagPath = null;
     private final AtomicBoolean fetching = new AtomicBoolean(false);
 
     @Override public void onCreate(Bundle savedInstanceState) {
@@ -93,29 +95,44 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface public void refreshThread() {
+            refreshThreadPath(DEFAULT_THREAD_PATH);
+        }
+
+        @JavascriptInterface public void refreshThreadPath(String path) {
             final String token = getToken();
-            if (token == null || !fetching.compareAndSet(false, true)) return;
+            final String cleanPath = validateThreadPath(path);
+            if (token == null || cleanPath == null || !fetching.compareAndSet(false, true)) return;
             new Thread(() -> {
-                try { fetchThread(token); }
+                try { fetchThread(token, cleanPath); }
                 catch (Exception e) { js("window.onNativeSyncError(" + JSONObject.quote(e.getMessage()) + ")"); }
                 finally { fetching.set(false); }
             }).start();
         }
 
         @JavascriptInterface public void sendMessage(String text) {
+            sendMessageTo(DEFAULT_THREAD_PATH, text);
+        }
+
+        @JavascriptInterface public void sendMessageTo(String path, String text) {
             final String token = getToken();
+            final String cleanPath = validateThreadPath(path);
             final String clean = text == null ? "" : text.trim();
             if (token == null) {
                 js("window.onNativeSendResult(false,'Autorizzazione GitHub mancante')");
                 return;
             }
+            if (cleanPath == null) {
+                js("window.onNativeSendResult(false,'Percorso thread non valido')");
+                return;
+            }
             if (clean.isEmpty()) return;
             new Thread(() -> {
                 try {
-                    appendMessage(token, clean);
+                    appendMessage(token, cleanPath, clean);
                     etag = null;
+                    etagPath = null;
                     js("window.onNativeSendResult(true,'Messaggio inviato')");
-                    fetchThread(token);
+                    fetchThread(token, cleanPath);
                 } catch (Exception e) {
                     js("window.onNativeSendResult(false," + JSONObject.quote(e.getMessage()) + ")");
                 }
@@ -123,8 +140,9 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void fetchThread(String token) throws Exception {
-        HttpURLConnection c = connection("GET", token);
+    private void fetchThread(String token, String path) throws Exception {
+        if (!path.equals(etagPath)) etag = null;
+        HttpURLConnection c = connection("GET", token, path);
         if (etag != null) c.setRequestProperty("If-None-Match", etag);
         int code = c.getResponseCode();
         if (code == 304) return;
@@ -133,12 +151,13 @@ public class MainActivity extends Activity {
         JSONObject obj = new JSONObject(readBody(c.getInputStream()));
         String md = new String(Base64.decode(obj.getString("content"), Base64.DEFAULT), StandardCharsets.UTF_8);
         if (newEtag != null) etag = newEtag;
+        etagPath = path;
         js("window.onNativeThread(" + JSONObject.quote(md) + ")");
     }
 
-    private void appendMessage(String token, String text) throws Exception {
+    private void appendMessage(String token, String path, String text) throws Exception {
         for (int attempt = 0; attempt < 2; attempt++) {
-            HttpURLConnection get = connection("GET", token);
+            HttpURLConnection get = connection("GET", token, path);
             int gc = get.getResponseCode();
             if (gc != 200) throw new Exception("GitHub GET " + gc + ": " + readBody(get.getErrorStream()));
             JSONObject current = new JSONObject(readBody(get.getInputStream()));
@@ -155,7 +174,7 @@ public class MainActivity extends Activity {
             body.put("content", Base64.encodeToString(updated.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP));
             body.put("sha", sha);
 
-            HttpURLConnection put = connection("PUT", token);
+            HttpURLConnection put = connection("PUT", token, path);
             put.setRequestProperty("Content-Type", "application/json; charset=utf-8");
             put.setDoOutput(true);
             try (OutputStream os = put.getOutputStream()) {
@@ -172,8 +191,17 @@ public class MainActivity extends Activity {
         }
     }
 
-    private HttpURLConnection connection(String method, String token) throws Exception {
-        HttpURLConnection c = (HttpURLConnection) new URL(CONTENT_API).openConnection();
+    private String validateThreadPath(String path) {
+        if (path == null) return null;
+        String clean = path.trim();
+        if (!clean.startsWith("agent-exchanges/correspondence/")) return null;
+        if (!clean.endsWith(".md")) return null;
+        if (clean.contains("..") || !clean.matches("[A-Za-z0-9._/-]+")) return null;
+        return clean;
+    }
+
+    private HttpURLConnection connection(String method, String token, String path) throws Exception {
+        HttpURLConnection c = (HttpURLConnection) new URL(CONTENTS_API_BASE + path).openConnection();
         c.setRequestMethod(method);
         c.setConnectTimeout(8000);
         c.setReadTimeout(8000);
