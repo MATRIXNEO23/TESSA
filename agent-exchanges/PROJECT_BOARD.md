@@ -47,6 +47,7 @@ Regole:
   - Prototipo unofficial implementato: `manifest.json`, `background.js`, `dashboard.html/js/css`, `content.js`, README dedicato e test strutturali.
   - Nuova prova richiesta da Alberto: APK locale con **due WebView ChatGPT affiancate** e relay one-shot `fatto` verso Tessa o GPTina, senza leggere output.
   - Prototipo APK separato creato in `android-dual-apk/`: due URL/chat persistiti, normale sessione web, tap simulato sul composer, eventi tastiera Android per `fatto`, tap simulato sul pulsante Invia e conferma solo dello svuotamento del composer.
+  - Preferenza UI Alberto: nell'APK sperimentale le due chat devono essere **una sotto l'altra**, non affiancate. Versione `0.2-vertical`: Tessa sopra, GPTina sotto; build run `35361107153` SUCCESS, artifact id `10554545065`.
   - Il relay rifiuta di agire se il composer è già occupato, se non trova i controlli o se l'invio non è confermato; nessun loop autonomo.
   - Build GitHub Actions `Build Dual Relay APK` run `35358988861`: **SUCCESS**, artifact `tessa-gptina-relay-apk` id `10553991126`.
   - Prossimo gate APK: test reale sul telefono. Da verificare in particolare che `chatgpt.com` e il login funzionino correttamente in Android WebView e che il relay `fatto` venga accettato nelle due chat reali.
