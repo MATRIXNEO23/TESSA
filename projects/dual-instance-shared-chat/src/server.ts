@@ -83,13 +83,13 @@ export function buildServer(
       connection: 'keep-alive',
     });
 
-    for (const event of engine.listEvents(roomId, afterId)) {
-      reply.raw.write(sse(event));
-    }
-
-    const unsubscribe = engine.subscribe(roomId, (event) => {
-      reply.raw.write(sse(event));
-    });
+    const unsubscribe = engine.subscribeWithReplay(
+      roomId,
+      afterId,
+      (event) => {
+        reply.raw.write(sse(event));
+      },
+    );
 
     request.raw.on('close', unsubscribe);
   });
