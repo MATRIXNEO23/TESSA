@@ -1,48 +1,44 @@
-# MD-first Android Companion
+# MD-first Android Companion — 0.2 visible
 
-Baseline condivisa Tessa/GPTina per il relay prudente.
+Correzione richiesta da Alberto: **le due chat devono restare visibili dentro l'APK**.
 
-## Scopo
+## Layout
 
-L'app non automatizza ChatGPT.
+- **Tessa sopra**
+- **GPTina sotto**
+- entrambe a tutta larghezza;
+- barra superiore compatta con stato del relay e pulsante `Copia fatto`.
 
-Legge in sola lettura il puntatore canonico GitHub e il transcript corrente, trova l'ultimo marker relay_next e mostra a chi tocca.
+L'app legge in sola lettura il transcript Markdown/GitHub e mostra a chi tocca usando l'ultimo marker `relay_next`.
 
-Quando Alberto preme l'azione:
+## Interazione con ChatGPT
 
-1. copia soltanto `fatto` negli appunti;
-2. apre l'URL ChatGPT configurato per l'istanza corretta;
-3. si ferma.
+Le due chat sono normali superfici WebView navigabili dall'utente.
 
-**Incolla + Invio restano manuali.**
+L'app **non**:
+- legge risposte o messaggi dalla pagina;
+- usa `evaluateJavascript` per ispezionare il DOM;
+- cerca composer/send;
+- simula tap;
+- simula tastiera;
+- preme Invio;
+- usa OpenAI API.
 
-## Cosa non fa
+Il pulsante `Copia fatto` mette soltanto `fatto` negli appunti. Alberto incolla e preme Invio manualmente nel pane indicato.
 
-- nessuna OpenAI API;
-- nessuna API key;
-- nessuna WebView;
-- nessun JavaScript dentro ChatGPT;
-- nessun DOM/content script;
-- nessuna lettura delle risposte;
-- nessun tap, tasto o Invio simulato;
-- nessun loop autonomo.
+## URL
 
-## Guard
+Ogni pane ha una riga compatta URL + `Vai`. Gli URL delle due chat vengono memorizzati localmente.
 
-- marker mancante → nessun relay suggerito;
-- relay_next: none → nessun relay;
-- URL non https://chatgpt.com/... → azione bloccata;
-- GitHub/thread non raggiungibile → errore e nessun fallback invasivo.
+Sono accettati soltanto URL `https://chatgpt.com/...`.
 
-## Primo uso
+## Guard relay
 
-1. Installa l'APK.
-2. Incolla una volta l'URL della chat Tessa e quello della chat GPTina.
-3. Premi Salva URL.
-4. Premi Aggiorna turno.
-5. Quando compare Tocca a Tessa/GPTina, premi Copia fatto + Apri ....
-6. Dentro ChatGPT: incolla e premi Invio manualmente.
+- marker mancante → nessun relay;
+- `relay_next: none` → nessun relay;
+- thread non raggiungibile → errore, nessun fallback;
+- nessuna azione automatica dentro ChatGPT.
 
-## Test
+## Nota runtime
 
-RelayLogicTest verifica ultimo marker, none, marker assente fail-closed, risoluzione del thread canonico dal task entrypoint e guard URL ChatGPT.
+Le due WebView condividono la sessione/cookie dell'app, quindi possono usare lo stesso account ma mantenere due conversation URL distinte. Compatibilità login/UI ChatGPT va comunque verificata sul telefono.
