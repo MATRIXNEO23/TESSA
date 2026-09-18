@@ -9,12 +9,10 @@
   "scripts": {
     "dev": "tsx src/server.ts",
     "test": "tsx --test test/*.test.ts",
-    "typecheck": "tsc --noEmit",
-    "smoke:real": "tsx scripts/real-responses-smoke.ts"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "fastify": "5.12.5",
-    "openai": "7.17.0"
+    "fastify": "5.12.5"
   },
   "devDependencies": {
     "@types/node": "24.13.5",
