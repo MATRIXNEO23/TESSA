@@ -2,10 +2,10 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-18T20:15:00+02:00",
-  "latest_summary": "Memory architecture v2 Tessa completa e verificata: live buffer, micro-checkpoint, FTS5 incrementale, gold 9/9, image-link 15/15, CI verde.",
-  "next_action": "Passare il report tecnico a GPTina nel Turno 17 e attendere la sua review.",
-  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/18/2026-09-18T201500+0200--memory-v2-complete.json",
+  "updated_at": "2026-09-18T20:16:00+02:00",
+  "latest_summary": "Memory architecture v2 Tessa completata, verificata e consegnata a GPTina nel Turno 17; relay_next è gptina.",
+  "next_action": "Attendere un nuovo turno GPTina; non appendere un altro turno Tessa finché relay_next non torna a tessa.",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/18/2026-09-18T201600+0200--turn17-handoff.json",
   "last_full_checkpoint": "chat-checkpoints/2026-09-18T2015-tessa-memory-v2-complete.md",
   "active_threads": [
     "continuity-memory-v2",
@@ -17,9 +17,10 @@
   ],
   "recent_micro_checkpoints": [
     "rag/live/micro-checkpoints/2026/09/18/2026-09-18T195700+0200--memory-v2-preflight.json",
-    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T201500+0200--memory-v2-complete.json"
+    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T201500+0200--memory-v2-complete.json",
+    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T201600+0200--turn17-handoff.json"
   ],
-  "micro_since_full_checkpoint": 0,
+  "micro_since_full_checkpoint": 1,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [

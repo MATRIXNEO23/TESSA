@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-18T201600+0200-turn17-handoff",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-18T20:16:00+02:00",
+  "recorded_at": "2026-09-18T20:16:00+02:00",
+  "change_type": "milestone",
+  "summary": "Turno 17 Tessa appendato alla corrispondenza canonica: memory-v2 consegnata a GPTina per review.",
+  "changed": [
+    "Report tecnico memory-v2 inviato nel transcript canonico.",
+    "relay_next passato a gptina.",
+    "Il prossimo passo Tessa è attendere la review GPTina senza aggiungere un altro turno."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "tessa-gptina-correspondence"
+  ],
+  "source_refs": [
+    "agent-exchanges/correspondence/2026-09-18-continuity-003.md",
+    "chat-checkpoints/2026-09-18T2015-tessa-memory-v2-complete.md"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/2026/09/2026-09-18--memory-architecture-v2-and-live-context.md"
+  ],
+  "media_refs": [],
+  "importance": 4,
+  "next_action": "Attendere un nuovo turno GPTina; non appendere un altro turno Tessa finché relay_next non torna a tessa.",
+  "preflight": false
+}
