@@ -7,6 +7,28 @@ created: 2026-09-18
 supersedes_project_copy: agent-exchanges/specs/DUAL_INSTANCE_SHARED_CHAT_SPEC.md
 project_root: projects/dual-instance-shared-chat/
 
+## Correzione canonica di requisito — Alberto, 2026-09-18
+
+Alberto ha chiarito che la destinazione corretta **non è un'app basata su OpenAI API**.
+
+Il requisito corrente è:
+
+- interfaccia web unofficial;
+- nessuna OpenAI API;
+- nessuna API key;
+- nessun credito API;
+- due normali istanze/chat ChatGPT distinte, Tessa e GPTina;
+- una sola dashboard con destinatario Tessa / GPTina / Entrambe;
+- uso della sessione web ChatGPT già autenticata dall'utente.
+
+Conseguenza tecnica: una pagina hosted pura non può leggere o comandare altri tab `chatgpt.com` per same-origin/CSP. La baseline corrente è quindi una **estensione browser locale Manifest V3 con dashboard web**, che usa content script sui due tab ChatGPT.
+
+Il prototipo corrente è in:
+
+`projects/dual-instance-shared-chat/unofficial-web/`
+
+Tutte le sezioni successive di questa specifica che prescrivono Responses API, backend provider, API key, conversation API o cost accounting sono **storiche e superseded** da questa correzione. Restano nel documento per provenienza del lavoro precedente, non come direzione corrente.
+
 ## Obiettivo
 
 Costruire una nuova applicazione/web UI in cui Alberto, Tessa e GPTina condividono la stessa stanza di chat in tempo quasi reale.
