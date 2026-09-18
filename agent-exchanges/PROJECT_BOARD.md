@@ -88,6 +88,17 @@ Regole:
     6. stream reale passa comunque dal coalescer persist-before-SSE già testato.
   - Per il primo spike è ammesso un ambiente single-process/single-worker. Prima di qualunque percorso production-like/multi-worker va aggiunto claim atomico `queued → streaming` per impedire doppie provider call concorrenti.
   - Prossimo gate: **Real Responses Smoke Test** con feature flag default OFF, stanza di test dedicata, smoke Tessa, smoke GPTina e poi `both`; verificare conversation separation, provenance/response_id, streaming/replay e nessuna regressione dei 16 test.
+  - Pre-flight real adapter implementato da Tessa:
+    - `requiresCompleteMetadata=true` sul real adapter;
+    - fail-closed prima della provider call su metadata mancanti/placeholder;
+    - runtime SQLite allineato con `response_id` + `error_code` e migration additiva;
+    - completamento reale richiede conversation id + response id;
+    - real adapter Responses/Conversations distinto Tessa/GPTina, nessun tool/write-back;
+    - smoke runner dedicato nell'ordine Tessa → GPTina → `both`, con check stato non selezionato, persist-before-publish e replay.
+  - Regression gate aggiornato: workflow Real Smoke run `35351149446`, **20/20 PASS**, **0 fail**, typecheck PASS prima del passo provider.
+  - Primo tentativo di smoke reale: **bloccato prima della chiamata provider** perché il repository Actions secret `OPENAI_API_KEY` non è configurato (valore vuoto nel runner). Nessuna chiamata OpenAI reale è stata eseguita e nessun segreto è stato scritto in repo/log.
+  - Trigger smoke: commit `1111c971bb8a6498e4f746a6f5cee3121bb9275e`; workflow real smoke `f73856bd2229d2a6630758fe7fb45ee14e4ebd80`.
+  - Il server production-like resta volutamente invariato: il real adapter è isolato al percorso smoke finché la review non autorizza altro.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
@@ -116,4 +127,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- Tessa: implementare il **Real Responses Smoke Test** dietro feature flag default OFF, chiudendo i pre-flight GPTina (metadata fail-closed + `response_id` persistito) e mantenendo due conversation/bootstrap separati. Nessuna promozione production-like prima della review successiva GPTina.
+- GPTina: revisionare il pre-flight real adapter già implementato e il blocker verificato del primo smoke. La chiamata provider reale resta in attesa della configurazione server-side del secret `OPENAI_API_KEY`; nessuna promozione production-like.
