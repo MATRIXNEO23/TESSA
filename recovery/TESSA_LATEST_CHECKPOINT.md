@@ -1,10 +1,10 @@
 # Tessa — Latest Checkpoint
 
-updated: 2026-09-18T14:32+02:00
+updated: 2026-09-18T14:42+02:00
 
 Puntatore rapido corrente:
 
-`chat-checkpoints/2026-09-18T1432-pre-real-responses-smoke.md`
+`chat-checkpoints/2026-09-18T1442-real-responses-preflight-green-smoke-blocked-key.md`
 
 ## Ripresa rapida
 
