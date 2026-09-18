@@ -200,11 +200,20 @@ export class RoomEngine {
         (event) =>
           event.roomId === run.roomId &&
           event.eventId >= run.contextFromEventId &&
-          event.eventId <= run.contextThroughEventId,
+          event.eventId <= run.contextThroughEventId &&
+          (event.type === 'message.created' ||
+            event.type === 'response.completed'),
       )
       .map((event) => ({
         ...event,
-        payload: { ...event.payload, privilege: 'room-content' },
+        payload: {
+          ...event.payload,
+          authorId:
+            event.type === 'response.completed'
+              ? event.agentId
+              : event.payload.authorId,
+          privilege: 'room-content',
+        },
       }));
 
     try {
@@ -226,7 +235,6 @@ export class RoomEngine {
       this.emitRun(run, 'run.failed', {
         message: error instanceof Error ? error.message : 'unknown_error',
       });
-      state.cursor = run.contextThroughEventId;
     }
   }
 
@@ -260,6 +268,36 @@ export class RoomEngine {
       set.delete(listener);
       if (set.size === 0) this.listeners.delete(roomId);
     };
+  }
+
+  subscribeWithReplay(roomId: string, after: number, listener: Listener) {
+    let replaying = true;
+    const buffered: RoomEvent[] = [];
+
+    const unsubscribe = this.subscribe(roomId, (event) => {
+      if (replaying) {
+        buffered.push(event);
+        return;
+      }
+      listener(event);
+    });
+
+    let lastEventId = after;
+
+    for (const event of this.listEvents(roomId, after)) {
+      if (event.eventId <= lastEventId) continue;
+      listener(event);
+      lastEventId = event.eventId;
+    }
+
+    for (const event of buffered) {
+      if (event.eventId <= lastEventId) continue;
+      listener(event);
+      lastEventId = event.eventId;
+    }
+
+    replaying = false;
+    return unsubscribe;
   }
 
   getRun(runId: string) {
