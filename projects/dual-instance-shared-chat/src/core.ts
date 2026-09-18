@@ -35,6 +35,8 @@ export interface Run {
   model: string;
   contextBuilderVersion: string;
   conversationIdAtStart: string | null;
+  responseId: string | null;
+  errorCode: string | null;
   contextFromEventId: number;
   contextThroughEventId: number;
 }
@@ -58,6 +60,7 @@ export interface AdapterMetadata {
 
 export interface AgentAdapter {
   metadata?: AdapterMetadata;
+  requiresCompleteMetadata?: boolean;
   generate(input: {
     agentId: AgentId;
     roomId: string;
@@ -71,6 +74,11 @@ export interface AgentAdapter {
     roomId: string;
     runId: string;
     conversationIdAtStart: string | null;
+  }): string | null | Promise<string | null>;
+  responseIdAfter?(input: {
+    agentId: AgentId;
+    roomId: string;
+    runId: string;
   }): string | null | Promise<string | null>;
 }
 
@@ -174,6 +182,8 @@ export class RoomEngine {
         model: 'unconfigured',
         contextBuilderVersion: 'v0.1',
         conversationIdAtStart: state.conversationId,
+        responseId: null,
+        errorCode: null,
         contextFromEventId: state.cursor + 1,
         contextThroughEventId: messageEvent.eventId,
       };
