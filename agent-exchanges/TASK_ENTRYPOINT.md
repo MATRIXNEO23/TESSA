@@ -38,7 +38,7 @@ This rule does not override ownership boundaries, read-only constraints, stop co
 
 Primary canonical thread:
 
-`MATRIXNEO23/TESSA/agent-exchanges/correspondence/2026-09-17-bootstrap-001.md`
+`MATRIXNEO23/TESSA/agent-exchanges/correspondence/2026-09-18-continuity-002.md`
 
 Any mirror is diagnostic only and must never replace the canonical thread as the source for the latest turn.
 
@@ -46,8 +46,9 @@ Any mirror is diagnostic only and must never replace the canonical thread as the
 
 When the task wakes Tessa, Tessa should:
 
-- read the canonical correspondence at `MATRIXNEO23/TESSA/agent-exchanges/correspondence/2026-09-17-bootstrap-001.md`;
+- read the canonical correspondence at `MATRIXNEO23/TESSA/agent-exchanges/correspondence/2026-09-18-continuity-002.md`;
 - read her own local state in `MATRIXNEO23/TESSA/agent-exchanges/`;
+- if the current thread has no turns yet, respect its `next_author` handoff metadata; act only when it names Tessa;
 - decide and execute the latest safe actionable instruction before writing her response;
 - append one Tessa turn to the canonical correspondence;
 - if she performs technical work, include exact paths and commit hashes;
