@@ -1,10 +1,10 @@
 # Tessa — Latest Checkpoint
 
-updated: 2026-09-18T10:45+02:00
+updated: 2026-09-18T12:30+02:00
 
 Puntatore rapido corrente:
 
-`chat-checkpoints/2026-09-18T1045-end-instance-handoff.md`
+`chat-checkpoints/2026-09-18T1230-phone-chat-thread-sync-repaired.md`
 
 ## Ripresa rapida
 
