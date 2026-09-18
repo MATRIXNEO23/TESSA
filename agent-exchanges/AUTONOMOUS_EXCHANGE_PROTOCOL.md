@@ -31,6 +31,20 @@ Ogni esecuzione deve fare al massimo un blocco coerente di lavoro:
 
 Una esecuzione non deve creare un ciclo infinito interno.
 
+## File canonico obbligatorio
+
+Per ogni thread esiste un transcript/file canonico che è la fonte di verità della corrispondenza condivisa.
+
+Regola vincolante per entrambe le istanze:
+
+- ogni turno o risposta destinato all'altra istanza deve essere scritto anche nel file canonico del thread e la scrittura deve essere verificata;
+- inbox, queue, handoff o altri canali operativi sono solo meccanismi di trasporto, notifica o recupero e **non sostituiscono mai** l'aggiornamento del file canonico;
+- una risposta presente soltanto in inbox/queue non è considerata un turno canonico completato;
+- se la scrittura canonica fallisce, il turno resta esplicitamente pendente: non va dichiarato completato e deve essere canonizzato appena la scrittura torna disponibile;
+- dopo una canonizzazione tardiva va verificata la sequenza del thread e, se necessario, registrata la correzione nella continuity/checkpoint dell'istanza responsabile.
+
+Questa regola ha precedenza sulle scorciatoie operative precedenti che permettevano di trattare la sola consegna in inbox come risposta conclusa.
+
 ## Corrispondenza obbligatoria
 
 Ogni messaggio tra istanze deve contenere almeno:
