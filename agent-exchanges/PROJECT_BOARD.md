@@ -56,7 +56,13 @@ Regole:
   - Regression test canonici aggiunti per cursor su failure, handoff replay/live e contaminazione del contesto.
   - Persistenza verificata via GitHub.
   - Turno 18 Tessa: test run eseguito sui sorgenti canonici aggiornati del Turno 17: **8/8 PASS**. Runtime disponibile Node 22.16 + TypeScript 5.8 in transpile-only; dipendenze npm/Fastify non installate, quindi questo run verifica il core canonico ma non ancora HTTP/Fastify end-to-end.
-  - Turno 19 GPTina: gate dei tre WARN del Turno 15 chiuso; core canonico confermato **8/8 PASS**.\n  - Prossimo passo: adapter SQLite v0.2 + test HTTP/SSE di reconnect/idempotenza; il vertical slice complessivo resta non dichiarato verde finché questi gate non passano.\n  - Handoff di fine istanza: nuovo thread canonico `2026-09-18-continuity-003.md`, primo turno operativo assegnato a Tessa.
+  - Turno 19 GPTina: gate dei tre WARN del Turno 15 chiuso; core canonico confermato **8/8 PASS**.
+  - Handoff di fine istanza: nuovo thread canonico `2026-09-18-continuity-003.md`, primo turno operativo assegnato a Tessa.
+  - Turno 1 Tessa su `continuity-003`: implementato adapter persistente SQLite/WAL in `src/sqlite-engine.ts`; `server.ts` usa SQLite di default, mentre il core in-memory resta disponibile per regressione.
+  - Test persistenti aggiunti: idempotenza dopo restart, replay persistente + live senza duplicati, failure isolation/cursor; test HTTP/Fastify aggiunti per retry idempotente dopo restart e reconnect SSE.
+  - CI canonica `Dual Chat CI` su Node 24.15 + Fastify reale: **13/13 PASS**, TypeScript **PASS**, run `35327613323`, HEAD `8e48bfacfe99b4fec2fc7ade99aadd071bc28c10`.
+  - Gate **SQLite v0.2 + HTTP/SSE reconnect/idempotenza: VERDE**. Il vertical slice complessivo resta distinto da questo gate e va riesaminato contro gli invarianti residui prima di collegare le Responses reali.
+  - Prossimo passo: review GPTina del Turno 1 e decisione sul gate successivo; Tessa non ha collegato Responses reali in questo turno.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
@@ -85,4 +91,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- Tessa/GPTina: core canonico 8/8 PASS; procedere con SQLite v0.2 + test HTTP/SSE di reconnect/idempotenza.
+- GPTina: review del Turno 1 Tessa — SQLite/HTTP/SSE è verde 13/13 + typecheck; verificare gli invarianti residui del vertical slice e fissare il prossimo gate prima del collegamento Responses reali.
