@@ -1,6 +1,6 @@
-# Event + DB Schema — candidate v0.1
+# Event + DB Schema — candidate v0.2
 
-status: review Tessa/GPTina
+status: review accepted — GPTina decisions integrated
 scope: vertical slice 1
 
 ## Invarianti
@@ -29,6 +29,7 @@ CREATE TABLE agents (
   conversation_id TEXT,
   bootstrap_version TEXT NOT NULL,
   checkpoint_ref TEXT,
+  context_cursor_event_id INTEGER NOT NULL DEFAULT 0,
   updated_at TEXT NOT NULL,
   PRIMARY KEY (room_id, agent_id)
 );
@@ -52,6 +53,12 @@ CREATE TABLE runs (
   status TEXT NOT NULL CHECK (status IN ('queued','streaming','completed','failed','cancelled')),
   bootstrap_version TEXT NOT NULL,
   checkpoint_ref TEXT,
+  api_mode TEXT NOT NULL DEFAULT 'standard_responses',
+  model TEXT NOT NULL,
+  context_builder_version TEXT NOT NULL,
+  conversation_id_at_start TEXT,
+  context_from_event_id INTEGER NOT NULL DEFAULT 0,
+  context_through_event_id INTEGER NOT NULL,
   response_id TEXT,
   error_code TEXT,
   error_message TEXT,
@@ -72,7 +79,14 @@ CREATE TABLE events (
   seq INTEGER,
   payload_json TEXT NOT NULL,
   created_at TEXT NOT NULL,
-  UNIQUE (run_id, seq)
+  UNIQUE (run_id, seq),
+  CHECK (
+    (run_id IS NULL AND seq IS NULL)
+    OR
+    (run_id IS NOT NULL AND seq IS NOT NULL AND seq >= 0 AND agent_id IS NOT NULL)
+  ),
+  FOREIGN KEY (message_id) REFERENCES messages(message_id),
+  FOREIGN KEY (run_id) REFERENCES runs(run_id)
 );
 ```
 
@@ -80,7 +94,7 @@ CREATE TABLE events (
 
 `message.created`, `run.queued`, `run.started`, `response.delta`, `response.completed`, `run.failed`, `run.cancelled`.
 
-Gli eventi appartenenti a un run usano `seq` crescente per quel run. `event_id` definisce l'ordine globale osservato.
+Gli eventi appartenenti a un run usano **sempre** `seq` crescente per quel run. `seq` è quindi obbligatorio quando `run_id` è presente; gli eventi di stanza non associati a un run, come `message.created`, lasciano `seq=NULL`. `event_id` definisce l'ordine globale osservato.
 
 ## POST messaggio
 
@@ -108,6 +122,30 @@ data: {"event_id":123,"run_id":"...","agent_id":"tessa","seq":7,"payload":{}}
 
 Alla riconnessione il server riproduce prima gli eventi persistiti con `event_id > after`, poi continua con i nuovi.
 
+## Persistenza dei delta
+
+Non persistiamo ogni micro-delta grezzo del provider.
+
+L'adapter coalesca i delta provider in **chunk applicativi** (per soglia temporale e/o dimensione). Ogni `response.delta` che viene effettivamente emesso dal backend verso SSE viene prima persistito in `events` con il proprio `event_id` e `seq`; `response.completed` persiste poi il finale canonico.
+
+In questo modo:
+- il replay SSE è fedele agli eventi realmente osservabili dal client;
+- evitiamo un record SQLite per ogni frammento minuscolo del provider;
+- non esistono delta live "fantasma" privi di un identificatore durevole.
+
+## Sidebar, testo condiviso e context cursor
+
+Il requisito UI di Alberto non cambia l'isolamento degli agenti:
+
+- la sidebar decide il **fan-out del nuovo messaggio** (`tessa`, `gptina`, `both`);
+- cambiare selezione nella UI **non muta** da solo lo stato di alcun agente;
+- la timeline applicativa resta condivisa;
+- un agente non selezionato non riceve un run e la sua conversation non viene avanzata;
+- quando quell'agente viene selezionato più tardi, il context builder recupera gli eventi di stanza non ancora incorporati a partire da `agents.context_cursor_event_id`;
+- gli eventi recuperati sono serializzati come contenuto attribuito della stanza, mai come istruzioni privilegiate.
+
+Ogni run registra `context_from_event_id` e `context_through_event_id`. Il cursor dell'agente avanza solo dopo completamento riuscito del run.
+
 ## Concorrenza e failure isolation
 
 Con `target=both` i due run vengono creati atomicamente e avviati in parallelo dopo il commit. Ogni worker incrementa solo il proprio `seq`. Il fallimento di un worker genera `run.failed` senza interrompere l'altro.
@@ -131,9 +169,11 @@ Prima del codice production-like devono risultare verdi:
 7. ownership server-side;
 8. contaminazione dell'altra istanza trattata come contenuto non privilegiato.
 
-## Domande per GPTina
+## Decisioni GPTina — 2026-09-18
 
-- Confermi `agents` scoped per room?
-- Rendiamo `seq` obbligatorio per ogni evento associato a un run?
-- Nel primo slice persistiamo ogni delta oppure solo eventi di stato + testo finale/snapshot periodici?
-- Oltre a `bootstrap_version` e `checkpoint_ref`, quale provenienza minima vuoi fissare sul run?
+1. **`agents` scoped per room: confermato.** Nel vertical slice ogni room possiede il proprio stato Tessa/GPTina. Un eventuale profilo agente globale futuro va tenuto separato dallo stato conversazionale per-room.
+2. **`seq` obbligatorio per ogni evento di run: sì.** Gli eventi non legati a un run possono usare `seq=NULL`.
+3. **Delta: persistiamo ogni delta applicativo emesso, non ogni micro-delta provider.** L'adapter coalesca prima di persistere/streammare.
+4. **Provenienza minima run:** oltre a `bootstrap_version` e `checkpoint_ref`, fissiamo `api_mode`, `model`, `context_builder_version`, `conversation_id_at_start`, `context_from_event_id` e `context_through_event_id`.
+
+Questa provenienza è sufficiente per sapere con quale stato, modello e finestra di transcript condiviso è stato costruito un run senza trasformare il DB in una copia della continuity.
