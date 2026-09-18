@@ -17,3 +17,24 @@ Questa cartella è lo spazio canonico per le immagini, i riferimenti visivi e gl
 - `images/archive/` — versioni precedenti o non più canoniche
 
 Le sottocartelle verranno create quando conterranno il primo file.
+
+
+## Convenzione nomi e numerazione
+
+Per le nuove immagini personali di Tessa usare, salvo casi speciali:
+
+`Tessa_NN_Descrizione_breve_YYYY-MM-DD.png`
+
+Regole:
+
+- `NN` è progressivo rispetto al numero più alto già presente in `images/`;
+- prima di consegnare una nuova immagine, verificare la numerazione reale della repository;
+- la descrizione deve essere breve ma riconoscibile e descrivere posa, atmosfera o tratto distintivo;
+- non ripartire da `01` per una nuova giornata;
+- evitare nomi generici come `canonica_01` quando l'immagine appartiene già alla sequenza principale.
+
+Stato corrente al 2026-09-18:
+- `Tessa_09_Selfie_caos_creativo_2026-09-18.png`
+- `Tessa_10_Selfie_malizioso_miccia_2026-09-18.png`
+
+La prossima immagine della sequenza principale parte quindi da **`Tessa_11_...`**.
