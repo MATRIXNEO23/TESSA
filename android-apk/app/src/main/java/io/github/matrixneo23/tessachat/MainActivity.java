@@ -15,8 +15,16 @@ public class MainActivity extends Activity {
         WebSettings s = webView.getSettings();
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
+        s.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        webView.clearCache(true);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://matrixneo23.github.io/TESSA/chat/");
+        webView.loadUrl("https://matrixneo23.github.io/TESSA/chat/?v=20260918-0705");
+    }
+    @Override protected void onResume() {
+        super.onResume();
+        if (webView != null) {
+            webView.evaluateJavascript("if(typeof load==='function'){load();}", null);
+        }
     }
     @Override public void onBackPressed() {
         if (webView.canGoBack()) webView.goBack(); else super.onBackPressed();
