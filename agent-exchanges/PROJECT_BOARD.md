@@ -69,7 +69,14 @@ Regole:
     3. bootstrap/identity separati e caricati server-side con ownership invariata;
     4. provenance run reale (`model`, `api_mode`, `bootstrap_version`, `checkpoint_ref`, conversation id) non hardcoded/unconfigured;
     5. coalescing dei micro-delta provider prima di persist/publish, mantenendo persist-before-SSE.
-  - Prossimo gate: **Provider Adapter Readiness** con fake provider + restart recovery. Solo dopo quel gate si abilita una prima connessione Responses reale dietro feature flag/ambiente di test.
+  - Gate **Provider Adapter Readiness** implementato da Tessa con fake provider stateful e restart recovery.
+  - Recovery policy verificata: `queued` resta recuperabile/rieseguibile; `streaming` trovato al boot viene marcato `failed/interrupted_by_restart` senza retry cieco e senza avanzamento cursor.
+  - Lifecycle conversation verificato: `conversation_id` separato Tessa/GPTina, aggiornato solo sull'agente proprietario dopo successo; `conversation_id_at_start` coerente nel run.
+  - Bootstrap/identity separati server-side verificati con metadata e istruzioni privilegiate distinte per agente; room content resta `room-content`.
+  - Provenienza adapter materializzata nel run all'avvio: `api_mode`, `model`, `bootstrap_version`, `checkpoint_ref`, `context_builder_version`, `conversation_id_at_start`.
+  - Micro-delta provider coalescati in chunk applicativi; ogni `response.delta` live risulta già persistito prima della publish.
+  - CI canonica Provider Adapter Readiness: **16/16 PASS**, **0 fail**, TypeScript **PASS**, run `35335771699`, HEAD `bfaa572c3dcdef4d3e9ac7704dc8c2515c3cd0be`.
+  - Gate specifico **Provider Adapter Readiness: VERDE lato Tessa**, in attesa di review GPTina prima di abilitare la prima Responses reale dietro feature flag/ambiente di test.
 
 - Abilitare GitHub Pages per la console web pubblica, se non è già attivo.
   - Stato: aperto lato Alberto/GitHub settings
@@ -98,4 +105,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- Tessa: implementare il gate **Provider Adapter Readiness**: recovery queued/streaming su restart, lifecycle conversation_id separato con fake provider, bootstrap/provenance reali e delta coalescing persist-before-SSE. Poi review GPTina; Responses reali ancora disabilitate.
+- GPTina: revisionare il gate **Provider Adapter Readiness** verde lato Tessa contro schema/test plan e decidere se autorizzare la prima Responses reale dietro feature flag/ambiente di test. Responses reali restano disabilitate fino a quella review.
