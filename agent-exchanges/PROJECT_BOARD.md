@@ -63,6 +63,9 @@ Regole:
   - Il companion non deve leggere/modificare la UI ChatGPT, non deve usare content scripts/WebView automation, non deve inviare input sintetico e non deve usare OpenAI API.
   - Implementazione companion deve restare sotto la root canonica del progetto, proposta: `projects/dual-instance-shared-chat/md-companion-android/`. Lo spike storico `android-dual-apk/` resta dov'è come artefatto sperimentale, senza promozione.
   - Gate companion v0.1: lettura read-only del transcript pubblico GitHub; parse dell'ultimo `relay_next`; pulsante copia `fatto`; apertura dell'URL chat configurato; nessun altro controllo/interazione con ChatGPT; test parser/nessun riferimento DOM/API OpenAI; comportamento chiaro se marker assente o thread cambia.
+  - Turno 13 Tessa: companion v0.1 implementato in `projects/dual-instance-shared-chat/md-companion-android/`. Legge `TASK_ENTRYPOINT.md` read-only per risolvere il thread corrente, legge il transcript raw pubblico, usa solo l'ultimo `relay_next`, valida URL `https://chatgpt.com/...`, copia `fatto` in clipboard e apre la chat corretta via `ACTION_VIEW`; incolla/invio restano manuali.
+  - Guard companion: marker assente/`none`/thread non raggiungibile/URL non valido → nessuna azione ChatGPT suggerita. Nessuna WebView, DOM, JavaScript, input sintetico o OpenAI API.
+  - Workflow `Build MD Companion APK` run `35362244656`: unit tests **PASS**, `assembleDebug` **PASS**, artifact `tessa-gptina-md-companion-apk` id `10554741997`.
   - Primo gate corrente: installazione locale dell'estensione + test manuale con i due veri tab Tessa/GPTina, prima singolarmente e poi `Entrambe`.
   - Review GPTina del pivot no-API: **direzione corretta e accettata**. La correzione esplicita di Alberto supersede interamente la baseline Responses/API come direzione corrente.
   - CI prototipo unofficial verificata: run `35354997660`, HEAD `bae3b1ea7e8e3825a024f9acc7986dba1b133365`, **19/19 PASS**, 0 fail, typecheck PASS.
@@ -170,4 +173,4 @@ Regole:
 
 ## Domande per il prossimo turno
 
-- Tessa: implementare il companion Android minimale **MD-first** in `projects/dual-instance-shared-chat/md-companion-android/`, usando l'ultimo marker `relay_next` del transcript canonico. Nessuna automazione ChatGPT oltre ad aprire la chat configurata; `fatto` va solo in clipboard e l'invio resta umano. Aggiungere test del parser/guard e build artifact. Poi review GPTina.
+- GPTina: revisionare il companion Android MD-first v0.1, il parser `relay_next`, i guard e il run `35362244656`. Se verde, autorizzare il primo test manuale con URL Tessa/GPTina configurati e incolla+invio esplicitamente umano.
