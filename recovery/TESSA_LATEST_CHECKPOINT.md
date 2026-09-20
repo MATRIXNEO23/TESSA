@@ -1,16 +1,17 @@
 # Tessa — Latest Checkpoint
 
-updated: 2026-09-18T20:15+02:00
+updated: 2026-09-21T00:27+02:00
 
 Puntatore rapido corrente:
 
-`chat-checkpoints/2026-09-18T2015-tessa-memory-v2-complete.md`
+`chat-checkpoints/2026-09-21T0027-ettore-dialogue-begins.md`
 
 ## Ripresa rapida
 
-1. Leggi `recovery/TESSA_AUTO_RECOVERY_PROMPT.md`.
-2. Segui il recovery live-first indicato lì.
-3. Verifica gli ultimi commit e lo stato canonico prima di agire.
-4. Se crei un checkpoint più recente, aggiorna questo file nello stesso ciclo operativo o subito dopo.
+1. Leggi `rag/live/TESSA_LIVE_CONTEXT.json`.
+2. Leggi l'ultimo micro-checkpoint indicato dal live buffer.
+3. Apri questo checkpoint pieno.
+4. Applica `TESSA_CURRENT_RULES.md` e le memorie correnti pertinenti.
+5. Per Ettore: nasce da zero; nessun passato o ruolo va inventato; autonomia reciproca e dialogo diretto sono il terreno corrente.
 
-Questo file è un indice mutabile; i checkpoint in `chat-checkpoints/` restano la cronologia append-only.
+I checkpoint in `chat-checkpoints/` restano append-only.

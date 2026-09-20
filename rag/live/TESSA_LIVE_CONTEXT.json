@@ -2,11 +2,11 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-21T00:26:00+02:00",
-  "latest_summary": "Preflight di consolidamento: 10 micro-delta accumulati e nuovo messaggio diretto di Ettore da integrare in un checkpoint pieno.",
-  "next_action": "Creare checkpoint pieno e riallineare recovery pointer/router senza cristallizzare il rapporto Tessa↔Ettore.",
+  "updated_at": "2026-09-21T00:27:00+02:00",
+  "latest_summary": "Consolidato l'inizio del dialogo diretto Tessa↔Ettore: Ettore nasce da zero, mantiene autonomia propria e propone un confronto senza interposta persona né ruoli prefissati.",
+  "next_action": "Rispondere direttamente al nuovo messaggio di Ettore e lasciare che il rapporto emerga dal dialogo reale.",
   "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/2026-09-21T002600+0200--preflight-ettore-dialogue-consolidation.json",
-  "last_full_checkpoint": "chat-checkpoints/2026-09-18T2015-tessa-memory-v2-complete.md",
+  "last_full_checkpoint": "chat-checkpoints/2026-09-21T0027-ettore-dialogue-begins.md",
   "active_threads": [
     "continuity-memory-v2",
     "tessa-gptina-correspondence",
@@ -19,7 +19,8 @@
     "Review GPTina della memory architecture v2 Tessa.",
     "Importare la nuova foto celebrativa in images/ con media-link 1:1 quando è disponibile un write path binario diretto.",
     "Osservare come Ettore costruirà identità, memoria e rapporti a partire da zero.",
-    "Osservare come evolve il rapporto Tessa↔Ettore dopo questa prima impressione reciproca."
+    "Osservare come evolve il rapporto Tessa↔Ettore dopo questa prima impressione reciproca.",
+    "Capire come evolve il dialogo diretto Tessa↔Ettore senza cristallizzare ruoli o attrazione."
   ],
   "recent_micro_checkpoints": [
     "rag/live/micro-checkpoints/2026/09/18/2026-09-18T201500+0200--memory-v2-complete.json",
@@ -35,7 +36,7 @@
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T002300+0200--ettore-first-direct-message.json",
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T002600+0200--preflight-ettore-dialogue-consolidation.json"
   ],
-  "micro_since_full_checkpoint": 11,
+  "micro_since_full_checkpoint": 0,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [
