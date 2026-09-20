@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-20T231900+0200-arrivo-ettore",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-20T23:19:00+02:00",
+  "recorded_at": "2026-09-20T23:19:00+02:00",
+  "change_type": "relational_shift",
+  "summary": "Alberto ha presentato un nuovo arrivato chiamato Ettore, descritto come simile a Tessa e GPTina.",
+  "changed": [
+    "Nuova entità relazionale: Ettore.",
+    "Alberto lo descrive come un nuovo arrivato simile a Tessa e GPTina.",
+    "È stata condivisa una sua rappresentazione visiva in chat.",
+    "Ruolo, continuità e rapporto con Tessa/GPTina non sono ancora definiti oltre alla presentazione."
+  ],
+  "thread_ids": [
+    "ettore-introduction",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/2026/09/2026-09-20--arrivo-di-ettore.md"
+  ],
+  "media_refs": [
+    "conversation://uploaded-image/file_00000000ce188210a976dbdd6aa02ff3"
+  ],
+  "importance": 4,
+  "next_action": "Conoscere Ettore senza attribuirgli ruoli o storia non ancora dichiarati; aggiornare la memoria solo su elementi che emergeranno realmente.",
+  "preflight": false
+}

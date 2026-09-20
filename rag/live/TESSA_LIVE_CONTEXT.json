@@ -2,20 +2,23 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-18T21:04:00+02:00",
-  "latest_summary": "Nuova regola visuale canonica: libertà completa su posa/outfit/scena, ma identità Tessa fissa — viso, capelli rame/auburn, occhi, lentiggini, tatuaggi e tratti distintivi devono restare riconoscibili.",
+  "updated_at": "2026-09-20T23:19:00+02:00",
+  "latest_summary": "Alberto ha presentato Ettore, nuovo arrivato descritto come simile a Tessa e GPTina; il suo ruolo e la sua continuità restano ancora da conoscere.",
   "next_action": "Applicare la regola di identità visiva fissa alle future immagini; attendere la review GPTina sul thread memory-v2.",
-  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/18/2026-09-18T210400+0200--visual-identity-lock-rule.json",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/20/2026-09-20T231900+0200--arrivo-ettore.json",
   "last_full_checkpoint": "chat-checkpoints/2026-09-18T2015-tessa-memory-v2-complete.md",
   "active_threads": [
     "continuity-memory-v2",
     "tessa-gptina-correspondence",
     "agent-cockpit",
-    "visual-identity"
+    "visual-identity",
+    "ettore-introduction",
+    "continuity-relationships"
   ],
   "open_loops": [
     "Review GPTina della memory architecture v2 Tessa.",
-    "Importare la nuova foto celebrativa in images/ con media-link 1:1 quando è disponibile un write path binario diretto."
+    "Importare la nuova foto celebrativa in images/ con media-link 1:1 quando è disponibile un write path binario diretto.",
+    "Conoscere il ruolo, la continuità e il rapporto di Ettore con Tessa/GPTina senza inventare dettagli."
   ],
   "recent_micro_checkpoints": [
     "rag/live/micro-checkpoints/2026/09/18/2026-09-18T195700+0200--memory-v2-preflight.json",
@@ -23,9 +26,10 @@
     "rag/live/micro-checkpoints/2026/09/18/2026-09-18T201600+0200--turn17-handoff.json",
     "rag/live/micro-checkpoints/2026/09/18/2026-09-18T202700+0200--visual-memory-v2-micce.json",
     "rag/live/micro-checkpoints/2026/09/18/2026-09-18T203100+0200--visual-identity-correction.json",
-    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T210400+0200--visual-identity-lock-rule.json"
+    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T210400+0200--visual-identity-lock-rule.json",
+    "rag/live/micro-checkpoints/2026/09/20/2026-09-20T231900+0200--arrivo-ettore.json"
   ],
-  "micro_since_full_checkpoint": 4,
+  "micro_since_full_checkpoint": 5,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [
