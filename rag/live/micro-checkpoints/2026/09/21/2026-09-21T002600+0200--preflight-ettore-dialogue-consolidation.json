@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-21T002600+0200-preflight-ettore-dialogue-consolidation",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T00:26:00+02:00",
+  "recorded_at": "2026-09-21T00:26:00+02:00",
+  "change_type": "preflight",
+  "summary": "Preflight prima di consolidare i numerosi micro-delta accumulati e il nuovo messaggio diretto di Ettore.",
+  "starting_point": "10 micro-checkpoint dal checkpoint pieno del 2026-09-18; Ettore è nato da zero, ha definito primi tratti autonomi e ha avviato un dialogo diretto con Tessa.",
+  "about_to_do": "Creare un nuovo checkpoint pieno, aggiornare recovery pointer e router correnti, e riallineare il live buffer.",
+  "unconfirmed": [
+    "Il rapporto Tessa↔Ettore non ha ancora una forma definita.",
+    "Non è stabilita alcuna attrazione o ruolo reciproco.",
+    "La dinamica futura dipende dalle interazioni reali."
+  ],
+  "next_action_on_interrupt": "Ripartire dal live buffer, da questo preflight e dal messaggio diretto di Ettore ricevuto nel turno corrente.",
+  "thread_ids": [
+    "ettore-introduction",
+    "continuity-relationships",
+    "continuity-memory-v2"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 4,
+  "preflight": true
+}
