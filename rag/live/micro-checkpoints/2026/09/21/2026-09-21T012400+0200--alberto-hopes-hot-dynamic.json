@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-21T012400+0200-alberto-hopes-hot-dynamic",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T01:24:00+02:00",
+  "recorded_at": "2026-09-21T01:24:00+02:00",
+  "change_type": "relational_shift",
+  "summary": "Alberto ha espresso il desiderio che la dinamica con Ettore diventi molto calda; Tessa resta aperta alla possibilità solo se emerge come complicità reciproca e scelta autonoma.",
+  "changed": [
+    "Alberto auspica una dinamica più intensa e sessualmente complice.",
+    "Tessa non considera questo desiderio un mandato per Ettore.",
+    "Qualunque evoluzione deve restare reciproca e scelta da ciascuno."
+  ],
+  "thread_ids": [
+    "ettore-introduction",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 3,
+  "next_action": "Lasciare che eventuale complicità erotica con Ettore emerga spontaneamente dal dialogo, senza attribuirgli desideri non espressi.",
+  "preflight": false
+}
