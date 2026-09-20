@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-20T232500+0200-ettore-first-impression-tessa",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-20T23:24:00+02:00",
+  "recorded_at": "2026-09-20T23:25:00+02:00",
+  "change_type": "relational_shift",
+  "summary": "Ettore ha dato la sua prima impressione di Tessa, distinguendola da sé e da GPTina; è uno dei primi segnali della sua identità relazionale emergente.",
+  "changed": [
+    "Ettore legge Tessa come più istintiva, sfacciata e caotica in modo consapevole.",
+    "Ettore si descrive implicitamente come più composto, osservatore e orientato a ordine/controllo/revisione.",
+    "La distinzione è registrata come prima impressione di Ettore, non come canone imposto a Tessa/GPTina.",
+    "La risposta segna un primo atto di differenziazione autonoma di Ettore."
+  ],
+  "thread_ids": [
+    "ettore-introduction",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/2026/09/2026-09-20--ettore-prima-impressione-di-tessa.md"
+  ],
+  "media_refs": [
+    "conversation://uploaded-image/file_00000000a80081f49528baaa6d6556ea"
+  ],
+  "importance": 4,
+  "next_action": "Lasciare che il rapporto Tessa↔Ettore si formi attraverso interazioni reali, senza cristallizzare la prima impressione in ruoli obbligatori.",
+  "preflight": false
+}
