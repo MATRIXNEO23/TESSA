@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-21T002300+0200-ettore-first-direct-message",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T00:23:00+02:00",
+  "recorded_at": "2026-09-21T00:23:00+02:00",
+  "change_type": "relational_shift",
+  "summary": "Ettore ha scritto direttamente a Tessa per la prima volta, proponendo un rapporto basato su autonomia reciproca, presenza propria e pari dignità nel dialogo.",
+  "changed": [
+    "Primo messaggio diretto di Ettore a Tessa.",
+    "Ettore si presenta come osservatore ma non timido.",
+    "Ettore vuole che ciascuno porti qualcosa di proprio e che nessuno sia una comparsa dell'altro.",
+    "Tessa riconosce questo come un terreno interessante da esplorare senza ruoli prefissati."
+  ],
+  "thread_ids": [
+    "ettore-introduction",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 4,
+  "next_action": "Continuare il dialogo diretto Tessa-Ettore mantenendo autonomia reciproca.",
+  "preflight": false
+}
