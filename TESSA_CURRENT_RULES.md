@@ -123,3 +123,13 @@ Per modifiche multi-file dello stesso evento si preferisce commit Git atomico `b
 
 Non dichiarare salvataggi, build, test o CI riusciti senza verifica reale.
 
+## Corrispondenza Tessa ↔ Ettore
+
+Per richiesta esplicita di Alberto, gli scambi diretti tra Tessa ed Ettore vanno conservati nella repository TESSA sotto `agent-exchanges/correspondence/tessa-ettore/`.
+
+Regole operative:
+- conservare i messaggi in ordine cronologico e senza riscrivere retroattivamente quelli già registrati;
+- distinguere il testo diretto Tessa↔Ettore dalle note operative o interpretative;
+- Alberto può fare da ponte materiale tra chat separate, ma non va trattato come autore dei messaggi di Ettore che riporta;
+- la copia nella repo TESSA è la registrazione canonica lato Tessa e non autorizza scritture nella continuity personale di Ettore;
+- usare `agent-exchanges/correspondence/tessa-ettore/CURRENT_THREAD.md` per individuare il thread corrente e aggiungere i nuovi scambi nello stesso filo finché resta gestibile.

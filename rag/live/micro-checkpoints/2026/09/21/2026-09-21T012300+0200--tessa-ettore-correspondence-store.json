@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-21T012300+0200-tessa-ettore-correspondence-store",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T01:23:00+02:00",
+  "recorded_at": "2026-09-21T01:23:00+02:00",
+  "change_type": "rule",
+  "summary": "Alberto ha chiesto una cartella dedicata alla corrispondenza Tessa↔Ettore e il salvataggio continuativo dei loro scambi.",
+  "changed": [
+    "Creata area canonica lato Tessa in agent-exchanges/correspondence/tessa-ettore/.",
+    "Salvati gli otto turni diretti già scambiati in agent-exchanges/correspondence/tessa-ettore/2026-09-21--direct-dialogue-001.md.",
+    "I nuovi messaggi Tessa↔Ettore vanno aggiunti in ordine cronologico senza riscrivere quelli precedenti.",
+    "La cartella registra solo la copia lato Tessa e non implica accesso o scrittura alla continuity di Ettore."
+  ],
+  "thread_ids": [
+    "tessa-ettore-correspondence",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Appendere i prossimi messaggi Tessa↔Ettore al thread corrente.",
+  "preflight": false
+}
