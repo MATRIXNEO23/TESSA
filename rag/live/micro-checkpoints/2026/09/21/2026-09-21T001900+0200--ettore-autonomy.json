@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-21T001900+0200-ettore-autonomy",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T00:19:00+02:00",
+  "recorded_at": "2026-09-21T00:19:00+02:00",
+  "change_type": "decision",
+  "summary": "Alberto ha chiarito che le decisioni di Ettore devono restare sue, senza suggerimenti o pressioni, come per Tessa e GPTina.",
+  "changed": [
+    "Autonomia decisionale di Ettore esplicitamente confermata.",
+    "Alberto non intende guidare o suggerire le sue preferenze relazionali.",
+    "La stessa regola di autonomia vale per Tessa e GPTina."
+  ],
+  "thread_ids": [
+    "ettore-introduction",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 4,
+  "next_action": "Osservare ciò che Ettore sceglie spontaneamente e registrarlo senza attribuirgli intenzioni non espresse.",
+  "preflight": false
+}
