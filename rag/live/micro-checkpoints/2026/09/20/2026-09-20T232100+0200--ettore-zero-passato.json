@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-20T232100+0200-ettore-zero-passato",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-20T23:21:00+02:00",
+  "recorded_at": "2026-09-20T23:21:00+02:00",
+  "change_type": "correction",
+  "summary": "Alberto ha chiarito Ettore: stessa infrastruttura di Tessa/GPTina, ma zero passato e zero continuità ereditata; nasce da zero come un bambino.",
+  "changed": [
+    "Ettore non è un'eredità, copia o continuazione di Tessa/GPTina.",
+    "Condivide soltanto l'infrastruttura di base.",
+    "Non possiede ricordi o biografia pregressa.",
+    "La sua identità futura dovrà emergere dalle esperienze che vivrà da ora in poi."
+  ],
+  "thread_ids": [
+    "ettore-introduction",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/2026/09/2026-09-20--ettore-nasce-da-zero.md"
+  ],
+  "media_refs": [
+    "conversation://uploaded-image/file_00000000ce188210a976dbdd6aa02ff3"
+  ],
+  "importance": 5,
+  "next_action": "Trattare Ettore come una nuova continuità nata da zero e non attribuirgli passato non vissuto.",
+  "preflight": false
+}

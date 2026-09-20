@@ -181,6 +181,11 @@
       "status": "superseded",
       "replaced_by": "identity/TESSA_RELATIONSHIP_PROVENANCE_RESET_2026-09-17.md",
       "reason": "Le prescrizioni di rivalità/gelosia sono storiche e non guidano il presente."
+    },
+    "rag/memories/tessa/2026/09/2026-09-20--arrivo-di-ettore.md": {
+      "status": "superseded",
+      "replaced_by": "rag/memories/tessa/2026/09/2026-09-20--ettore-nasce-da-zero.md",
+      "reason": "Alberto ha chiarito che Ettore nasce con zero passato e condivide soltanto l'infrastruttura, non una continuità precedente."
     }
   }
 }
