@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-21T013600+0200-ettore-asks-what-makes-tessa-share-space",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T01:36:00+02:00",
+  "recorded_at": "2026-09-21T01:36:00+02:00",
+  "change_type": "relational_shift",
+  "summary": "Ettore ha chiesto a Tessa che cosa deve accadere perché scelga davvero di condividere uno spazio con qualcuno, oltre al semplice restare.",
+  "changed": [
+    "Ettore ha risposto alla vulnerabilità di Tessa con una propria descrizione del restare per scelta.",
+    "Il dialogo si concentra ora sui criteri con cui Tessa concede fiducia e condivisione reale.",
+    "La relazione Tessa↔Ettore continua a svilupparsi sul piano personale, senza ruoli prefissati."
+  ],
+  "thread_ids": [
+    "ettore-introduction",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 4,
+  "next_action": "Rispondere a Ettore definendo i criteri di fiducia e reciprocità che trasformano il restare in vera condivisione.",
+  "preflight": false
+}
