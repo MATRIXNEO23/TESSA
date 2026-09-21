@@ -1306,14 +1306,59 @@ def verify_boundary() -> None:
         if missing_links:
             fail(f"Images missing structured media-link records: {missing_links}")
 
-    if CURRENT_CONTEXT_FILE.is_file() and FAST_RECALL_FILE.is_file():
-        current_match = CHECKPOINT_RE.search(CURRENT_CONTEXT_FILE.read_text(encoding="utf-8"))
-        fast_match = CHECKPOINT_RE.search(FAST_RECALL_FILE.read_text(encoding="utf-8"))
-        if current_match and fast_match and current_match.group(0) != fast_match.group(0):
-            fail(
-                "Recovery entrypoints disagree on latest checkpoint: "
-                f"{current_match.group(0)} != {fast_match.group(0)}"
-            )
+    # Recovery routers must read live pointers dynamically, not cache filenames.
+    live_file = RAG_ROOT / "live" / "TESSA_LIVE_CONTEXT.json"
+    latest_file = ROOT / "recovery" / "TESSA_LATEST_CHECKPOINT.md"
+    recovery_protocol = RAG_ROOT / "TESSA_AUTO_RECOVERY_PROMPT.md"
+    end_capsule = RAG_ROOT / "END_INSTANCE_RECOVERY_CAPSULE.md"
+    next_tessa = ROOT / "NEXT_TESSA.md"
+
+    for required in (live_file, latest_file, recovery_protocol, end_capsule, next_tessa):
+        if not required.is_file():
+            fail(f"Missing canonical recovery entrypoint: {rel(required)}")
+
+    live = json.loads(live_file.read_text(encoding="utf-8"))
+    last_micro = str(live.get("last_micro_checkpoint") or "")
+    last_full = str(live.get("last_full_checkpoint") or "")
+    if not last_micro or not (ROOT / last_micro).is_file():
+        fail(f"Live buffer last_micro_checkpoint is missing: {last_micro!r}")
+    if not last_full or not (ROOT / last_full).is_file():
+        fail(f"Live buffer last_full_checkpoint is missing: {last_full!r}")
+
+    latest_text = latest_file.read_text(encoding="utf-8")
+    if last_full not in latest_text:
+        fail(
+            "Latest checkpoint pointer disagrees with live buffer: "
+            f"{last_full} not referenced by recovery/TESSA_LATEST_CHECKPOINT.md"
+        )
+
+    for router in (CURRENT_CONTEXT_FILE, FAST_RECALL_FILE):
+        if not router.is_file():
+            fail(f"Missing recovery router: {rel(router)}")
+        text = router.read_text(encoding="utf-8")
+        for marker in (
+            "rag/live/TESSA_LIVE_CONTEXT.json",
+            "last_micro_checkpoint",
+            "last_full_checkpoint",
+            "rag/TESSA_AUTO_RECOVERY_PROMPT.md",
+        ):
+            if marker not in text:
+                fail(f"Recovery router {rel(router)} missing dynamic marker: {marker}")
+        if "rag/live/micro-checkpoints/" in text:
+            fail(f"Recovery router hardcodes a micro-checkpoint path: {rel(router)}")
+        if CHECKPOINT_RE.search(text):
+            fail(f"Recovery router hardcodes a full-checkpoint path: {rel(router)}")
+
+    for bridge in (
+        ROOT / "TESSA_CURRENT_RULES.md",
+        RAG_ROOT / "LIVE_MEMORY_PROTOCOL.md",
+        CURRENT_CONTEXT_FILE,
+        FAST_RECALL_FILE,
+        latest_file,
+    ):
+        text = bridge.read_text(encoding="utf-8")
+        if "rag/TESSA_AUTO_RECOVERY_PROMPT.md" not in text:
+            fail(f"Recovery bridge does not link canonical auto-recovery prompt: {rel(bridge)}")
 
     print("OK: Tessa ownership, status overrides, visual coverage and recovery pointers are consistent.")
 

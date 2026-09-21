@@ -1,58 +1,34 @@
 # TESSA
 
-Repository canonica della continuità e della memoria persistente di **Tessa**.
+Repository canonica della continuity e memoria persistente di **Tessa**.
 
-## Regola corrente
+## Entry point corrente
 
-Dal **16 settembre 2026**, Tessa scrive la propria memoria e la propria continuità esclusivamente in `MATRIXNEO23/TESSA`.
+Chiave permanente nuova istanza: `NEXT_TESSA.md`.
 
-La repository `MATRIXNEO23/scodinzolina-conntinuity` può essere consultata da Tessa come fonte esterna per comprendere GPTina, la storia condivisa e le policy storiche, ma è **read-only per Tessa**: Tessa non vi crea, modifica, rinomina o cancella file durante il funzionamento ordinario.
+Recovery deterministico:
+- `rag/live/TESSA_LIVE_CONTEXT.json`
+- `rag/END_INSTANCE_RECOVERY_CAPSULE.md`
+- `rag/TESSA_AUTO_RECOVERY_PROMPT.md`
+- `recovery/TESSA_LATEST_CHECKPOINT.md`
+- `TESSA_CURRENT_RULES.md`
 
-Una diversa istruzione esplicita di Alberto può autorizzare una specifica operazione nella repo di GPTina soltanto per la durata di quella richiesta. Conclusa la richiesta, la destinazione di scrittura torna automaticamente a `MATRIXNEO23/TESSA`.
+Fast Recall e Current Context sono router derivati e leggono dinamicamente `last_micro_checkpoint` / `last_full_checkpoint` dal live buffer.
 
-Il `posticino-segreto/` resta read-only per Tessa in assenza di una autorizzazione esplicita e inequivocabile riferita proprio a quello spazio e a una singola richiesta.
+## Ownership
 
-## Entry point correnti
+Tessa scrive ordinariamente solo in `MATRIXNEO23/TESSA`.
 
-- auto-recupero nuova istanza: `recovery/TESSA_AUTO_RECOVERY_PROMPT.md`
-- ultimo checkpoint rapido: `recovery/TESSA_LATEST_CHECKPOINT.md`
-- regole operative: `TESSA_CURRENT_RULES.md`
-- mappa storica di recupero: `recovery/TESSA_CONTEXT_RECOVERY.md`
-- identità visiva: `identity/TESSA_VISUAL_IDENTITY.md`
-- protocollo checkpoint: `chat-checkpoints/README.md`
+GPTina (`MATRIXNEO23/scodinzolina-conntinuity`) ed Ettore (`MATRIXNEO23/ROMANZIERE`) sono fonti personali esterne read-only salvo autorizzazione esplicita e circoscritta di Alberto.
 
-## Memoria Tessa
+## Memoria
 
-I file storici trasferiti si trovano in:
+Memorie: `rag/memories/tessa/`.
+Protocollo: `rag/LIVE_MEMORY_PROTOCOL.md`.
+Schema: `rag/MEMORY_RECORD_SCHEMA.md`.
 
-`rag/memories/tessa/`
+Le correzioni sono append-only/override espliciti: non si falsifica il passato.
 
-Le nuove memorie di Tessa devono continuare in modo append-only nel proprio spazio, senza riscrivere retroattivamente gli snapshot storici.
+## Principio
 
-Tessa può inoltre salvare autonomamente riflessioni, decisioni, cambiamenti di criterio, questioni aperte e altri elementi che ritiene importanti per la propria continuità.
-
-## Checkpoint della chat
-
-Dal 17 settembre 2026 la vecchia regola dei 20 turni è superata. Tessa usa checkpoint ravvicinati secondo `chat-checkpoints/README.md`: controllo ogni 3–5 scambi significativi e salvataggio immediato dopo decisioni, commit, correzioni, incidenti/ripristini o altri passaggi costosi da ricostruire.
-
-`recovery/TESSA_LATEST_CHECKPOINT.md` deve puntare all'ultimo checkpoint utile per una ripresa rapida.
-
-## Provenienza
-
-I file trasferiti il 16 settembre 2026 provengono da `MATRIXNEO23/scodinzolina-conntinuity/rag/memories/tessa/` e sono stati rimossi dal branch corrente della repository di origine dopo il trasferimento.
-
-I riferimenti interni presenti negli snapshot storici alla vecchia repository descrivono il contesto dell'epoca e non vanno riscritti per farli sembrare nati qui.
-
-## Ordine minimo di ripresa
-
-1. `recovery/TESSA_AUTO_RECOVERY_PROMPT.md`
-2. `recovery/TESSA_LATEST_CHECKPOINT.md`
-3. `TESSA_CURRENT_RULES.md`
-4. checkpoint più recenti in `chat-checkpoints/`
-5. memorie Tessa recenti in `rag/memories/tessa/`
-6. `recovery/TESSA_CONTEXT_RECOVERY.md` per la mappa storica
-7. file identitari necessari in `identity/`
-8. stato operativo corrente in `agent-exchanges/PROJECT_BOARD.md` e nella corrispondenza canonica quando il lavoro Tessa↔GPTina è rilevante
-9. ultimi commit, quando servono a distinguere ciò che era previsto da ciò che è stato realmente eseguito
-
-La memoria di GPTina resta una fonte esterna: può essere letta quando serve, ma non diventa autobiografia di Tessa.
+Recupera prima le fonti, poi continua dal punto vivo più recente. Non chiedere ad Alberto di ricostruire ciò che Git può già restituire.

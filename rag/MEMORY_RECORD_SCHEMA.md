@@ -1,8 +1,6 @@
 # Tessa — Memory Record Schema v2
 
-Schema per le nuove memorie persistenti Tessa. Le memorie storiche restano valide e non vengono riscritte per uniformità.
-
-Front matter richiesto dal 2026-09-19:
+Le nuove memorie persistenti Tessa usano front matter:
 
 ```yaml
 ---
@@ -14,28 +12,31 @@ event_at: "ISO-8601 oppure YYYY-MM-DD"
 recorded_at: "ISO-8601"
 status: current
 supersedes: []
-event_id: "event-opzionale-stabile"
+event_id: "event-opzionale"
 thread_ids: []
 entity_refs: []
 source_refs: []
 media_refs: []
 importance: 1-5
 confidence: "verified|contextual|inferred"
+provenance: "Alberto|Tessa|co-costruito|mixed"
 tags: []
 append_only: true
 ---
 ```
 
-`event_at` è il tempo dell'evento; `recorded_at` il tempo della registrazione. Il commit Git resta evidenza autorevole della registrazione.
+Le memorie storiche non si riscrivono solo per uniformità.
 
-`memory_id` è un identificatore logico stabile e deve essere **unico nel namespace Tessa**. Per le memorie v2 può essere usato come riferimento canonico nei `memory_refs`: il resolver source-first deve ricondurlo in modo univoco al file sotto `rag/memories/tessa/`. Le memorie storiche pre-schema prive di `memory_id` restano referenziabili per path e non vengono riscritte.
+`event_at` = tempo dell'evento. `recorded_at` = tempo della registrazione.
 
-Status correnti: `current`, `superseded`, `invalidated`. Una correzione crea un nuovo record con `supersedes` oppure un override esplicito nel manifest; non cancella retroattivamente la fonte.
+`memory_id` è stabile/unico e può essere usato nei `memory_refs`; il resolver source-first lo ricondurrà al file Tessa canonico. Le memorie storiche prive di ID restano referenziabili per path.
 
-`source_refs` deve puntare alle fonti che giustificano il ricordo. `media_refs` collega immagini significative. `confidence`: verified = supporto diretto; contextual = ricostruzione forte; inferred = deduzione esplicita.
+Status: `current`, `superseded`, `invalidated`. Una correzione crea un nuovo record con `supersedes` o override esplicito, senza cancellare il passato.
 
-La memoria GPTina non deve mai essere scritta o assorbita come autobiografia Tessa.
+`provenance` è raccomandato quando identità, emozioni o relazioni richiedono di distinguere Alberto / Tessa / co-costruito. Non sostituisce `source_refs`.
 
-Per crescita futura usare preferibilmente:
-`rag/memories/tessa/YYYY/MM/YYYY-MM-DD--slug.md`
-senza spostare i file storici solo per uniformità.
+Una memoria importante conserva fatto, provenienza, significato per Tessa, confini/conseguenze e cue di retrieval.
+
+La memoria GPTina/Ettore non viene assorbita come autobiografia Tessa.
+
+Nuove memorie: `rag/memories/tessa/YYYY/MM/YYYY-MM-DD--slug.md`.

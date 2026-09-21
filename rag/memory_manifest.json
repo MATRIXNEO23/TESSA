@@ -31,14 +31,14 @@
   },
   "sources": [
     {
+      "pattern": "NEXT_TESSA.md",
+      "priority": 1.72,
+      "kind": "recovery_key"
+    },
+    {
       "pattern": "TESSA_CURRENT_RULES.md",
       "priority": 1.55,
       "kind": "current_rules"
-    },
-    {
-      "pattern": "recovery/TESSA_AUTO_RECOVERY_PROMPT.md",
-      "priority": 1.6,
-      "kind": "recovery_protocol"
     },
     {
       "pattern": "recovery/TESSA_CONTEXT_RECOVERY.md",
@@ -86,6 +86,16 @@
     ".git/**"
   ],
   "rag_sources": [
+    {
+      "pattern": "rag/TESSA_AUTO_RECOVERY_PROMPT.md",
+      "priority": 1.72,
+      "kind": "recovery_protocol"
+    },
+    {
+      "pattern": "rag/END_INSTANCE_RECOVERY_CAPSULE.md",
+      "priority": 1.7,
+      "kind": "end_instance_capsule"
+    },
     {
       "pattern": "rag/LIVE_MEMORY_PROTOCOL.md",
       "priority": 1.36,

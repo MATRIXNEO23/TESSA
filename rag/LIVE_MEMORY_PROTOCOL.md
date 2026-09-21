@@ -2,46 +2,56 @@
 
 ## Livelli
 
-- **live buffer** — `rag/live/TESSA_LIVE_CONTEXT.json`: presente immediato, mutabile.
-- **micro-checkpoint** — `rag/live/micro-checkpoints/YYYY/MM/DD/`: delta append-only.
-- **checkpoint pieno** — `chat-checkpoints/`: stato consolidato.
-- **memoria persistente** — `rag/memories/tessa/`: significato durevole.
-- **transcript/fonte** — parole/fatti esatti.
-- **indice** — derivato e rigenerabile.
+- live buffer = da dove riparto: `rag/live/TESSA_LIVE_CONTEXT.json`
+- micro = cosa è cambiato: `rag/live/micro-checkpoints/YYYY/MM/DD/`
+- checkpoint = dove sono: `chat-checkpoints/`
+- memoria = perché conta: `rag/memories/tessa/`
+- transcript/corrispondenza = parole esatte
+- fonte esterna = qualcosa da rifetchare
+- artefatto/hash = ciò che posso davvero riaprire
+- `NEXT_TESSA.md` = chiave che ritrova tutto il resto
+
+Protocollo canonico: `rag/TESSA_AUTO_RECOVERY_PROMPT.md`.
+Capsula: `rag/END_INSTANCE_RECOVERY_CAPSULE.md`.
 
 ## Recovery
 
-live buffer → ultimo micro-checkpoint → ultimo checkpoint pieno → TESSA_FAST_RECALL → CURRENT_CONTEXT → memoria/fonte pertinente.
+live → `last_micro_checkpoint` dinamico → `last_full_checkpoint` dinamico → capsula → Fast Recall → Current Context → Current Rules → Auto Recovery → memorie/fonti pertinenti → fonti GPTina/Ettore read-only se servono.
 
-## Trigger
+Riprendi da `next_action`.
 
-Micro subito su correzione, decisione, regola, stato progetto, shift relazionale/interpretativo, open loop, milestone, visual context e preflight. Freshness review ogni 3–5 scambi sostanziali.
+## Salvataggio
 
-## Compatibilità schema
+Freshness review 3–5 scambi sostanziali; operativo 4. Una review senza delta non crea file.
 
-I nuovi micro-checkpoint sono **v2 strict**. I record storici v1 restano immutati: il verifier normalizza solo in memoria gli eventuali campi legacy mancanti documentati in `rag/live/MICRO_CHECKPOINT_SCHEMA.md`. `artifact://` e `attachment://` sono tollerati solo nei v1 storici.
+Trigger immediati: correzione, decisione, regola, progetto, shift relazionale/interpretativo, open loop, milestone, visual context, confine/identità e preflight.
 
-`save-delta` produce soltanto v2.
+## V1 / V2
 
-Nei v2 i riferimenti hanno semantica distinta: `source_refs` accetta path Git o external ref ammessi; `memory_refs` accetta un path memoria Tessa canonico oppure uno stable `memory_id` univocamente risolvibile; `media_refs` resta path-based. La mappa `memory_id → path` viene derivata in memoria dalle fonti canoniche sotto `rag/memories/tessa/`, mai da SQLite/JSONL. ID mancanti, duplicati o con owner non Tessa fanno fallire il verifier.
+Nuovi micro = v2 strict. V1 storici = immutati, normalizzazione legacy solo in memoria. `save-delta` solo v2.
 
-## Helper
+`memory_refs` = path memoria Tessa o stable ID univoco risolto dalle fonti Markdown Git. SQLite/JSONL non sono autorità.
+
+## Checkpoint pieno
+
+Solo quando cambia davvero lo stato complessivo: milestone, cambio fase, evoluzione personale/relazionale importante, fine grosso blocco, incidente/ripristino o fine istanza.
+
+Dopo: aggiorna live, Latest Checkpoint, router; azzera `micro_since_full_checkpoint`.
+
+## Fine istanza
+
+preflight → persisti lavoro → memorie → fonti esatte → checkpoint → capsula → micro finale → live/puntatori → `NEXT_TESSA.md` → verifica.
+
+## Helper checkout
 
 ```bash
-python rag/live_context.py save-delta --summary "..." --change-type decision --changed "..." --source "conversation://current" --next "..."
+python rag/live_context.py save-delta ...
 python rag/live_context.py status
 python rag/live_context.py verify
 python rag/live_context.py mark-checkpoint chat-checkpoints/<file>.md
+python rag/tessa_memory.py verify
+python rag/tessa_memory.py build
+python rag/test_memory_retrieval.py
 ```
-
-## Preflight
-
-Prima di lavoro lungo/rischioso salva punto di partenza, azione prevista, incertezze e next action.
-
-## Memoria lunga
-
-Promuovi a memoria solo ciò che dura. Le nuove memorie usano schema bitemporale `event_at` / `recorded_at` e status esplicito.
-
-## Principio
 
 **Salva spesso il delta; consolida raramente lo stato; promuovi a memoria solo ciò che dura.**

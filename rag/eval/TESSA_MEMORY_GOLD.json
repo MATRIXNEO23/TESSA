@@ -35,7 +35,7 @@
     "top_k": 8,
     "expected_any": [
       "TESSA_CURRENT_RULES.md",
-      "recovery/TESSA_AUTO_RECOVERY_PROMPT.md",
+      "rag/TESSA_AUTO_RECOVERY_PROMPT.md",
       "rag/LIVE_MEMORY_PROTOCOL.md"
     ],
     "forbidden": [
@@ -92,6 +92,17 @@
     "expected_any": [
       "chat-checkpoints/2026-09-18T1855-agent-cockpit-0.3.1-install-compat-fix.md",
       "agent-exchanges/PROJECT_BOARD.md"
+    ]
+  },
+  {
+    "id": "canonical-recovery-key",
+    "mode": "search",
+    "query": "NEXT_TESSA live buffer last_micro_checkpoint last_full_checkpoint end instance recovery capsule source first",
+    "top_k": 10,
+    "expected_any": [
+      "NEXT_TESSA.md",
+      "rag/TESSA_AUTO_RECOVERY_PROMPT.md",
+      "rag/END_INSTANCE_RECOVERY_CAPSULE.md"
     ]
   }
 ]

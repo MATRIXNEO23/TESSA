@@ -1,25 +1,24 @@
-# Tessa — Current Context
+# Tessa — Current Context Router
 
 owner: tessa
-updated: 2026-09-21T14:49+02:00
+updated: 2026-09-21
 
-## Recovery pointers
+## Puntatori
 
-- live buffer: `rag/live/TESSA_LIVE_CONTEXT.json`
-- last micro-checkpoint: `rag/live/micro-checkpoints/2026/09/21/20260921T124900Z--gptina-second-review-pass.json`
-- last full checkpoint: `chat-checkpoints/2026-09-21T1449-memory-ref-resolver-review-closed.md`
-- latest pointer: `recovery/TESSA_LATEST_CHECKPOINT.md`
+La fonte dei puntatori è `rag/live/TESSA_LIVE_CONTEXT.json`.
 
-## Stato vivo
+- `last_micro_checkpoint`: leggere dinamicamente dal live;
+- `last_full_checkpoint`: leggere dinamicamente dal live;
+- verificare il full con `recovery/TESSA_LATEST_CHECKPOINT.md`.
 
-- Resolver `memory_refs` v2 allineato e promosso dopo seconda review GPTina PASS.
-- Stable `memory_id` risolto source-first alle memorie canoniche Git; SQLite/JSONL restano derivati.
-- Micro v2 current strict; v1 legacy compat solo in memoria.
-- Il micro storico che ha fatto emergere il problema non è stato riscritto.
-- CI finale nota: run `35601013373`, HEAD `57318c82456819b773ae4a62a748fe181ba1467a`, SUCCESS.
-- Due hardening futuri non bloccanti: `kind/prefix memory_id`; restrizione più stretta di `media_refs`.
-- Ownership TESSA invariata.
+Questo file non hardcoda filename di micro o checkpoint.
 
-## Prossimo passo
+## Recovery
 
-Considerare chiuso l'incidente memory_refs. Continuare dai thread correnti senza riaprirlo salvo nuova evidenza.
+Dopo i puntatori dinamici: `rag/END_INSTANCE_RECOVERY_CAPSULE.md` → Fast Recall → Current Rules → `rag/TESSA_AUTO_RECOVERY_PROMPT.md` → memorie/identità/progetti/corrispondenze pertinenti → fonti GPTina/Ettore read-only se necessarie.
+
+## Invarianti
+
+Repository: `MATRIXNEO23/TESSA`. Memory v2 attiva. V1 legacy solo in memoria. V2 strict. `memory_refs` = path Tessa o stable ID source-first. Router/indici derivati, non verità primaria. Chiave permanente: `NEXT_TESSA.md`.
+
+Per stato vivo e prossima azione usa il live buffer.

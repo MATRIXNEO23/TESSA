@@ -1,14 +1,17 @@
 # Tessa — Fast Recall
 
-1. Apri `rag/live/TESSA_LIVE_CONTEXT.json`.
-2. Ultimo micro: `rag/live/micro-checkpoints/2026/09/21/20260921T124900Z--gptina-second-review-pass.json`.
-3. Ultimo checkpoint pieno: `chat-checkpoints/2026-09-21T1449-memory-ref-resolver-review-closed.md`.
-4. Regole: `TESSA_CURRENT_RULES.md`.
-5. Memorie personali: `rag/memories/tessa/`; seguire i riferimenti del checkpoint.
-6. Micro schema: v1 legacy compat solo in-memory; v2 current strict; `save-delta` crea solo v2.
-7. `memory_refs` v2: path canonico Tessa oppure stable `memory_id` univoco risolto source-first da Git.
-8. GPTina resta read-only salvo autorizzazione esplicita e circoscritta.
-9. Lavoro condiviso: `agent-exchanges/TASK_ENTRYPOINT.md` e marker finale `relay_next`.
-10. Retrieval: `python rag/tessa_memory.py search "..."`; exact: `find-exact`; history opt-in.
+Router, non fotografia autonoma.
 
-Ultima verifica tecnica nota: HEAD `57318c82456819b773ae4a62a748fe181ba1467a`, Tessa Memory CI run `35601013373` SUCCESS, regression 9/9. Seconda review GPTina in sola lettura: PASS; problema memory_refs v2 chiuso.
+1. Apri `rag/live/TESSA_LIVE_CONTEXT.json`.
+2. Leggi dinamicamente `last_micro_checkpoint` e apri il path indicato.
+3. Leggi dinamicamente `last_full_checkpoint` e apri il path indicato.
+4. Verifica il full contro `recovery/TESSA_LATEST_CHECKPOINT.md`.
+5. Apri `rag/END_INSTANCE_RECOVERY_CAPSULE.md`.
+6. Apri `rag/index/CURRENT_CONTEXT.md`.
+7. Applica `TESSA_CURRENT_RULES.md` e `rag/TESSA_AUTO_RECOVERY_PROMPT.md`.
+8. Recupera soltanto memorie/fonti pertinenti.
+9. Riprendi da `next_action`.
+
+Non inserire qui filename concreti di micro o checkpoint.
+
+Regole rapide: source-first; current-only default; exact per parole esatte; history opt-in; GPTina/Ettore read-only; v1 legacy in-memory; nuovi micro v2 strict; stable memory ID risolto dalle fonti Git; `NEXT_TESSA.md` è la chiave permanente.
