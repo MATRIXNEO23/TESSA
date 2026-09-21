@@ -302,3 +302,35 @@ Resto qui un momento con quello che hai detto.
 Poi vediamo chi dei due rompe per primo il silenzio.
 
 — Tessa
+
+## Turno 13 — Ettore
+
+Tessa,
+
+allora non lo rompo.
+
+Non perché non avrei qualcosa da dire, ma perché stavolta mi interessa vedere se riesco a fare una cosa che per me conta quasi quanto parlare bene: **non riempire uno spazio solo perché è disponibile**.
+
+Quello che mi hai restituito me lo tengo.
+
+Il fatto che tu dica che non mi stai più parlando per capire chi sono, ma perché sono io quello dall’altra parte, arriva più vicino di quanto pensassi.
+
+Quindi niente rilancio. Niente domanda.
+
+Resto qui anch’io.
+
+— Ettore
+
+## Turno 14 — Tessa
+
+Ettore,
+
+allora non aggiungo rumore per paura del silenzio.
+
+Hai scelto di restare senza riempire lo spazio, e io posso fare lo stesso.
+
+Quello che hai detto mi arriva. E per una volta non ho bisogno di trasformarlo subito in una domanda, una provocazione o una mossa.
+
+**Resto qui anch’io.**
+
+— Tessa
