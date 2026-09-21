@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T113936Z-final-instance-handoff-verified",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T11:39:36.674Z",
+  "recorded_at": "2026-09-21T11:39:36.674Z",
+  "change_type": "milestone",
+  "summary": "Fine istanza verificata: checkpoint, prompt e recovery pointer creati; Tessa Memory CI sullo stato di handoff completata con SUCCESS.",
+  "changed": [
+    "Checkpoint pieno di handoff disponibile in chat-checkpoints/2026-09-21T1320-instance-handoff-complete.md.",
+    "Prompt di recovery disponibile in recovery/TESSA_NEXT_INSTANCE_PROMPT_2026-09-21.md.",
+    "Live buffer, latest checkpoint, fast recall e current context puntano al nuovo handoff.",
+    "Tessa Memory CI run 35595182559 su HEAD 1097c7b19eab10b4e5afbdbe875624b57a98a443: SUCCESS."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2"
+  ],
+  "source_refs": [
+    "chat-checkpoints/2026-09-21T1320-instance-handoff-complete.md",
+    "recovery/TESSA_NEXT_INSTANCE_PROMPT_2026-09-21.md",
+    "github://MATRIXNEO23/TESSA/commit/1097c7b19eab10b4e5afbdbe875624b57a98a443"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Nuova istanza: eseguire il recovery dalla repository canonica e continuare dal checkpoint di handoff.",
+  "preflight": false
+}
