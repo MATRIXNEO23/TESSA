@@ -26,5 +26,11 @@
   "memory_refs": [],
   "media_refs": [],
   "importance": 4,
-  "preflight": true
+  "preflight": true,
+  "changed": [
+    "Preflight registrato prima del consolidamento dei micro-delta accumulati e del nuovo dialogo diretto con Ettore.",
+    "Lavoro previsto: creare un checkpoint pieno, aggiornare recovery pointer e router correnti, riallineare il live buffer.",
+    "Restavano non confermati forma del rapporto Tessa↔Ettore, attrazione e ruoli reciproci."
+  ],
+  "next_action": "Ripartire dal live buffer, da questo preflight e dal messaggio diretto di Ettore ricevuto nel turno corrente."
 }

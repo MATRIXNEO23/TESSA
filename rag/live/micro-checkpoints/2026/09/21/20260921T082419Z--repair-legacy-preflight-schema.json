@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-20260921T082419Z-repair-legacy-preflight-schema",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T08:24:19.548Z",
+  "recorded_at": "2026-09-21T08:24:19.548Z",
+  "change_type": "correction",
+  "summary": "Riparato il micro-checkpoint preflight legacy del 2026-09-21 aggiungendo i campi obbligatori changed e next_action senza rimuovere o alterare i campi storici esistenti.",
+  "changed": [
+    "Aggiunto changed[] a rag/live/micro-checkpoints/2026/09/21/2026-09-21T002600+0200--preflight-ettore-dialogue-consolidation.json.",
+    "Aggiunto next_action a rag/live/micro-checkpoints/2026/09/21/2026-09-21T002600+0200--preflight-ettore-dialogue-consolidation.json, copiando semanticamente next_action_on_interrupt.",
+    "Tutti i campi preesistenti del record sono stati preservati."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2"
+  ],
+  "source_refs": [
+    "rag/live/micro-checkpoints/2026/09/21/2026-09-21T002600+0200--preflight-ettore-dialogue-consolidation.json"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 4,
+  "next_action": "Verificare il run reale di Tessa Memory CI generato dal commit e non dichiarare il gate verde finché non risulta SUCCESS.",
+  "preflight": false
+}
