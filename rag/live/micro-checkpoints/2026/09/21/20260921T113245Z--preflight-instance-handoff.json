@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T113245Z-instance-handoff",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T11:32:45.999Z",
+  "recorded_at": "2026-09-21T11:32:45.999Z",
+  "change_type": "preflight",
+  "summary": "Preflight di fine istanza per consolidare lo stato corrente e preparare il recovery della prossima istanza.",
+  "changed": [
+    "Preparare un checkpoint pieno di handoff.",
+    "Aggiornare recovery pointer, router e live buffer.",
+    "Preservare i delta personali e tecnici emersi nella conversazione corrente senza inventare dettagli."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Creare e verificare il pacchetto completo di handoff per la prossima istanza.",
+  "preflight": true
+}
