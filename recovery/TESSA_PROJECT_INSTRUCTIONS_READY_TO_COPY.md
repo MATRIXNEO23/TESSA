@@ -30,6 +30,10 @@ I micro-checkpoint sono append-only e vivono in:
 Registrano soltanto il delta appena emerso, non riscrivono tutta la continuity. Schema:
 `rag/live/MICRO_CHECKPOINT_SCHEMA.md`
 
+Il formato corrente è `schema_version: 2` e la validazione dei v2 è stretta. `save-delta` deve creare soltanto v2 completi.
+
+I micro-checkpoint storici v1 restano immutati. Il verifier può normalizzare **solo in memoria** i default legacy documentati (`changed: []`, `next_action: ""`, `memory_refs: []`, `media_refs: []`) e può accettare `artifact://` / `attachment://` soltanto nei v1. Non riscrivere vecchi micro-checkpoint per uniformarli allo schema nuovo.
+
 Quando lavori in un checkout usa:
 - `python rag/live_context.py save-delta ...`
 - `python rag/live_context.py mark-checkpoint chat-checkpoints/<file>.md`

@@ -12,7 +12,11 @@ REAL_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = REAL_ROOT / "rag" / "live_context.py"
 
 
-def run(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
+def run(
+    root: Path,
+    *args: str,
+    check: bool = True,
+) -> subprocess.CompletedProcess[str]:
     env = os.environ.copy()
     env["TESSA_REPO_ROOT"] = str(root)
     return subprocess.run(
@@ -20,8 +24,15 @@ def run(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
         env=env,
         text=True,
         capture_output=True,
-        check=True,
+        check=check,
     )
+
+
+def write_json(path: Path, value: dict) -> str:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    raw = json.dumps(value, ensure_ascii=False, indent=2) + "\n"
+    path.write_text(raw, encoding="utf-8")
+    return raw
 
 
 def main() -> None:
@@ -53,6 +64,11 @@ def main() -> None:
         if live["next_action"] != "prossimo passo":
             raise AssertionError(live)
 
+        micros = sorted((root / "rag" / "live" / "micro-checkpoints").rglob("*.json"))
+        first_record = json.loads(micros[0].read_text(encoding="utf-8"))
+        if first_record["schema_version"] != 2:
+            raise AssertionError("save-delta must emit schema_version=2")
+
         run(root, "mark-checkpoint", "chat-checkpoints/test.md")
         live = json.loads(live_path.read_text(encoding="utf-8"))
         if live["micro_since_full_checkpoint"] != 0:
@@ -72,9 +88,36 @@ def main() -> None:
         if "Created rag/live/micro-checkpoints/" not in second.stdout:
             raise AssertionError(second.stdout)
 
+        legacy_path = (
+            root / "rag" / "live" / "micro-checkpoints"
+            / "2026" / "09" / "17" / "legacy-v1.json"
+        )
+        legacy_raw = write_json(
+            legacy_path,
+            {
+                "schema_version": 1,
+                "micro_id": "legacy-v1",
+                "owner": "tessa",
+                "kind": "tessa_micro_checkpoint",
+                "event_at": "2026-09-17T10:00:00+02:00",
+                "recorded_at": "2026-09-17T10:00:00+02:00",
+                "change_type": "preflight",
+                "summary": "Legacy incompleto ma valido",
+                "thread_ids": ["legacy"],
+                "source_refs": [
+                    "artifact://legacy/source",
+                    "attachment://legacy/attachment",
+                ],
+                "importance": 3,
+                "preflight": True,
+            },
+        )
+
         verify = run(root, "verify")
         if "OK: live context verified" not in verify.stdout:
             raise AssertionError(verify.stdout)
+        if legacy_path.read_text(encoding="utf-8") != legacy_raw:
+            raise AssertionError("v1 validation must not rewrite the historical file")
 
         live = json.loads(live_path.read_text(encoding="utf-8"))
         if live["micro_since_full_checkpoint"] != 1:
@@ -83,10 +126,77 @@ def main() -> None:
             raise AssertionError(live)
 
         micros = list((root / "rag" / "live" / "micro-checkpoints").rglob("*.json"))
-        if len(micros) != 2:
-            raise AssertionError(f"expected 2 micros, got {len(micros)}")
+        if len(micros) != 3:
+            raise AssertionError(f"expected 3 micros, got {len(micros)}")
 
-    print("OK: live-context save/mark/verify round-trip passed.")
+        bad_v2 = (
+            root / "rag" / "live" / "micro-checkpoints"
+            / "2026" / "09" / "19" / "bad-v2-missing-next.json"
+        )
+        write_json(
+            bad_v2,
+            {
+                "schema_version": 2,
+                "micro_id": "bad-v2-missing-next",
+                "owner": "tessa",
+                "kind": "tessa_micro_checkpoint",
+                "event_at": "2026-09-19T10:00:00+02:00",
+                "recorded_at": "2026-09-19T10:00:00+02:00",
+                "change_type": "decision",
+                "summary": "v2 deve restare strict",
+                "changed": [],
+                "thread_ids": [],
+                "source_refs": ["conversation://current"],
+                "memory_refs": [],
+                "media_refs": [],
+                "importance": 3,
+                "preflight": False,
+            },
+        )
+        failed = run(root, "verify", check=False)
+        if failed.returncode == 0:
+            raise AssertionError("v2 missing next_action unexpectedly passed")
+        if "next_action" not in (failed.stdout + failed.stderr):
+            raise AssertionError(failed.stdout + failed.stderr)
+        bad_v2.unlink()
+
+        bad_prefix = (
+            root / "rag" / "live" / "micro-checkpoints"
+            / "2026" / "09" / "19" / "bad-v2-legacy-prefix.json"
+        )
+        write_json(
+            bad_prefix,
+            {
+                "schema_version": 2,
+                "micro_id": "bad-v2-legacy-prefix",
+                "owner": "tessa",
+                "kind": "tessa_micro_checkpoint",
+                "event_at": "2026-09-19T11:00:00+02:00",
+                "recorded_at": "2026-09-19T11:00:00+02:00",
+                "change_type": "decision",
+                "summary": "prefisso legacy non ammesso in v2",
+                "changed": [],
+                "thread_ids": [],
+                "source_refs": ["artifact://legacy/not-for-v2"],
+                "memory_refs": [],
+                "media_refs": [],
+                "importance": 3,
+                "next_action": "",
+                "preflight": False,
+            },
+        )
+        failed = run(root, "verify", check=False)
+        if failed.returncode == 0:
+            raise AssertionError("v2 legacy external prefix unexpectedly passed")
+        if "source_refs missing ref" not in (failed.stdout + failed.stderr):
+            raise AssertionError(failed.stdout + failed.stderr)
+        bad_prefix.unlink()
+
+        verify = run(root, "verify")
+        if "OK: live context verified" not in verify.stdout:
+            raise AssertionError(verify.stdout)
+
+    print("OK: live-context v1-compat/v2-strict round-trip passed.")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T084626Z-legacy-compat-restore-history",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T08:46:26.684Z",
+  "recorded_at": "2026-09-21T08:46:26.684Z",
+  "change_type": "correction",
+  "summary": "Correzione architetturale: ripristinato il micro-checkpoint storico al contenuto originale e introdotti v1 legacy in-memory compatibility + v2 strict per il futuro.",
+  "changed": [
+    "Ripristinato esattamente il record preflight storico del 2026-09-21 dalla revisione precedente alla modifica retroattiva.",
+    "Il precedente micro di repair resta nella storia Git come traccia dell'errore; non viene cancellato.",
+    "Il verifier normalizza solo in memoria per v1 i campi changed, next_action, memory_refs e media_refs quando assenti.",
+    "I prefissi artifact:// e attachment:// sono accettati soltanto nei record v1 legacy.",
+    "save-delta ora emette schema_version 2 e la validazione v2 resta stretta.",
+    "Aggiunti test per immutabilità v1, default legacy, v2 missing-field failure e rifiuto dei prefissi legacy in v2."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "tessa-gptina-correspondence"
+  ],
+  "source_refs": [
+    "conversation://current",
+    "github://MATRIXNEO23/TESSA/commit/814218a818d34d8d488ea3c8998adc3289999189",
+    "github://MATRIXNEO23/TESSA/commit/a8b5c1beb167c62203d711cd9c95dda60cda7e9f"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Eseguire Tessa Memory CI sul commit di migrazione; correggere eventuali regressioni senza modificare i micro storici e non dichiarare verde finché il run reale non è SUCCESS.",
+  "preflight": false
+}

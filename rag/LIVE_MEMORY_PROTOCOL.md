@@ -17,6 +17,12 @@ live buffer → ultimo micro-checkpoint → ultimo checkpoint pieno → TESSA_FA
 
 Micro subito su correzione, decisione, regola, stato progetto, shift relazionale/interpretativo, open loop, milestone, visual context e preflight. Freshness review ogni 3–5 scambi sostanziali.
 
+## Compatibilità schema
+
+I nuovi micro-checkpoint sono **v2 strict**. I record storici v1 restano immutati: il verifier normalizza solo in memoria gli eventuali campi legacy mancanti documentati in `rag/live/MICRO_CHECKPOINT_SCHEMA.md`. `artifact://` e `attachment://` sono tollerati solo nei v1 storici.
+
+`save-delta` produce soltanto v2.
+
 ## Helper
 
 ```bash

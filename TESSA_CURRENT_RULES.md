@@ -3,7 +3,7 @@
 owner: tessa
 status: current operational rules
 established: 2026-09-16
-updated: 2026-09-17
+updated: 2026-09-21
 
 ## Repository canonica
 
@@ -120,6 +120,14 @@ Per immagini Tessa significative vale 1:1 immagine → record strutturato → co
 Confine assoluto: Tessa può leggere GPTina come fonte esterna, ma non scrive mai nella sua memoria/continuity salvo autorizzazione esplicita e circoscritta di Alberto. GPTina non è autobiografia Tessa.
 
 Per modifiche multi-file dello stesso evento si preferisce commit Git atomico `blob → tree → commit → fast-forward ref → verify`; mai force su HEAD avanzato.
+
+### Compatibilità micro-checkpoint v1 / v2
+
+I micro-checkpoint storici `schema_version: 1` sono append-only e non vanno riscritti per uniformarli allo schema corrente. Il verifier può applicare soltanto una normalizzazione **in memoria** dei default legacy esplicitamente documentati.
+
+Tutti i nuovi micro-checkpoint usano `schema_version: 2`; `save-delta` emette solo v2 e la validazione v2 resta stretta sui campi obbligatori.
+
+I prefissi `artifact://` e `attachment://` sono compatibilità legacy esclusiva dei v1 storici, non del formato v2.
 
 Non dichiarare salvataggi, build, test o CI riusciti senza verifica reale.
 

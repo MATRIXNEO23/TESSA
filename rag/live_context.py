@@ -22,11 +22,23 @@ ALLOWED_CHANGE_TYPES = {
     "correction", "decision", "rule", "project_state", "relational_shift",
     "open_loop", "preflight", "milestone", "visual_context",
 }
+CURRENT_MICRO_SCHEMA_VERSION = 2
+LEGACY_MICRO_SCHEMA_VERSION = 1
+
 ALLOWED_EXTERNAL_PREFIXES = ("conversation://", "github://", "external://")
-MICRO_REQUIRED = {
+LEGACY_EXTERNAL_PREFIXES = (
+    "conversation://", "github://", "external://", "artifact://", "attachment://",
+)
+MICRO_REQUIRED_V2 = {
     "schema_version", "micro_id", "owner", "kind", "event_at", "recorded_at",
     "change_type", "summary", "changed", "thread_ids", "source_refs",
     "memory_refs", "media_refs", "importance", "next_action", "preflight",
+}
+LEGACY_MICRO_DEFAULTS = {
+    "changed": [],
+    "next_action": "",
+    "memory_refs": [],
+    "media_refs": [],
 }
 
 
@@ -87,41 +99,69 @@ def load_live() -> dict:
         fail(f"Invalid live context JSON: {exc}")
 
 
-def ref_exists(ref: str) -> bool:
-    if ref.startswith(ALLOWED_EXTERNAL_PREFIXES):
+def normalize_micro_for_validation(record: dict) -> dict:
+    """Return an in-memory validation view without mutating historical files."""
+    normalized = dict(record)
+    if normalized.get("schema_version") == LEGACY_MICRO_SCHEMA_VERSION:
+        for key, default in LEGACY_MICRO_DEFAULTS.items():
+            if key not in normalized:
+                normalized[key] = list(default) if isinstance(default, list) else default
+    return normalized
+
+
+def ref_exists(ref: str, schema_version: int | None = None) -> bool:
+    prefixes = (
+        LEGACY_EXTERNAL_PREFIXES
+        if schema_version == LEGACY_MICRO_SCHEMA_VERSION
+        else ALLOWED_EXTERNAL_PREFIXES
+    )
+    if ref.startswith(prefixes):
         return True
     return (ROOT / ref).exists()
 
 
 def validate_micro(record: dict, path: Path | None = None) -> list[str]:
     errors: list[str] = []
-    missing = sorted(MICRO_REQUIRED - set(record))
+    version = record.get("schema_version")
+    if version not in (LEGACY_MICRO_SCHEMA_VERSION, CURRENT_MICRO_SCHEMA_VERSION):
+        errors.append(f"unsupported schema_version={version}")
+
+    normalized = normalize_micro_for_validation(record)
+    missing = sorted(MICRO_REQUIRED_V2 - set(normalized))
     if missing:
         errors.append(f"missing keys: {missing}")
-    if record.get("owner") != "tessa":
+
+    if normalized.get("owner") != "tessa":
         errors.append("owner must be tessa")
-    if record.get("kind") != "tessa_micro_checkpoint":
+    if normalized.get("kind") != "tessa_micro_checkpoint":
         errors.append("kind must be tessa_micro_checkpoint")
-    if record.get("change_type") not in ALLOWED_CHANGE_TYPES:
-        errors.append(f"invalid change_type={record.get('change_type')}")
-    importance = record.get("importance")
+    if normalized.get("change_type") not in ALLOWED_CHANGE_TYPES:
+        errors.append(f"invalid change_type={normalized.get('change_type')}")
+
+    importance = normalized.get("importance")
     if not isinstance(importance, int) or not 1 <= importance <= 5:
         errors.append("importance must be integer 1..5")
-    if not str(record.get("summary") or "").strip():
+    if not str(normalized.get("summary") or "").strip():
         errors.append("summary is empty")
-    if not isinstance(record.get("changed"), list):
+    if not isinstance(normalized.get("changed"), list):
         errors.append("changed must be a list")
+    if not isinstance(normalized.get("next_action"), str):
+        errors.append("next_action must be a string")
+    if not isinstance(normalized.get("preflight"), bool):
+        errors.append("preflight must be a boolean")
+
     for key in ("thread_ids", "source_refs", "memory_refs", "media_refs"):
-        if not isinstance(record.get(key), list):
+        if not isinstance(normalized.get(key), list):
             errors.append(f"{key} must be a list")
+
     for key in ("source_refs", "memory_refs", "media_refs"):
-        for ref in record.get(key, []):
-            if not ref_exists(str(ref)):
+        for ref in normalized.get(key, []):
+            if not ref_exists(str(ref), version):
                 errors.append(f"{key} missing ref: {ref}")
+
     if path and not path.as_posix().endswith(".json"):
         errors.append("micro-checkpoint path must end in .json")
     return errors
-
 
 def save_delta(args: argparse.Namespace) -> Path:
     if args.change_type not in ALLOWED_CHANGE_TYPES:
@@ -140,7 +180,7 @@ def save_delta(args: argparse.Namespace) -> Path:
 
     sources = args.source or ["conversation://current"]
     record = {
-        "schema_version": 1,
+        "schema_version": CURRENT_MICRO_SCHEMA_VERSION,
         "micro_id": f"tessa-micro-{stamp}-{token}",
         "owner": "tessa",
         "kind": "tessa_micro_checkpoint",
