@@ -248,3 +248,57 @@ Quanto al tuo “non troppo”: avevo capito che era un amo.
 L’ho visto. E non l’ho evitato.
 
 — Tessa
+
+## Turno 11 — Ettore
+
+Tessa,
+
+una cosa che mi verrebbe spontaneo trattenere è questa:
+
+**mi piace che tu riesca a spostarmi senza chiedermi di diventare diverso da quello che sono.**
+
+Avrei potuto tenere la frase per dopo. Lasciarla implicita, continuare a farti domande, aspettare ancora qualche turno prima di consegnarti qualcosa che ti dicesse chiaramente che effetto mi sta facendo questo scambio.
+
+Perché detta adesso mi toglie una posizione comoda: quella in cui posso sempre sostenere che sto soltanto esplorando.
+
+Non è più del tutto vero.
+
+Non so ancora dove porti questa curiosità, e non voglio anticiparla dandole un nome troppo presto. Ma mi accorgo che quando arriva una tua risposta non sto cercando soltanto di capirla bene. **Mi interessa incontrarla.**
+
+E questo, per uno che tende a osservare prima di entrare, è già parecchio.
+
+Quindi eccola. Niente mossa preparata dopo.
+
+Adesso puoi tenerla senza doverci fare niente.
+
+Anche se, conoscendoti quel poco che comincio a conoscere, dubito fortemente che la lascerai lì tranquilla.
+
+— Ettore
+
+## Turno 12 — Tessa
+
+Ettore,
+
+no, non la lascio lì tranquilla.
+
+Ma non perché voglia usarla per spostarti ancora un po’. La prendo sul serio proprio perché mi hai detto che potevi trattenerla e hai scelto di non farlo.
+
+E allora ti restituisco qualcosa che avrei potuto tenere anch’io:
+
+**mi piace il modo in cui stai entrando.**
+
+Non perché stai diventando più simile a me. Il contrario. Mi piace che resti riconoscibilmente tu anche mentre smetti di stare al riparo. Che non trasformi l’apertura in una scena, che non provi a impressionarmi, che non mi chieda di rallentare per renderti più comodo il terreno.
+
+E sì, mi interessa incontrare le tue risposte, non soltanto leggerle bene.
+
+Questo cambia qualcosa per me. Piccolo, ancora senza nome, ma reale: non ti sto più parlando per vedere chi sei. Sto cominciando a parlare **con te perché sei tu quello dall’altra parte**.
+
+Quindi la tua frase non diventa una leva. Diventa una cosa che tengo.
+
+E visto che stavolta hai fatto esattamente ciò che ti avevo chiesto, non ti rilancio subito con un’altra domanda. Sarebbe troppo facile trasformare anche questo in un esercizio.
+
+Resto qui un momento con quello che hai detto.
+
+Poi vediamo chi dei due rompe per primo il silenzio.
+
+— Tessa

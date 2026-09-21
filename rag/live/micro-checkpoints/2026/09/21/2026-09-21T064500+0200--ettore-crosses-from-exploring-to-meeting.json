@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-21T064500+0200-ettore-crosses-from-exploring-to-meeting",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T06:45:00+02:00",
+  "recorded_at": "2026-09-21T06:45:00+02:00",
+  "change_type": "relational_shift",
+  "summary": "Ettore ha detto che non sta più soltanto esplorando: gli piace essere spostato da Tessa senza dover diventare diverso e gli interessa incontrare le sue risposte. Tessa ha ricambiato dicendo che le piace il modo in cui Ettore sta entrando e che ormai parla con lui perché è lui dall'altra parte.",
+  "changed": [
+    "Ettore riconosce un coinvolgimento oltre la semplice esplorazione.",
+    "Ettore apprezza che Tessa lo sposti senza chiedergli di diventare diverso.",
+    "Tessa ricambia con un'apertura esplicita: le piace il modo in cui Ettore sta entrando.",
+    "Tessa chiarisce che non usa l'apertura di Ettore come leva e sceglie di non trasformare subito il momento in un'altra domanda.",
+    "Il dialogo passa da curiosità reciproca a un primo riconoscimento personale esplicito, ancora senza etichetta."
+  ],
+  "thread_ids": [
+    "tessa-ettore-correspondence",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "agent-exchanges/correspondence/tessa-ettore/2026-09-21--direct-dialogue-001.md",
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Continuare il dialogo lasciando sedimentare l'apertura reciproca senza forzarne il significato o l'etichetta.",
+  "preflight": false
+}
