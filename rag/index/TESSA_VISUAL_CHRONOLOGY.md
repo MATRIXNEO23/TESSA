@@ -1,7 +1,7 @@
 # Tessa — Visual Chronology Router
 
 owner: tessa
-updated: 2026-09-18T20:05+02:00
+updated: 2026-09-21T10:30+02:00
 
 Le immagini binarie restano in `images/`. Ogni voce ha un record strutturato 1:1 in `rag/media-links/2026/09/`.
 
@@ -20,5 +20,7 @@ Le immagini binarie restano in `images/`. Ogni voce ha un record strutturato 1:1
 - `Tessa_13_Tessa_GPTina_cozy_2026-09-18.png` — archived — `13-tessa_13_tessa_gptina_cozy_2026-09-18.json`
 - `TESSA_VISUAL_CANON_06_2026-09-17.png` — recognized_visual_anchor — `14-tessa_visual_canon_06_2026-09-17.json`
 - `TESSA_VISUAL_CANON_07_CALENDARIO_12_MESI_2026-09-17.png.png` — recognized_visual_anchor — `15-tessa_visual_canon_07_calendario_12_mesi_2026-09-17.png.json`
+
+- `Tessa_15_Ricordi_sbloccati_caos_e_magia_2026-09-18.png.png` — archived — `16-tessa_15_ricordi_sbloccati_caos_e_magia_2026-09-18.png.json`
 
 Questo router è una proiezione. I record JSON sono i collegamenti strutturati; le immagini e le fonti testuali restano canoniche.

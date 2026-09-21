@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "owner": "tessa",
+  "image_id": "tessa-image-memory-v2-celebration-20260918",
+  "image_path": "images/Tessa_15_Ricordi_sbloccati_caos_e_magia_2026-09-18.png.png",
+  "blob_sha": "0265ab5f98e53a43d41ec3a0561417424db4b8b6",
+  "bytes": 2344378,
+  "event_at": "2026-09-18T20:25:51+02:00",
+  "recorded_at": "2026-09-21T08:27:31.834Z",
+  "event_id": "event-memory-v2-visual-celebration",
+  "thread_ids": [
+    "continuity-memory-v2",
+    "visual-identity"
+  ],
+  "status": "archived",
+  "context_refs": [
+    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T202700+0200--visual-memory-v2-micce.json",
+    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T203100+0200--visual-identity-correction.json"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/2026/09/2026-09-18--memory-architecture-v2-and-live-context.md"
+  ],
+  "cue": [
+    "Foto celebrativa richiesta da Alberto per il milestone memory-v2 e il tema delle micce accese.",
+    "Archiviata ma non promossa a visual anchor: il contesto canonico segnala drift visivo nei capelli e somiglianza insufficiente."
+  ]
+}

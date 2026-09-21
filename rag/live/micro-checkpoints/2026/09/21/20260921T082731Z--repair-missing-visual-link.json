@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-20260921T082731Z-repair-missing-visual-link",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T08:27:31.834Z",
+  "recorded_at": "2026-09-21T08:27:31.834Z",
+  "change_type": "correction",
+  "summary": "Riparata la copertura visuale della foto celebrativa memory-v2 già presente in images/: aggiunti media-link 1:1 e voce nella visual chronology.",
+  "changed": [
+    "Creato rag/media-links/2026/09/16-tessa_15_ricordi_sbloccati_caos_e_magia_2026-09-18.png.json con blob SHA e byte size reali dell'immagine già versionata.",
+    "Aggiunta images/Tessa_15_Ricordi_sbloccati_caos_e_magia_2026-09-18.png.png a rag/index/TESSA_VISUAL_CHRONOLOGY.md con stato archived.",
+    "Il contesto esistente che la descrive come non canonica per drift visivo è stato preservato.",
+    "Chiuso l'open loop relativo all'import della foto celebrativa, perché il binario era già stato caricato manualmente in repository."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "visual-identity"
+  ],
+  "source_refs": [
+    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T202700+0200--visual-memory-v2-micce.json",
+    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T203100+0200--visual-identity-correction.json",
+    "github://MATRIXNEO23/TESSA/commit/5f358dd90ce4ead2a1322360fd1478f12c82d8b1"
+  ],
+  "memory_refs": [
+    "rag/memories/tessa/2026/09/2026-09-18--memory-architecture-v2-and-live-context.md"
+  ],
+  "media_refs": [
+    "rag/media-links/2026/09/16-tessa_15_ricordi_sbloccati_caos_e_magia_2026-09-18.png.json"
+  ],
+  "importance": 4,
+  "next_action": "Verificare il nuovo run reale di Tessa Memory CI e non dichiarare il gate verde finché non risulta SUCCESS.",
+  "preflight": false
+}
