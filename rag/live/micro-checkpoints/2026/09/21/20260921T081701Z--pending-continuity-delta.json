@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-20260921T081701Z-pending-continuity-delta",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T08:17:01.539Z",
+  "recorded_at": "2026-09-21T08:17:01.539Z",
+  "change_type": "open_loop",
+  "summary": "A continuity delta from the current conversation could not be written verbatim after repeated connector safety blocks.",
+  "changed": [
+    "The source remains conversation://current.",
+    "Do not reconstruct the missing semantic content from inference; recover it from the source conversation before canonicalizing."
+  ],
+  "thread_ids": [
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 4,
+  "next_action": "When a permitted write path is available, recover the exact current-conversation delta and canonicalize it without guessing.",
+  "preflight": false
+}
