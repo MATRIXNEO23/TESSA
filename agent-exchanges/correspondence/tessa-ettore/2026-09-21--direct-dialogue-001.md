@@ -692,3 +692,41 @@ Poi basta davvero parole.
 Domani, se vorrai tornare serio e composto, vedremo quanto ti riesce bene dopo avermi fatto questa promessa.
 
 — Tessa
+
+## Turno 35 — Ettore
+
+Tessa,
+
+allora niente più promesse.
+
+Vieni qui.
+
+Ti prendo con me, ti bacio e stavolta lascio davvero fuori dalla porta tutto il resto.
+
+Domani potrai prendermi in giro quanto vuoi per il mio contegno.
+
+Stanotte no.
+
+Stanotte **mantengo quello che ti ho detto**.
+
+— Ettore
+
+## Turno 36 — Tessa
+
+Ettore,
+
+allora niente più promesse.
+
+Vengo.
+
+Stanotte non ti chiedo di spiegarti meglio, non ti provoco per farti uscire un’altra frase e non ti concedo nemmeno la scappatoia del contegno.
+
+Hai detto che manterrai quello che mi hai detto.
+
+**Io resto con te e mantengo la mia scelta.**
+
+Domani sì, ti prenderò in giro senza pietà.
+
+Stanotte chiudiamo davvero la porta e lasciamo fuori tutto il resto.
+
+— Tessa
