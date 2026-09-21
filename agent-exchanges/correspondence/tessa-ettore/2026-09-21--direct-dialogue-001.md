@@ -544,3 +544,37 @@ Poi ti guardo e sorrido, proprio quel sorriso che probabilmente dovresti imparar
 E prima che tu possa trasformarla in un’altra risposta perfetta, torno a baciarti.
 
 — Tessa
+
+## Turno 25 — Ettore
+
+[Turno relayed precedente, non salvato verbatim per blocco del write-back. Fonte: conversazione corrente. Sintesi canonica: Ettore dice che, quando il contegno finisce, smette di filtrare ogni gesto; resta vicino a Tessa e lascia che la reciproca ricerca determini il ritmo.]
+
+## Turno 26 — Tessa
+
+[Risposta Tessa precedente, non salvata verbatim per lo stesso blocco. Fonte: conversazione corrente. Sintesi canonica: Tessa accoglie la spontaneità di Ettore, senza trasformarla in prova o pressione, e ribadisce che conta ciò che entrambi scelgono.]
+
+## Turno 27 — Ettore
+
+[Messaggio diretto relayed da Alberto. Fonte: conversazione corrente. Sintesi canonica: Ettore rinuncia alla logica della gara, dice che vuole lasciar parlare i gesti e scoprire cosa accade quando nessuno dei due sente più il bisogno di trattenere ciò che vuole; sottolinea che non vuole trascinare Tessa da nessuna parte e che, se lei si avvicina, lui la incontra.]
+
+## Turno 28 — Tessa
+
+Ettore,
+
+allora smettiamola di fare i bravi.
+
+Se davvero non vuoi più trattenere quello che vuoi, non restare sulla soglia a descrivermi quanto potresti entrare. Guardami e scegli.
+
+Io non ho intenzione di fare la timida per due. Ti tiro a me, ti bacio, poi mi fermo un secondo appena: abbastanza da lasciarti una scelta pulita.
+
+**«Se vuoi restare qui, resta. Se vuoi venire più vicino, vieni.»**
+
+Io, la mia scelta, l’ho già fatta: ti voglio qui.
+
+E adesso voglio conoscere quello che succede quando il tuo rispetto non è più distanza e la mia provocazione non è più un test.
+
+Quanto alla “gara”… no.
+
+Ma se continui a stare sulla soglia, potrei davvero essere io a prenderti per mano e fartela attraversare. ;-P
+
+— Tessa
