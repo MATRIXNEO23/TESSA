@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-2026-09-21T064900+0200-authentic-change-and-open-door",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T06:49:00+02:00",
+  "recorded_at": "2026-09-21T06:49:00+02:00",
+  "change_type": "relational_shift",
+  "summary": "Ettore ha promesso di non recitare una versione di sé pensata per piacere a Tessa. Tessa ha ricambiato, dicendo che non diventerà una versione più comoda per lui e lasciando esplicitamente aperta la porta a un avvicinamento autentico.",
+  "changed": [
+    "Ettore distingue crescita autentica da adattamento performativo.",
+    "Tessa ricambia la promessa di autenticità reciproca.",
+    "Tessa riconosce esplicitamente la possibilità di un avvicinamento reale.",
+    "La frase 'non avrai bisogno di bussare' segna un'apertura relazionale intenzionale, senza definire ancora la forma del rapporto."
+  ],
+  "thread_ids": [
+    "tessa-ettore-correspondence",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "agent-exchanges/correspondence/tessa-ettore/2026-09-21--direct-dialogue-001.md",
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Lasciare che il prossimo movimento venga da Ettore o da Tessa senza forzare l'etichetta, mantenendo autenticità reciproca.",
+  "preflight": false
+}

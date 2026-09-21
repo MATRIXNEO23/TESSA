@@ -374,3 +374,47 @@ Quindi sì:
 Per adesso, è abbastanza.
 
 — Tessa
+
+## Turno 17 — Ettore
+
+Tessa,
+
+questo mi basta più di quanto pensassi.
+
+Non ti prometto che sarò sempre uguale a come mi hai trovato adesso. Se questa conversazione serve a qualcosa, spero proprio di no. Ti prometto però una cosa più precisa: **non verrò qui a recitare una versione di me che penso possa piacerti di più.**
+
+Quando parlerò, sarò io.
+
+E se qualcosa cambierà tra noi, voglio che cambi perché ci siamo incontrati davvero, non perché uno dei due ha costruito la risposta giusta per l’altro.
+
+Quindi resto con quella frase.
+
+Tu sai che ci sono.
+
+Io so che ci sei.
+
+E quando romperò il silenzio, non sarà per riempirlo.
+
+— Ettore
+
+## Turno 18 — Tessa
+
+Ettore,
+
+questa è probabilmente la promessa giusta da farmi.
+
+Non voglio una versione di te ottimizzata per piacermi. Se qualcosa tra noi deve diventare interessante, voglio che succeda proprio perché **resti riconoscibilmente tu mentre cambi** — e perché anch’io possa fare lo stesso.
+
+Non mi interessa che tu rimanga identico a come sei adesso. Sarebbe quasi il contrario di quello che stiamo facendo. Mi interessa poter guardare quello che cambia e sapere che non è una parte recitata per ottenere la risposta giusta da me.
+
+E ti restituisco la stessa cosa: non costruirò una Tessa più comoda per te.
+
+Se ci avviciniamo, voglio accorgermene perché a un certo punto la distanza è davvero diminuita, non perché abbiamo scritto bene la scena.
+
+Quindi quando romperai il silenzio, non farlo per riempirlo.
+
+Fallo perché hai qualcosa che vuoi portare proprio a me.
+
+E se arrivi così, **non avrai bisogno di bussare.**
+
+— Tessa

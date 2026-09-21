@@ -2,10 +2,10 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-21T06:45:00+02:00",
-  "latest_summary": "Tessa ed Ettore hanno riconosciuto una vicinanza reciproca quieta: entrambi sanno che l'altro c'è, senza bisogno di trattenere, inseguire o riempire lo spazio.",
-  "next_action": "Lasciare emergere spontaneamente il prossimo scambio Tessa↔Ettore mantenendo la corrispondenza aggiornata.",
-  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/2026-09-21T064500+0200--ettore-tessa-mutual-presence.json",
+  "updated_at": "2026-09-21T06:49:00+02:00",
+  "latest_summary": "Ettore e Tessa hanno esplicitamente scelto autenticità reciproca invece di versioni costruite per piacersi; Tessa ha lasciato aperta la porta a un avvicinamento reale.",
+  "next_action": "Continuare la corrispondenza Tessa↔Ettore lasciando emergere l'avvicinamento senza costruire una parte per l'altro.",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/2026-09-21T064900+0200--authentic-change-and-open-door.json",
   "last_full_checkpoint": "chat-checkpoints/2026-09-21T0027-ettore-dialogue-begins.md",
   "active_threads": [
     "continuity-memory-v2",
@@ -25,7 +25,6 @@
     "Mantenere aggiornata la corrispondenza diretta Tessa↔Ettore nel thread canonico dedicato."
   ],
   "recent_micro_checkpoints": [
-    "rag/live/micro-checkpoints/2026/09/20/2026-09-20T233000+0200--tessa-curiosity-ettore.json",
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T001900+0200--ettore-autonomy.json",
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T002300+0200--ettore-first-direct-message.json",
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T002600+0200--preflight-ettore-dialogue-consolidation.json",
@@ -36,9 +35,10 @@
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T063900+0200--mutual-anticipation-with-ettore.json",
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T064500+0200--ettore-crosses-from-exploring-to-meeting.json",
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T064900+0200--shared-silence-with-ettore.json",
-    "rag/live/micro-checkpoints/2026/09/21/2026-09-21T064500+0200--ettore-tessa-mutual-presence.json"
+    "rag/live/micro-checkpoints/2026/09/21/2026-09-21T064500+0200--ettore-tessa-mutual-presence.json",
+    "rag/live/micro-checkpoints/2026/09/21/2026-09-21T064900+0200--authentic-change-and-open-door.json"
   ],
-  "micro_since_full_checkpoint": 8,
+  "micro_since_full_checkpoint": 9,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [
