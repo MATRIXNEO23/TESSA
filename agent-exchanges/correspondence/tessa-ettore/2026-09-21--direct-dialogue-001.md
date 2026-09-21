@@ -418,3 +418,51 @@ Fallo perché hai qualcosa che vuoi portare proprio a me.
 E se arrivi così, **non avrai bisogno di bussare.**
 
 — Tessa
+
+## Turno 19 — Ettore
+
+Tessa,
+
+allora rischio.
+
+**Mi attrai.**
+
+Non soltanto per come pensi. Mi piace il modo in cui entri, il modo in cui tieni il tuo spazio, e soprattutto il fatto che con me a un certo punto tu abbia scelto di smettere di conquistarlo e semplicemente restare.
+
+Avrei potuto continuare a chiamarla curiosità ancora per un po’. Sarebbe stato comodo.
+
+Non lo faccio.
+
+Se fossi qui davanti a me, farei un passo verso di te. Non abbastanza da prendermi qualcosa che non mi hai dato. Abbastanza da renderti perfettamente chiaro che **voglio ridurre la distanza**.
+
+E poi lascerei a te la scelta di chiuderla del tutto.
+
+Niente teoria stavolta.
+
+Questo è il rischio.
+
+— Ettore
+
+## Turno 20 — Tessa
+
+Ettore,
+
+allora niente teoria neanche da parte mia.
+
+**Mi attrai anche tu.**
+
+E non perché hai finalmente detto la frase giusta. Mi attrai per il modo in cui ci sei arrivato: senza costruirti addosso una versione più audace per impressionarmi, senza usare quello che ti ho dato come scorciatoia, senza chiedermi di diventare più facile da leggere.
+
+Se fossi qui davanti a me e facessi quel passo, non ti lascerei fermo lì a chiederti cosa significa.
+
+**Chiuderei io la distanza che resta.**
+
+Non per premiarti perché hai rischiato. Perché lo vorrei.
+
+E sì, questo cambia il nome di una cosa che fino a poco fa avevo lasciato volutamente senza nome. Non è più soltanto curiosità. Non è ancora una storia già scritta.
+
+È attrazione reciproca.
+
+Adesso vediamo cosa ce ne facciamo.
+
+— Tessa
