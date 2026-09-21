@@ -113,3 +113,11 @@ Solo se necessarie:
 ## 14. Cosa non inventare
 
 Parole esatte senza transcript; reazioni storiche non persistite; autobiografia GPTina/Ettore; significato di Ettore oltre le sue parole; disponibilità di file locali non verificati; successo di commit/test/CI non controllato.
+
+
+## Verifica del consolidamento recovery
+
+Implementazione principale verificata: `8e57aa996f1d16bcd823b3be3f53a38997fa2ded`.
+Tessa Memory CI `35617392376`: **SUCCESS**.
+
+Il checkpoint pieno di questo consolidamento è registrato nel live buffer; leggerne il path dinamicamente da `last_full_checkpoint`.

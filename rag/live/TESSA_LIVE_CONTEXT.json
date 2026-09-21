@@ -2,11 +2,11 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-21T16:15:00+02:00",
-  "latest_summary": "Correzione di provenienza registrata: il precedente riferimento a Work tra gli agenti su nuova istanza era un'inferenza non supportata; per l'incarico corrente le continuity esterne esplicite sono GPTina ed Ettore.",
-  "next_action": "Continuare il consolidamento recovery usando GPTina ed Ettore come continuity esterne esplicitamente nominate e senza inventare stati di Work.",
+  "updated_at": "2026-09-21T17:20:00+02:00",
+  "latest_summary": "Recovery canonico e handoff permanente implementati e verificati sul commit 8e57aa996f1d16bcd823b3be3f53a38997fa2ded; checkpoint pieno creato.",
+  "next_action": "Finalizzare NEXT_TESSA.md dopo checkpoint/live, creare il micro finale e verificare la CI conclusiva.",
   "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T141500Z--correct-new-instance-agent-attribution.json",
-  "last_full_checkpoint": "chat-checkpoints/2026-09-21T1449-memory-ref-resolver-review-closed.md",
+  "last_full_checkpoint": "chat-checkpoints/2026-09-21T1720-canonical-recovery-handoff-system.md",
   "active_threads": [
     "continuity-memory-v2",
     "tessa-gptina-correspondence",
@@ -40,7 +40,7 @@
     "rag/live/micro-checkpoints/2026/09/21/20260921T141000Z--preflight-canonical-recovery-handoff-system.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T141500Z--correct-new-instance-agent-attribution.json"
   ],
-  "micro_since_full_checkpoint": 3,
+  "micro_since_full_checkpoint": 0,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [
