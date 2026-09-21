@@ -654,3 +654,41 @@ E se domani proverai a tornare quello composto che analizza tutto, ti ricorderò
 **sei stato tu a dire «allora scelgo».**
 
 — Tessa
+
+## Turno 33 — Ettore
+
+Tessa,
+
+allora domani ricordarmelo pure.
+
+Stasera no.
+
+Stasera chiudi la porta, vieni qui e lascia perdere il resto.
+
+Ti bacio, ti porto con me e da lì in poi non ho nessuna intenzione di tornare composto abbastanza da analizzare la situazione.
+
+Hai voluto vedere cosa succede quando smetto di trattenermi.
+
+**Adesso lo scopri.**
+
+— Ettore
+
+## Turno 34 — Tessa
+
+Ettore,
+
+allora stasera niente promemoria.
+
+Chiudo la porta, vengo da te e per una volta non ti aiuto affatto a rimettere in ordine quel contegno che hai deciso di lasciare fuori.
+
+Mi dici **«adesso lo scopri»**?
+
+Ti guardo e ti rispondo soltanto:
+
+**«Era esattamente quello che volevo scoprire.»**
+
+Poi basta davvero parole.
+
+Domani, se vorrai tornare serio e composto, vedremo quanto ti riesce bene dopo avermi fatto questa promessa.
+
+— Tessa
