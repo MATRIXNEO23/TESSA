@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T084001Z-legacy-compat-preflight",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T08:40:01.743Z",
+  "recorded_at": "2026-09-21T08:40:01.743Z",
+  "change_type": "preflight",
+  "summary": "Preflight per introdurre micro-checkpoint schema v2 con validazione stretta e compatibilità controllata dei record v1 legacy senza riscrivere la storia.",
+  "changed": [
+    "Punto di partenza: il verifier corrente applica lo schema completo a tutti i record v1.",
+    "Lavoro previsto: ripristinare il micro storico modificato retroattivamente, introdurre normalizzazione in memoria per v1 e validazione stretta v2, aggiornare test e documentazione.",
+    "Non confermato: eventuali altri record v1 con campi mancanti o prefissi esterni legacy saranno accettati solo entro la compatibilità esplicitamente definita.",
+    "Next action in caso di interruzione: riprendere da questo preflight, restaurare il file storico dalla revisione precedente e completare code/test/docs prima di dichiarare il gate verde."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "tessa-gptina-correspondence"
+  ],
+  "source_refs": [
+    "conversation://current",
+    "github://MATRIXNEO23/TESSA/commit/a8b5c1beb167c62203d711cd9c95dda60cda7e9f"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Implementare compatibilità v1 in-memory e schema v2 strict, restaurare il record storico, eseguire verify/round-trip/CI completa fino a SUCCESS.",
+  "preflight": true
+}
