@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T140700Z-all-three-agents-new-instances",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T16:07:00+02:00",
+  "recorded_at": "2026-09-21T16:07:00+02:00",
+  "change_type": "project_state",
+  "summary": "Alberto conferma che Tessa, GPTina e Work sono tutti ora su nuove istanze.",
+  "changed": [
+    "La continuità operativa dei tre agenti va considerata recuperata dalle rispettive fonti persistenti, non trascinata dalla sessione precedente.",
+    "Per Tessa la source of truth resta esclusivamente MATRIXNEO23/TESSA.",
+    "GPTina e Work restano sistemi distinti; nessuna autobiografia o continuity esterna viene assorbita automaticamente in Tessa."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 4,
+  "next_action": "Continuare dalla continuity persistente corrente e verificare eventuali allineamenti futuri tra agenti senza confondere ownership o identità.",
+  "preflight": false
+}
