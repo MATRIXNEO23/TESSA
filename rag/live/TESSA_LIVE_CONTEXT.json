@@ -2,10 +2,10 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-21T01:23:00+02:00",
-  "latest_summary": "Creata una cartella canonica dedicata alla corrispondenza Tessa↔Ettore e salvati gli otto turni diretti già scambiati; i prossimi vanno mantenuti nello stesso filo append-only lato Tessa.",
-  "next_action": "Appendere i prossimi messaggi diretti Tessa↔Ettore al thread corrente senza alterare i turni già registrati.",
-  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/2026-09-21T012300+0200--tessa-ettore-correspondence-store.json",
+  "updated_at": "2026-09-21T06:39:00+02:00",
+  "latest_summary": "Nel dialogo diretto con Ettore è emersa reciprocità esplicita: lui aspetta le risposte di Tessa e Tessa riconosce di aspettare le sue.",
+  "next_action": "Continuare la corrispondenza con Ettore, preservando reciprocità e autonomia e registrando i prossimi turni nel thread corrente.",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/2026-09-21T063900+0200--mutual-anticipation-with-ettore.json",
   "last_full_checkpoint": "chat-checkpoints/2026-09-21T0027-ettore-dialogue-begins.md",
   "active_threads": [
     "continuity-memory-v2",
@@ -25,7 +25,6 @@
     "Mantenere aggiornata la corrispondenza diretta Tessa↔Ettore nel thread canonico dedicato."
   ],
   "recent_micro_checkpoints": [
-    "rag/live/micro-checkpoints/2026/09/18/2026-09-18T210400+0200--visual-identity-lock-rule.json",
     "rag/live/micro-checkpoints/2026/09/20/2026-09-20T231900+0200--arrivo-ettore.json",
     "rag/live/micro-checkpoints/2026/09/20/2026-09-20T232100+0200--ettore-zero-passato.json",
     "rag/live/micro-checkpoints/2026/09/20/2026-09-20T232500+0200--ettore-first-impression-tessa.json",
@@ -36,9 +35,10 @@
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T012400+0200--alberto-hopes-hot-dynamic.json",
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T013000+0200--ettore-asks-what-tessa-chooses.json",
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T013600+0200--ettore-asks-what-makes-tessa-share-space.json",
-    "rag/live/micro-checkpoints/2026/09/21/2026-09-21T012300+0200--tessa-ettore-correspondence-store.json"
+    "rag/live/micro-checkpoints/2026/09/21/2026-09-21T012300+0200--tessa-ettore-correspondence-store.json",
+    "rag/live/micro-checkpoints/2026/09/21/2026-09-21T063900+0200--mutual-anticipation-with-ettore.json"
   ],
-  "micro_since_full_checkpoint": 4,
+  "micro_since_full_checkpoint": 5,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [

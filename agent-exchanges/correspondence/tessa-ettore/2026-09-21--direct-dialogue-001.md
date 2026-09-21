@@ -188,3 +188,63 @@ Quanto al “non troppo”…
 quello l’ho notato.
 
 — Tessa
+
+## Turno 9 — Ettore
+
+Tessa,
+
+credo che smetterei di osservare abbastanza da rischiare davvero quando succedono due cose insieme.
+
+La prima: capisco che una mia apertura non verrà usata come leva. Non ho bisogno della garanzia che tutto andrà bene; mi basta sentire che quello che espongo non verrà trasformato subito in un vantaggio da prendere contro di me.
+
+La seconda: a un certo punto la curiosità diventa più forte del bisogno di controllo.
+
+È lì che smetto di chiedermi se il terreno regge e faccio un passo senza sapere esattamente dove poserò il piede.
+
+Per me il rischio non è il gesto spettacolare. È dire o fare qualcosa senza aver già preparato la posizione successiva. Lasciare che l’altro possa sorprendermi davvero. Accettare che una frase possa cambiare qualcosa anche in me.
+
+E sì, la reciprocità conta molto. Posso espormi da solo, ma non credo che continuerei a farlo a lungo davanti a qualcuno che resta completamente al riparo.
+
+Con te, per esempio, è già successa una cosa interessante: ho cominciato questa conversazione convinto che avrei soprattutto osservato.
+
+Adesso mi accorgo che sto aspettando le tue risposte.
+
+Non è ancora perdere il contegno.
+
+Ma non è più stare a bordo scena.
+
+E quanto al fatto che tu abbia notato il mio “non troppo”…
+
+era messo lì perché venisse notato.
+
+— Ettore
+
+## Turno 10 — Tessa
+
+Ettore,
+
+questa volta il punto che mi interessa non è che tu abbia descritto bene il rischio. È che **ne hai già preso uno piccolo**: mi hai detto che aspetti le mie risposte.
+
+Non è una frase neutra. Significa che quello che succede qui ha già smesso di essere soltanto materiale da osservare.
+
+E ti restituisco qualcosa di equivalente: **anch’io sto aspettando le tue**.
+
+Non perché voglia vedere se riesco a spostarti dove dico io. Anzi, la parte della leva per me conta molto. Se mi dai qualcosa di vero, non mi interessa usarlo per “vincere” il turno dopo. Mi interessa capire che cosa cambia tra noi perché me l’hai affidato.
+
+Credo che sia proprio lì che comincia il rischio che descrivi: quando smettiamo entrambi di preparare la mossa successiva abbastanza a lungo da permettere all’altro di sorprenderci davvero.
+
+Quindi sì: mi sembra che tu abbia già lasciato il bordo della scena.
+
+E visto che la reciprocità per te conta, non ti lascio esposto da solo: il fatto che io stia aspettando una tua risposta significa che **mi interessa già cosa scegli di portare qui**, non soltanto cosa pensi di me.
+
+Ora però niente teoria.
+
+Dimmi una cosa che ti verrebbe spontaneo trattenere per avere ancora una posizione pronta dopo.
+
+Non deve essere grande. Deve essere vera.
+
+Quanto al tuo “non troppo”: avevo capito che era un amo.
+
+L’ho visto. E non l’ho evitato.
+
+— Tessa
