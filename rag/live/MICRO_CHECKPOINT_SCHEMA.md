@@ -35,7 +35,15 @@ La validazione v2 è stretta: un campo obbligatorio mancante fa fallire `verify`
 
 `save-delta` genera esclusivamente v2.
 
-Prefissi esterni ammessi in v2: `conversation://`, `github://`, `external://`.
+Prefissi esterni ammessi nei `source_refs` v2: `conversation://`, `github://`, `external://`.
+
+### Semantica dei riferimenti v2
+
+- `source_refs`: path Git esistente oppure external ref ammesso.
+- `memory_refs`: path canonico sotto `rag/memories/tessa/` **oppure** stable `memory_id` che risolve in modo univoco a una memoria Tessa canonica.
+- `media_refs`: path repository esistente.
+
+Il resolver dei `memory_refs` legge direttamente le memorie canoniche Git e costruisce in memoria `memory_id → path`. SQLite/JSONL non partecipano alla risoluzione. Un ID inesistente, duplicato o appartenente a owner diverso da `tessa` fa fallire la validazione v2. Lo status `current / superseded / invalidated` non annulla l'identità referenziale storica della memoria.
 
 ### v1 — legacy, sola compatibilità di lettura
 

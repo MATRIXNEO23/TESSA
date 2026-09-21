@@ -10,6 +10,12 @@ import uuid
 from datetime import datetime
 from pathlib import Path
 
+from reference_resolver import (
+    MemoryReferenceError,
+    build_memory_id_index,
+    resolve_memory_ref,
+)
+
 ROOT = Path(
     os.environ.get("TESSA_REPO_ROOT", str(Path(__file__).resolve().parents[1]))
 ).resolve()
@@ -109,7 +115,7 @@ def normalize_micro_for_validation(record: dict) -> dict:
     return normalized
 
 
-def ref_exists(ref: str, schema_version: int | None = None) -> bool:
+def validate_source_ref(ref: str, schema_version: int | None = None) -> bool:
     prefixes = (
         LEGACY_EXTERNAL_PREFIXES
         if schema_version == LEGACY_MICRO_SCHEMA_VERSION
@@ -120,7 +126,40 @@ def ref_exists(ref: str, schema_version: int | None = None) -> bool:
     return (ROOT / ref).exists()
 
 
-def validate_micro(record: dict, path: Path | None = None) -> list[str]:
+def validate_media_ref(ref: str, schema_version: int | None = None) -> bool:
+    if schema_version == LEGACY_MICRO_SCHEMA_VERSION and ref.startswith(
+        LEGACY_EXTERNAL_PREFIXES
+    ):
+        return True
+    return (ROOT / ref).exists()
+
+
+def validate_memory_ref(
+    ref: str,
+    schema_version: int | None = None,
+    memory_index: dict[str, Path] | None = None,
+) -> bool:
+    if schema_version == LEGACY_MICRO_SCHEMA_VERSION:
+        if ref.startswith(LEGACY_EXTERNAL_PREFIXES):
+            return True
+        return (ROOT / ref).exists()
+    try:
+        resolve_memory_ref(
+            ROOT,
+            ref,
+            owner="tessa",
+            memory_index=memory_index,
+        )
+    except MemoryReferenceError:
+        return False
+    return True
+
+
+def validate_micro(
+    record: dict,
+    path: Path | None = None,
+    memory_index: dict[str, Path] | None = None,
+) -> list[str]:
     errors: list[str] = []
     version = record.get("schema_version")
     if version not in (LEGACY_MICRO_SCHEMA_VERSION, CURRENT_MICRO_SCHEMA_VERSION):
@@ -154,10 +193,17 @@ def validate_micro(record: dict, path: Path | None = None) -> list[str]:
         if not isinstance(normalized.get(key), list):
             errors.append(f"{key} must be a list")
 
-    for key in ("source_refs", "memory_refs", "media_refs"):
-        for ref in normalized.get(key, []):
-            if not ref_exists(str(ref), version):
-                errors.append(f"{key} missing ref: {ref}")
+    for ref in normalized.get("source_refs", []):
+        if not validate_source_ref(str(ref), version):
+            errors.append(f"source_refs missing ref: {ref}")
+
+    for ref in normalized.get("memory_refs", []):
+        if not validate_memory_ref(str(ref), version, memory_index):
+            errors.append(f"memory_refs missing ref: {ref}")
+
+    for ref in normalized.get("media_refs", []):
+        if not validate_media_ref(str(ref), version):
+            errors.append(f"media_refs missing ref: {ref}")
 
     if path and not path.as_posix().endswith(".json"):
         errors.append("micro-checkpoint path must end in .json")
@@ -198,7 +244,12 @@ def save_delta(args: argparse.Namespace) -> Path:
         "preflight": bool(args.preflight or args.change_type == "preflight"),
     }
 
-    errors = validate_micro(record, target)
+    try:
+        memory_index = build_memory_id_index(ROOT, owner="tessa")
+    except MemoryReferenceError as exc:
+        fail("Invalid Tessa memory ID index:\n- " + str(exc))
+
+    errors = validate_micro(record, target, memory_index=memory_index)
     if errors:
         fail("Invalid micro-checkpoint:\n- " + "\n- ".join(errors))
 
@@ -302,13 +353,18 @@ def verify_live_context() -> None:
     if last_full and not (ROOT / last_full).is_file():
         fail(f"last_full_checkpoint missing: {last_full}")
 
+    try:
+        memory_index = build_memory_id_index(ROOT, owner="tessa")
+    except MemoryReferenceError as exc:
+        fail("Invalid Tessa memory ID index:\n- " + str(exc))
+
     count = 0
     for path in sorted(MICRO.rglob("*.json")) if MICRO.is_dir() else []:
         try:
             record = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
             fail(f"Invalid micro-checkpoint JSON {rel(path)}: {exc}")
-        errors = validate_micro(record, path)
+        errors = validate_micro(record, path, memory_index=memory_index)
         if errors:
             fail(f"Invalid {rel(path)}:\n- " + "\n- ".join(errors))
         count += 1

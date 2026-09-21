@@ -28,6 +28,8 @@ append_only: true
 
 `event_at` è il tempo dell'evento; `recorded_at` il tempo della registrazione. Il commit Git resta evidenza autorevole della registrazione.
 
+`memory_id` è un identificatore logico stabile e deve essere **unico nel namespace Tessa**. Per le memorie v2 può essere usato come riferimento canonico nei `memory_refs`: il resolver source-first deve ricondurlo in modo univoco al file sotto `rag/memories/tessa/`. Le memorie storiche pre-schema prive di `memory_id` restano referenziabili per path e non vengono riscritte.
+
 Status correnti: `current`, `superseded`, `invalidated`. Una correzione crea un nuovo record con `supersedes` oppure un override esplicito nel manifest; non cancella retroattivamente la fonte.
 
 `source_refs` deve puntare alle fonti che giustificano il ricordo. `media_refs` collega immagini significative. `confidence`: verified = supporto diretto; contextual = ricostruzione forte; inferred = deduzione esplicita.

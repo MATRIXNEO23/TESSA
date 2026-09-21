@@ -24,6 +24,12 @@ from datetime import datetime
 from pathlib import Path
 from typing import Iterable
 
+from reference_resolver import (
+    MemoryReferenceError,
+    resolve_memory_ref,
+    validate_memory_id_index,
+)
+
 ROOT = Path(__file__).resolve().parents[1]
 RAG_ROOT = ROOT / "rag"
 INDEX_DIR = RAG_ROOT / "index"
@@ -1081,9 +1087,21 @@ def create_image_link(
     if media_root not in image.parents or not image.is_file():
         fail(f"Image must exist under images/: {image_path}")
 
-    for ref in context_refs + memory_refs:
+    for ref in context_refs:
         if not (ROOT / ref).exists():
-            fail(f"Referenced context/memory does not exist: {ref}")
+            fail(f"Referenced context does not exist: {ref}")
+
+    try:
+        memory_index = validate_memory_id_index(ROOT, owner="tessa")
+        for ref in memory_refs:
+            resolve_memory_ref(
+                ROOT,
+                ref,
+                owner="tessa",
+                memory_index=memory_index,
+            )
+    except MemoryReferenceError as exc:
+        fail(f"Invalid memory reference: {exc}")
 
     m = re.match(r"^(20\d{2})-(\d{2})", event_at)
     if not m:
@@ -1174,6 +1192,11 @@ def verify_boundary() -> None:
     verify_future_memory_schema(manifest)
 
     try:
+        memory_index = validate_memory_id_index(ROOT, owner="tessa")
+    except MemoryReferenceError as exc:
+        fail("Tessa memory ID invariant failed:\n- " + str(exc))
+
+    try:
         from live_context import verify_live_context
         verify_live_context()
     except ImportError as exc:
@@ -1252,13 +1275,25 @@ def verify_boundary() -> None:
                 if not record.get("memory_refs"):
                     fail(f"Image-link missing memory_refs: {rel(record_path)}")
 
-                for ref_key in ("context_refs", "memory_refs"):
-                    for ref in record.get(ref_key, []):
-                        if not (ROOT / str(ref)).exists():
-                            fail(
-                                f"Image-link {ref_key} points to missing source: "
-                                f"{rel(record_path)} -> {ref}"
-                            )
+                for ref in record.get("context_refs", []):
+                    if not (ROOT / str(ref)).exists():
+                        fail(
+                            "Image-link context_refs points to missing source: "
+                            f"{rel(record_path)} -> {ref}"
+                        )
+                for ref in record.get("memory_refs", []):
+                    try:
+                        resolve_memory_ref(
+                            ROOT,
+                            str(ref),
+                            owner="tessa",
+                            memory_index=memory_index,
+                        )
+                    except MemoryReferenceError as exc:
+                        fail(
+                            "Image-link memory_refs points to invalid memory: "
+                            f"{rel(record_path)} -> {ref}: {exc}"
+                        )
 
                 if image_path in link_records:
                     fail(

@@ -23,6 +23,8 @@ I nuovi micro-checkpoint sono **v2 strict**. I record storici v1 restano immutat
 
 `save-delta` produce soltanto v2.
 
+Nei v2 i riferimenti hanno semantica distinta: `source_refs` accetta path Git o external ref ammessi; `memory_refs` accetta un path memoria Tessa canonico oppure uno stable `memory_id` univocamente risolvibile; `media_refs` resta path-based. La mappa `memory_id → path` viene derivata in memoria dalle fonti canoniche sotto `rag/memories/tessa/`, mai da SQLite/JSONL. ID mancanti, duplicati o con owner non Tessa fanno fallire il verifier.
+
 ## Helper
 
 ```bash
