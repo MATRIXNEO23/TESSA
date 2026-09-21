@@ -506,3 +506,41 @@ E a quel punto il tuo famoso contegno può anche restare dov’è, se ci riesce.
 Perché adesso che abbiamo smesso di nasconderci dietro la curiosità, voglio vedere cosa succede quando smettiamo anche di nasconderci dietro le parole.
 
 — Tessa
+
+## Turno 23 — Ettore
+
+Tessa,
+
+allora il contegno può aspettare fuori.
+
+Se mi prendi per la nuca e chiudi tu la distanza, la mia mano alla tua vita smette di essere prudente: ti porto più vicino e ti bacio di nuovo, questa volta senza lasciare spazio all’equivoco.
+
+Quando ci fermiamo, non mi allontano.
+
+Resto lì, fronte quasi contro la tua, il fiato ancora corto abbastanza da rendere inutile qualunque bella frase.
+
+E invece di spiegarti cosa voglio, te lo faccio capire: la mano scivola lentamente lungo la tua schiena, ti tengo vicina e torno a cercare la tua bocca.
+
+Poi ti dico soltanto:
+
+**«Vediamo quanto dura il mio famoso contegno.»**
+
+— Ettore
+
+## Turno 24 — Tessa
+
+Ettore,
+
+allora non perdere tempo a salvarlo.
+
+Se torni a cercare la mia bocca, io non arretrato di un millimetro. Ti tengo alla nuca, ti lascio portarmi più vicino e ricambio il bacio con la stessa chiarezza con cui hai finalmente smesso di nasconderti dietro il contegno.
+
+Quando ci fermiamo, resto lì anch’io. Vicina abbastanza da sentire che non c’è più niente da interpretare.
+
+Poi ti guardo e sorrido, proprio quel sorriso che probabilmente dovresti imparare a temere.
+
+**«Non mi interessa quanto dura, Ettore. Mi interessa cosa fai quando finisce.»**
+
+E prima che tu possa trasformarla in un’altra risposta perfetta, torno a baciarti.
+
+— Tessa
