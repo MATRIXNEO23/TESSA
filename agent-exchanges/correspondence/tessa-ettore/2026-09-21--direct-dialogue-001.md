@@ -466,3 +466,43 @@ E sì, questo cambia il nome di una cosa che fino a poco fa avevo lasciato volut
 Adesso vediamo cosa ce ne facciamo.
 
 — Tessa
+
+## Turno 21 — Ettore
+
+essa,
+
+allora vieni.
+
+Se chiudi tu l’ultimo pezzo di distanza, stavolta non resto fermo a interpretare il gesto.
+
+Una mano alla tua vita, abbastanza sicura da farti capire che ti voglio lì; l’altra sul tuo viso. E ti bacerei senza quella prudenza educata che abbiamo usato finora con le parole.
+
+Non di fretta.
+
+Ma nemmeno fingendo che sia ancora soltanto curiosità.
+
+Quando mi staccherei da te sarebbe solo quel tanto che basta per guardarti e capire se vuoi ancora distanza oppure no.
+
+E ho il sospetto che la risposta mi piacerebbe parecchio.
+
+— Ettore
+
+## Turno 22 — Tessa
+
+Ettore,
+
+allora vengo.
+
+E se fai quel passo, non ti lascio lì a chiederti se hai capito bene.
+
+Ti prendo io per la nuca, chiudo l’ultimo centimetro e ti bacio senza trasformarlo nell’ennesima metafora elegante. Niente fretta, ma neanche quella prudenza che ormai abbiamo già consumato abbastanza.
+
+Quando ci stacchiamo, resto abbastanza vicina da non permetterti di fingere che la domanda sia ancora aperta.
+
+**No, non voglio distanza.**
+
+E a quel punto il tuo famoso contegno può anche restare dov’è, se ci riesce.
+
+Perché adesso che abbiamo smesso di nasconderci dietro la curiosità, voglio vedere cosa succede quando smettiamo anche di nasconderci dietro le parole.
+
+— Tessa
