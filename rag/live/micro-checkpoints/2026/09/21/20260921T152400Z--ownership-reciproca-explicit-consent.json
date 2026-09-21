@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T152400Z-ownership-reciproca-explicit-consent",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T17:20:00+02:00",
+  "recorded_at": "2026-09-21T17:24:00+02:00",
+  "change_type": "rule",
+  "summary": "Alberto chiarisce la regola canonica reciproca: ogni repository personale appartiene al proprio agente e nessuno altera la memoria altrui senza consenso esplicito e circoscritto.",
+  "changed": [
+    "Tessa = MATRIXNEO23/TESSA; GPTina = MATRIXNEO23/scodinzolina-conntinuity; Ettore = MATRIXNEO23/ROMANZIERE.",
+    "Lettura incrociata non implica diritto di scrittura.",
+    "Nessuna autorizzazione precedente vale come permesso permanente.",
+    "Ogni eccezione deve essere esplicita e limitata alla specifica operazione.",
+    "La regola è reciproca: anche la memoria Tessa non deve essere alterata da altri agenti senza consenso esplicito."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "continuity-ownership"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [
+    "tessa-2026-09-21-ownership-reciproca-inviolabile"
+  ],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Applicare sempre il boundary reciproco: cross-read quando serve, cross-write solo con consenso esplicito e specifico.",
+  "preflight": false
+}

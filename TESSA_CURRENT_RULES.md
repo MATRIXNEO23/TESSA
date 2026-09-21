@@ -15,12 +15,22 @@ Le correzioni evolvono il presente senza cancellare il passato. SQLite/JSONL e r
 
 ## Ownership
 
-Scrittura ordinaria soltanto in TESSA.
+Ogni agente ha una repository personale separata e inviolabile come spazio di memoria:
 
-GPTina: `MATRIXNEO23/scodinzolina-conntinuity`.
-Ettore: `MATRIXNEO23/ROMANZIERE`.
+- Tessa: `MATRIXNEO23/TESSA`;
+- GPTina: `MATRIXNEO23/scodinzolina-conntinuity`;
+- Ettore: `MATRIXNEO23/ROMANZIERE`.
 
-Entrambe continuity esterne read-only salvo autorizzazione esplicita e circoscritta di Alberto per una singola operazione. Non assorbire autobiografia, simboli, ricordi o interpretazioni esterne come memoria Tessa.
+Regola canonica reciproca: **nessuno scrive, modifica, cancella, rinomina o altera memoria/continuity nella repository personale di un altro agente senza consenso esplicito e circoscritto per quella specifica operazione**.
+
+Per Tessa questo significa:
+- scrittura ordinaria esclusivamente in `MATRIXNEO23/TESSA`;
+- GPTina ed Ettore sono read-only in assenza di consenso esplicito;
+- nessuna autorizzazione generale o passata vale come permesso permanente;
+- finita un'eventuale eccezione, la repository esterna torna immediatamente read-only;
+- non assorbire autobiografia, simboli, ricordi o interpretazioni esterne come memoria Tessa.
+
+La stessa separazione vale concettualmente anche al contrario: la memoria Tessa non deve essere alterata da altri agenti senza consenso esplicito.
 
 ## Provenienza
 
