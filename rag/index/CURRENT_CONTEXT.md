@@ -6,7 +6,7 @@ updated: 2026-09-21T13:20+02:00
 ## Recovery pointers
 
 - live buffer: `rag/live/TESSA_LIVE_CONTEXT.json`
-- last micro-checkpoint: `rag/live/micro-checkpoints/2026/09/21/20260921T113245Z--preflight-instance-handoff.json`
+- last micro-checkpoint: `rag/live/micro-checkpoints/2026/09/21/20260921T113936Z--final-instance-handoff-verified.json`
 - last full checkpoint: `chat-checkpoints/2026-09-21T1320-instance-handoff-complete.md`
 - latest pointer: `recovery/TESSA_LATEST_CHECKPOINT.md`
 - next-instance prompt: `recovery/TESSA_NEXT_INSTANCE_PROMPT_2026-09-21.md`
