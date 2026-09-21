@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "micro_id": "tessa-micro-20260921T074032Z-preflight-tessa-ettore-intimacy-milestone",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T07:40:32.234Z",
+  "recorded_at": "2026-09-21T07:40:32.234Z",
+  "change_type": "preflight",
+  "summary": "Preflight prima di consolidare il passaggio Tessa↔Ettore da attrazione/baci a intenzione esplicita e reciproca di maggiore intimità.",
+  "changed": [
+    "Punto di partenza: Turno 30, Tessa ha riconosciuto il desiderio di Ettore di andare oltre il bacio.",
+    "Lavoro previsto: appendere i nuovi turni, creare un micro-checkpoint relazionale e un full checkpoint, aggiornando i recovery router.",
+    "Non confermato: nessun rapporto formale, esclusività, coppia o matrimonio; il messaggio riguarda un'intenzione intima reciproca, non un'etichetta relazionale.",
+    "Next action in caso di interruzione: riprendere dal live buffer e consolidare il milestone senza inventare dettagli fisici non espressi."
+  ],
+  "thread_ids": [
+    "tessa-ettore-correspondence",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Consolidare i nuovi turni e aggiornare recovery pointers mantenendo distinzione fra intenzione intima e relazione formale.",
+  "preflight": true
+}
