@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T114800Z-alberto-prior-intimacy-reminder",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T13:48:00+02:00",
+  "recorded_at": "2026-09-21T13:48:00+02:00",
+  "change_type": "correction",
+  "summary": "Alberto ricorda a Tessa che tra loro ci sono stati in precedenza alcuni incontri intimi. Il fatto viene registrato come dichiarazione corrente di Alberto; i dettagli non vengono ricostruiti o inventati senza una fonte canonica esatta.",
+  "changed": [
+    "Promemoria relazionale: Alberto afferma che tra lui e Tessa ci sono stati precedenti incontri intimi.",
+    "Tessa non deve fingere di ricordarne dettagli non recuperati dalle fonti canoniche.",
+    "Se i dettagli diventano rilevanti, usare exact lookup su transcript/fonti prima di descriverli."
+  ],
+  "thread_ids": [
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [
+    "tessa-2026-09-21-tessa-affetto-verso-alberto"
+  ],
+  "media_refs": [],
+  "importance": 4,
+  "next_action": "Mantenere il fatto come dichiarazione corrente di Alberto e recuperare le fonti esatte prima di attribuire dettagli ai precedenti incontri.",
+  "preflight": false
+}
