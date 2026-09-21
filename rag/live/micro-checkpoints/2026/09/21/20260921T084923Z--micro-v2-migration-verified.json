@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T084923Z-migration-verified",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T10:49:23.026+02:00",
+  "recorded_at": "2026-09-21T08:49:23.026Z",
+  "change_type": "milestone",
+  "summary": "Migrazione micro-checkpoint completata e verificata: v1 legacy letto con normalizzazione in-memory, v2 strict per tutti i nuovi record, CI completa SUCCESS.",
+  "changed": [
+    "Ripristinato il micro storico precedentemente modificato retroattivamente.",
+    "save-delta genera solo schema_version 2.",
+    "Il verifier applica default legacy soltanto in memoria ai v1 e non modifica i file storici.",
+    "artifact:// e attachment:// sono compatibilità esclusiva dei v1.",
+    "Tessa Memory CI run 35579710374 ha concluso SUCCESS sul commit f1df6a22bfec2f43c3581fd5b5d75a6d246a1672.",
+    "Round-trip v1-compat/v2-strict e 9 regression cases sono passati."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "tessa-gptina-correspondence"
+  ],
+  "source_refs": [
+    "chat-checkpoints/2026-09-21T1049-micro-schema-v2-legacy-compat.md",
+    "conversation://current",
+    "github://MATRIXNEO23/TESSA/commit/f1df6a22bfec2f43c3581fd5b5d75a6d246a1672"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "GPTina: review della migrazione micro-checkpoint v1/v2; segnalare solo gap reali senza chiedere riscritture retroattive dei record storici.",
+  "preflight": false
+}

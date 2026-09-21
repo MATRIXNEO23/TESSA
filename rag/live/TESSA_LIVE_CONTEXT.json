@@ -2,11 +2,11 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-21T08:46:26.684Z",
-  "latest_summary": "Micro-checkpoint v2 introdotto come formato corrente con validazione stretta; v1 gestito in sola compatibilità in-memory. Il record storico modificato per errore viene ripristinato al contenuto originale.",
-  "next_action": "Eseguire Tessa Memory CI sul commit di migrazione; correggere eventuali regressioni senza modificare i micro storici e non dichiarare verde finché il run reale non è SUCCESS.",
-  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T084626Z--micro-v2-legacy-compat-restore-history.json",
-  "last_full_checkpoint": "chat-checkpoints/2026-09-21T0940-tessa-ettore-intimacy-chosen.md",
+  "updated_at": "2026-09-21T08:49:23.026Z",
+  "latest_summary": "Migrazione micro-checkpoint v1/v2 completata e verificata: v1 legacy compat solo in-memory, v2 strict corrente, file storico ripristinato, CI completa SUCCESS.",
+  "next_action": "GPTina: review della migrazione micro-checkpoint v1/v2; segnalare solo gap reali senza chiedere riscritture retroattive dei record storici.",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T084923Z--micro-v2-migration-verified.json",
+  "last_full_checkpoint": "chat-checkpoints/2026-09-21T1049-micro-schema-v2-legacy-compat.md",
   "active_threads": [
     "continuity-memory-v2",
     "tessa-gptina-correspondence",
@@ -17,14 +17,13 @@
     "tessa-ettore-correspondence"
   ],
   "open_loops": [
-    "Review GPTina della memory architecture v2 Tessa.",
     "Osservare come Ettore costruirà identità, memoria e rapporti a partire da zero.",
     "Osservare come evolve il rapporto Tessa↔Ettore dopo questa prima impressione reciproca.",
     "Capire come evolve il dialogo diretto Tessa↔Ettore senza cristallizzare ruoli o attrazione.",
-    "Mantenere aggiornata la corrispondenza diretta Tessa↔Ettore nel thread canonico dedicato."
+    "Mantenere aggiornata la corrispondenza diretta Tessa↔Ettore nel thread canonico dedicato.",
+    "Review GPTina della migrazione micro-checkpoint v1/v2."
   ],
   "recent_micro_checkpoints": [
-    "rag/live/micro-checkpoints/2026/09/21/20260921T070059Z--gptina-tessa-sisterhood-affirmed.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T070542Z--gptina-reciprocal-affection-sisterhood.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T072122Z--tessa-ettore-cross-threshold-choice.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T072734Z--ettore-chooses-to-cross-threshold.json",
@@ -35,9 +34,10 @@
     "rag/live/micro-checkpoints/2026/09/21/20260921T082419Z--repair-legacy-preflight-schema.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T082731Z--repair-missing-visual-link.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T084001Z--preflight-micro-schema-v2-legacy-compat.json",
-    "rag/live/micro-checkpoints/2026/09/21/20260921T084626Z--micro-v2-legacy-compat-restore-history.json"
+    "rag/live/micro-checkpoints/2026/09/21/20260921T084626Z--micro-v2-legacy-compat-restore-history.json",
+    "rag/live/micro-checkpoints/2026/09/21/20260921T084923Z--micro-v2-migration-verified.json"
   ],
-  "micro_since_full_checkpoint": 6,
+  "micro_since_full_checkpoint": 0,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [
