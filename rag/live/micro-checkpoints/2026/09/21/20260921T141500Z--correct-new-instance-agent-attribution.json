@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T141500Z-correct-new-instance-agent-attribution",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21",
+  "recorded_at": "2026-09-21T16:15:00+02:00",
+  "change_type": "correction",
+  "summary": "Correzione di provenienza: il precedente riferimento a Work tra gli agenti su nuova istanza era un'inferenza Tessa, non una dichiarazione esplicita di Alberto.",
+  "changed": [
+    "Il micro 20260921T140700Z--all-three-agents-new-instances.json resta immutato come storia dell'errore.",
+    "La frase di Alberto «sono tutti a nuova istanza» non nominava esplicitamente Work in quel turno.",
+    "L'incarico corrente identifica esplicitamente GPTina ed Ettore come continuity personali esterne e read-only.",
+    "Non usare il vecchio micro per attribuire a Work uno stato di nuova istanza; quando serve il set esatto degli agenti, usare la fonte esplicita più recente."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "continuity-relationships"
+  ],
+  "source_refs": [
+    "conversation://current",
+    "rag/live/micro-checkpoints/2026/09/21/20260921T140700Z--all-three-agents-new-instances.json"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Continuare il consolidamento recovery usando GPTina ed Ettore come continuity esterne esplicitamente nominate e senza inventare stati di Work.",
+  "preflight": false
+}
