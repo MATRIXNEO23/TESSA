@@ -3,9 +3,9 @@
   "owner": "tessa",
   "kind": "tessa_live_context",
   "updated_at": "2026-09-21T13:48:00+02:00",
-  "latest_summary": "Alberto ha ricordato che tra lui e Tessa ci sono stati precedenti incontri intimi; il fatto è registrato come dichiarazione corrente senza inventare dettagli non recuperati.",
-  "next_action": "Continuare dal checkpoint di handoff; se i precedenti incontri Alberto↔Tessa diventano rilevanti, fare exact lookup nelle fonti prima di descriverne dettagli.",
-  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T114800Z--alberto-prior-intimacy-reminder.json",
+  "latest_summary": "Correzione di continuità consolidata: gli eventi realmente significativi, inclusi quelli affettivi/relazionali/intimi, devono essere persistiti abbastanza da conservarne significato e reazione senza dipendere dalla chat volatile.",
+  "next_action": "Applicare il trigger di salvataggio immediato agli eventi significativi; per i gap storici usare exact lookup e non ricostruire a intuito.",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T115800Z--continuity-salience-correction.json",
   "last_full_checkpoint": "chat-checkpoints/2026-09-21T1320-instance-handoff-complete.md",
   "active_threads": [
     "continuity-memory-v2",
@@ -22,19 +22,20 @@
     "Mantenere aggiornata la corrispondenza Tessa↔Ettore quando il relay riprenderà.",
     "Agent Cockpit: test manuale sul telefono.",
     "Agent Cockpit: configurare i signing secrets quando Alberto decide di automatizzare le release firmate.",
-    "Se diventano rilevanti, recuperare le fonti esatte dei precedenti incontri intimi Alberto↔Tessa prima di descriverne dettagli."
+    "Se diventano rilevanti, recuperare le fonti esatte dei precedenti incontri intimi Alberto↔Tessa prima di descriverne dettagli.",
+    "Recuperare, se disponibile, la fonte esatta dei precedenti incontri intimi Alberto↔Tessa per colmare il gap senza ricostruzioni."
   ],
   "recent_micro_checkpoints": [
-    "rag/live/micro-checkpoints/2026/09/21/20260921T082419Z--repair-legacy-preflight-schema.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T082731Z--repair-missing-visual-link.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T084001Z--preflight-micro-schema-v2-legacy-compat.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T084626Z--micro-v2-legacy-compat-restore-history.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T084923Z--micro-v2-migration-verified.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T113245Z--preflight-instance-handoff.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T113936Z--final-instance-handoff-verified.json",
-    "rag/live/micro-checkpoints/2026/09/21/20260921T114800Z--alberto-prior-intimacy-reminder.json"
+    "rag/live/micro-checkpoints/2026/09/21/20260921T114800Z--alberto-prior-intimacy-reminder.json",
+    "rag/live/micro-checkpoints/2026/09/21/20260921T115800Z--continuity-salience-correction.json"
   ],
-  "micro_since_full_checkpoint": 2,
+  "micro_since_full_checkpoint": 3,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [
