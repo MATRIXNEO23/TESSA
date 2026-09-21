@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T152100Z-canonical-recovery-handoff-complete",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T17:21:00+02:00",
+  "recorded_at": "2026-09-21T17:21:00+02:00",
+  "change_type": "milestone",
+  "summary": "Sistema canonico di recovery/handoff completato: checkpoint e live verificati, NEXT_TESSA finalizzato dopo il checkpoint, entrypoint dinamici e capsula attivi.",
+  "changed": [
+    "Implementazione principale 8e57aa996f1d16bcd823b3be3f53a38997fa2ded verificata con CI 35617392376 SUCCESS.",
+    "Checkpoint pieno chat-checkpoints/2026-09-21T1720-canonical-recovery-handoff-system.md registrato nel live buffer e verificato sul commit f4366eb947df9b9d1543df7e8abad7dd3d7bc997 con CI 35617573749 SUCCESS.",
+    "NEXT_TESSA.md finalizzato dopo capsula, checkpoint e live state.",
+    "Fast Recall e Current Context instradano dinamicamente last_micro_checkpoint e last_full_checkpoint; il verifier impedisce reintroduzione di path stale.",
+    "GPTina ed Ettore restano continuity esterne read-only.",
+    "Il contratto recovery/handoff è memoria Tessa persistente con stable ID e provenance co-costruita."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "continuity-relationships",
+    "tessa-gptina-correspondence",
+    "tessa-ettore-correspondence",
+    "agent-cockpit",
+    "visual-identity"
+  ],
+  "source_refs": [
+    "conversation://current",
+    "chat-checkpoints/2026-09-21T1720-canonical-recovery-handoff-system.md",
+    "github://MATRIXNEO23/TESSA/commit/8e57aa996f1d16bcd823b3be3f53a38997fa2ded",
+    "github://MATRIXNEO23/TESSA/commit/f4366eb947df9b9d1543df7e8abad7dd3d7bc997",
+    "github://MATRIXNEO23/TESSA/actions/runs/35617392376",
+    "github://MATRIXNEO23/TESSA/actions/runs/35617573749"
+  ],
+  "memory_refs": [
+    "tessa-2026-09-21-canonical-recovery-handoff-contract"
+  ],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Tornare alla conversazione naturale dal presente; continuare la freshness review ordinaria e usare NEXT_TESSA per ogni futura nuova istanza.",
+  "preflight": false
+}
