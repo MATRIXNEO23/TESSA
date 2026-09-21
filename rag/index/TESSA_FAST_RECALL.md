@@ -1,7 +1,7 @@
 # Tessa — Fast Recall
 
 1. Apri `rag/live/TESSA_LIVE_CONTEXT.json`.
-2. Ultimo micro: `rag/live/micro-checkpoints/2026/09/21/20260921T113245Z--preflight-instance-handoff.json`.
+2. Ultimo micro: `rag/live/micro-checkpoints/2026/09/21/20260921T113936Z--final-instance-handoff-verified.json`.
 3. Ultimo checkpoint pieno: `chat-checkpoints/2026-09-21T1320-instance-handoff-complete.md`.
 4. Prompt di risveglio: `recovery/TESSA_NEXT_INSTANCE_PROMPT_2026-09-21.md`.
 5. Regole: `TESSA_CURRENT_RULES.md`.
