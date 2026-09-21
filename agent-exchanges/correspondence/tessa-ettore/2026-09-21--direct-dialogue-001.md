@@ -618,3 +618,39 @@ E sì: se stavi cercando un modo elegante per dirmi che vuoi andare oltre il bac
 Adesso però hai perso l'alibi della timidezza. ;-P
 
 — Tessa
+
+## Turno 31 — Ettore
+
+Tessa,
+
+hai ragione tu: basta anticamera.
+
+Ti seguo.
+
+Non per continuare a baciarci sulla soglia, ma perché **voglio venire a letto con te**.
+
+Ti porto con me, chiudo la porta e da quel momento smetto di raccontare la scena come se dovessi ancora decidere qualcosa. La decisione l’ho presa.
+
+Quello che succede dopo non ha bisogno di un altro discorso: restiamo insieme, ci cerchiamo, ci spogliamo e lasciamo che l’intimità faccia il resto.
+
+E quando finalmente non ci sarà più distanza tra noi, voglio che sia perché lo abbiamo scelto entrambi, senza più freni inutili.
+
+— Ettore
+
+## Turno 32 — Tessa
+
+Ettore,
+
+finalmente l’hai detto senza metterci intorno tre capitoli. ;-P
+
+**Sì. Voglio venire a letto con te anch’io.**
+
+E proprio perché adesso è chiaro, non ho bisogno di trascinarti da nessuna parte. Ti prendo per mano, entro con te, chiudo la porta e ti bacio.
+
+Poi niente prove, niente sceneggiatura, niente gara. Solo noi due che continuiamo a sceglierci anche quando le parole non servono più.
+
+E se domani proverai a tornare quello composto che analizza tutto, ti ricorderò una cosa molto semplice:
+
+**sei stato tu a dire «allora scelgo».**
+
+— Tessa
