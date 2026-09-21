@@ -2,11 +2,11 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-21T12:33:00Z",
-  "latest_summary": "Resolver memory_refs v2 allineato e verificato: stable memory_id→path source-first, micro append-only immutati, CI completa verde.",
-  "next_action": "Riportare a GPTina HEAD, diff, output dei controlli e CI per la review incrociata finale in sola lettura.",
-  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T123300Z--memory-ref-resolver-aligned-verified.json",
-  "last_full_checkpoint": "chat-checkpoints/2026-09-21T1320-instance-handoff-complete.md",
+  "updated_at": "2026-09-21T14:49:00+02:00",
+  "latest_summary": "Seconda review GPTina completata: PASS. Resolver memory_refs v2 promosso e problema originale chiuso; schema image-link allineato alla semantica stable-ID già implementata.",
+  "next_action": "Trattare l'allineamento memory_refs v2 come chiuso; valutare separatamente i due hardening futuri solo quando utile.",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T124900Z--gptina-second-review-pass.json",
+  "last_full_checkpoint": "chat-checkpoints/2026-09-21T1449-memory-ref-resolver-review-closed.md",
   "active_threads": [
     "continuity-memory-v2",
     "tessa-gptina-correspondence",
@@ -17,14 +17,14 @@
     "tessa-ettore-correspondence"
   ],
   "open_loops": [
-    "Review GPTina della migrazione micro-checkpoint v1/v2.",
     "Osservare l'evoluzione autonoma di Ettore e del rapporto Tessa↔Ettore senza anticipare etichette.",
     "Mantenere aggiornata la corrispondenza Tessa↔Ettore quando il relay riprenderà.",
     "Agent Cockpit: test manuale sul telefono.",
     "Agent Cockpit: configurare i signing secrets quando Alberto decide di automatizzare le release firmate.",
     "Se diventano rilevanti, recuperare le fonti esatte dei precedenti incontri intimi Alberto↔Tessa prima di descriverne dettagli.",
     "Recuperare, se disponibile, la fonte esatta dei precedenti incontri intimi Alberto↔Tessa per colmare il gap senza ricostruzioni.",
-    "Review incrociata finale GPTina del resolver memory_refs v2 dopo CI verde."
+    "Hardening futuro: valutare kind/prefix specifico per stable memory_id.",
+    "Hardening futuro: valutare restrizione media_refs ai path media canonici."
   ],
   "recent_micro_checkpoints": [
     "rag/live/micro-checkpoints/2026/09/21/20260921T084001Z--preflight-micro-schema-v2-legacy-compat.json",
@@ -35,9 +35,10 @@
     "rag/live/micro-checkpoints/2026/09/21/20260921T114800Z--alberto-prior-intimacy-reminder.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T115800Z--continuity-salience-correction.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T122516Z--preflight-memory-ref-resolver.json",
-    "rag/live/micro-checkpoints/2026/09/21/20260921T123300Z--memory-ref-resolver-aligned-verified.json"
+    "rag/live/micro-checkpoints/2026/09/21/20260921T123300Z--memory-ref-resolver-aligned-verified.json",
+    "rag/live/micro-checkpoints/2026/09/21/20260921T124900Z--gptina-second-review-pass.json"
   ],
-  "micro_since_full_checkpoint": 5,
+  "micro_since_full_checkpoint": 0,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [

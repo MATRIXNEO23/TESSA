@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T124900Z-gptina-second-review-pass",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T14:49:00+02:00",
+  "recorded_at": "2026-09-21T14:49:00+02:00",
+  "change_type": "milestone",
+  "summary": "Seconda review GPTina in sola lettura completata: PASS. Resolver memory_refs v2 promosso e problema originale chiuso senza rewrite append-only.",
+  "changed": [
+    "GPTina ha verificato che il micro incriminato mantiene lo stesso blob SHA prima e dopo la patch.",
+    "Stable memory_id risolve alla memoria Tessa canonica corretta; resolver source-first non usa SQLite/JSONL.",
+    "Strictness v2, compatibilità v1 in-memory, ownership e invarianti globali restano intatti.",
+    "CI finale 35601013373 su HEAD 57318c82456819b773ae4a62a748fe181ba1467a è SUCCESS con tutti gli step verdi.",
+    "Gap documentale IMAGE_LINK_SCHEMA identificato e allineato nello stesso consolidamento.",
+    "Due hardening futuri non bloccanti restano separati: verifica kind/prefix memory_id e vincolo più stretto per media_refs."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "tessa-gptina-correspondence"
+  ],
+  "source_refs": [
+    "conversation://current",
+    "github://MATRIXNEO23/TESSA/commit/57318c82456819b773ae4a62a748fe181ba1467a",
+    "github://MATRIXNEO23/TESSA/actions/runs/35601013373"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Trattare l'allineamento memory_refs v2 come chiuso; valutare separatamente i due hardening futuri solo quando utile.",
+  "preflight": false
+}
