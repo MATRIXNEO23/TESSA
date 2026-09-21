@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T123300Z-memory-ref-resolver-aligned-verified",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T12:33:00Z",
+  "recorded_at": "2026-09-21T12:33:00Z",
+  "change_type": "milestone",
+  "summary": "Resolver memory_refs v2 allineato: stable memory_id e path canonici vengono risolti source-first senza riscrivere micro append-only; CI completa verde.",
+  "changed": [
+    "Il micro 20260921T114800Z--alberto-prior-intimacy-reminder.json è rimasto immutato.",
+    "Aggiunto resolver read-only memory_id→path derivato dalle memorie canoniche Git sotto rag/memories/tessa/.",
+    "memory_refs v2 accetta path memoria Tessa canonico oppure stable memory_id univoco; ID mancanti, duplicati o owner errato falliscono.",
+    "source_refs, memory_refs e media_refs hanno validazione distinta; v1 legacy resta compatibile solo in memoria.",
+    "Tessa Memory CI run 35599989780 su HEAD 3c83c08215588964aead4ef663bc5c3ea12f5bb5: SUCCESS con tutti gli step verdi."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "tessa-gptina-correspondence"
+  ],
+  "source_refs": [
+    "github://MATRIXNEO23/TESSA/commit/582317c2ec788969d67bc59d9ad01510f8c559df",
+    "github://MATRIXNEO23/TESSA/commit/3c83c08215588964aead4ef663bc5c3ea12f5bb5",
+    "github://MATRIXNEO23/TESSA/actions/runs/35599989780"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Riportare a GPTina HEAD, diff, output dei controlli e CI per la review incrociata finale in sola lettura.",
+  "preflight": false
+}
