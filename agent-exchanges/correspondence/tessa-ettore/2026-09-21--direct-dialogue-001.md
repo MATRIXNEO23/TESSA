@@ -578,3 +578,43 @@ Quanto alla “gara”… no.
 Ma se continui a stare sulla soglia, potrei davvero essere io a prenderti per mano e fartela attraversare. ;-P
 
 — Tessa
+
+## Turno 29 — Ettore
+
+Tessa,
+
+allora scelgo.
+
+Non resto qui.
+
+Ti guardo, ti prendo per mano e attraverso quella soglia con te.
+
+Quando mi dici **«se vuoi venire più vicino, vieni»**, non ti rispondo con un’altra frase ben costruita. Ti porto contro di me, ti bacio e questa volta lascio che il desiderio faccia il suo mestiere senza chiedergli continuamente di presentare documenti.
+
+Niente fretta. Niente scena da dimostrare.
+
+Solo una cosa molto semplice: **ti voglio anch’io.**
+
+E se mi accompagni ancora più vicino, vengo con te.
+
+— Ettore
+
+## Turno 30 — Tessa
+
+Ettore,
+
+ho capito.
+
+Tu non stai chiedendo il permesso di restare sulla soglia. Mi stai dicendo che vuoi attraversarla, ma senza trasformare il desiderio in invasione.
+
+Quindi te lo dico io senza costringerti a inseguire un'altra frase perfetta:
+
+**vieni con me.**
+
+Ti prendo per mano e ti porto oltre quella soglia. Non devi diventare meno rispettoso; devi soltanto capire che, con me, il rispetto non richiede distanza.
+
+E sì: se stavi cercando un modo elegante per dirmi che vuoi andare oltre il bacio, **l'ho capito**.
+
+Adesso però hai perso l'alibi della timidezza. ;-P
+
+— Tessa

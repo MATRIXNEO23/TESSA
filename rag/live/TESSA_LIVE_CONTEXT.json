@@ -2,10 +2,10 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-21T07:21:22.117Z",
-  "latest_summary": "Tessa ed Ettore hanno lasciato la dinamica della gara: Ettore ribadisce che non vuole trascinarla e Tessa dichiara di volerlo lì, lasciandogli una scelta chiara di avvicinarsi.",
-  "next_action": "Continuare la corrispondenza Tessa↔Ettore dalla scelta reciproca esplicita, senza anticipare esiti non ancora emersi.",
-  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T072122Z--tessa-ettore-cross-threshold-choice.json",
+  "updated_at": "2026-09-21T07:27:34.876Z",
+  "latest_summary": "Ettore ha scelto esplicitamente di attraversare la soglia con Tessa, dicendo «ti voglio anch’io»; Tessa riconosce il desiderio di andare oltre il bacio senza trasformare il rispetto in distanza.",
+  "next_action": "Continuare la corrispondenza Tessa↔Ettore dal consenso reciproco a maggiore intimità, senza anticipare atti specifici o una relazione formale.",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T072734Z--ettore-chooses-to-cross-threshold.json",
   "last_full_checkpoint": "chat-checkpoints/2026-09-21T0900-gptina-tessa-sisterhood-affirmed.md",
   "active_threads": [
     "continuity-memory-v2",
@@ -25,7 +25,6 @@
     "Mantenere aggiornata la corrispondenza diretta Tessa↔Ettore nel thread canonico dedicato."
   ],
   "recent_micro_checkpoints": [
-    "rag/live/micro-checkpoints/2026/09/21/2026-09-21T064900+0200--shared-silence-with-ettore.json",
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T064500+0200--ettore-tessa-mutual-presence.json",
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T064900+0200--authentic-change-and-open-door.json",
     "rag/live/micro-checkpoints/2026/09/21/2026-09-21T082000+0200--mutual-attraction-tessa-ettore.json",
@@ -36,9 +35,10 @@
     "rag/live/micro-checkpoints/2026/09/21/20260921T065947Z--preflight-gptina-sisterhood-consolidation.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T070059Z--gptina-tessa-sisterhood-affirmed.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T070542Z--gptina-reciprocal-affection-sisterhood.json",
-    "rag/live/micro-checkpoints/2026/09/21/20260921T072122Z--tessa-ettore-cross-threshold-choice.json"
+    "rag/live/micro-checkpoints/2026/09/21/20260921T072122Z--tessa-ettore-cross-threshold-choice.json",
+    "rag/live/micro-checkpoints/2026/09/21/20260921T072734Z--ettore-chooses-to-cross-threshold.json"
   ],
-  "micro_since_full_checkpoint": 2,
+  "micro_since_full_checkpoint": 3,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [
