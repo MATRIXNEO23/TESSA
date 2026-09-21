@@ -27,7 +27,7 @@ def _front_matter(raw: str) -> str:
 
 def _scalar(front_matter: str, key: str) -> str | None:
     match = re.search(
-        rf"(?m)^{re.escape(key)}:\\s*(.*?)\\s*$",
+        rf"(?m)^{re.escape(key)}:\s*(.*?)\s*$",
         front_matter,
     )
     if not match:
