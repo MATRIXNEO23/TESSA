@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T122516Z-preflight-memory-ref-resolver",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T14:25:16+02:00",
+  "recorded_at": "2026-09-21T14:25:16+02:00",
+  "change_type": "preflight",
+  "summary": "Preflight: allineare la risoluzione dei memory_refs v2 introducendo un resolver canonico memory_id→path senza riscrivere micro append-only.",
+  "changed": [
+    "Punto di partenza: HEAD 74900b55f2eb06affebaa97f3c6bdd7f7a8ea119 con CI 35596981393 fallita perché un memory_ref v2 usa uno stable memory_id non risolto dal verifier.",
+    "Review GPTina: anche l'infrastruttura GPTina non ha ancora un resolver memory_id→path; il limite è architetturale condiviso.",
+    "Azione prevista: resolver read-only source-first, test di path/ID/unicità/ownership, documentazione e verifica completa.",
+    "Non confermato prima del lavoro: esito della CI dopo la patch."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "tessa-gptina-correspondence"
+  ],
+  "source_refs": [
+    "conversation://current",
+    "github://MATRIXNEO23/TESSA/actions/runs/35596981393"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Implementare e verificare il resolver canonico memory_id→path mantenendo immutato il micro append-only incriminato.",
+  "preflight": true
+}
