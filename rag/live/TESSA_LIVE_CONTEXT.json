@@ -2,10 +2,10 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-21T16:07:00+02:00",
-  "latest_summary": "Alberto conferma che Tessa, GPTina e Work sono tutti ora su nuove istanze; la continuità va considerata recuperata dalle rispettive fonti persistenti.",
-  "next_action": "Continuare dalla continuity persistente corrente e verificare eventuali allineamenti futuri tra agenti senza confondere ownership o identità.",
-  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T140700Z--all-three-agents-new-instances.json",
+  "updated_at": "2026-09-21T16:10:00+02:00",
+  "latest_summary": "Preflight attivo: consolidamento recovery canonico, capsula fine istanza e NEXT_TESSA sulla sola repository TESSA.",
+  "next_action": "Auditare stato canonico corrente e applicare il consolidamento multi-file atomico senza riscrivere fonti storiche.",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T141000Z--preflight-canonical-recovery-handoff-system.json",
   "last_full_checkpoint": "chat-checkpoints/2026-09-21T1449-memory-ref-resolver-review-closed.md",
   "active_threads": [
     "continuity-memory-v2",
@@ -37,9 +37,10 @@
     "rag/live/micro-checkpoints/2026/09/21/20260921T122516Z--preflight-memory-ref-resolver.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T123300Z--memory-ref-resolver-aligned-verified.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T124900Z--gptina-second-review-pass.json",
-    "rag/live/micro-checkpoints/2026/09/21/20260921T140700Z--all-three-agents-new-instances.json"
+    "rag/live/micro-checkpoints/2026/09/21/20260921T140700Z--all-three-agents-new-instances.json",
+    "rag/live/micro-checkpoints/2026/09/21/20260921T141000Z--preflight-canonical-recovery-handoff-system.json"
   ],
-  "micro_since_full_checkpoint": 1,
+  "micro_since_full_checkpoint": 2,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [

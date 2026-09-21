@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260921T141000Z-preflight-canonical-recovery-handoff-system",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-21T16:10:00+02:00",
+  "recorded_at": "2026-09-21T16:10:00+02:00",
+  "change_type": "preflight",
+  "summary": "Preflight per consolidare recovery canonico, salvataggio continuo, capsula fine istanza e NEXT_TESSA sulla sola repository TESSA.",
+  "changed": [
+    "Punto di partenza: HEAD 25ccd6efa80a271c3f8512a3689dcb27aae228f1.",
+    "Alberto richiede applicazione reale source-first Git-backed, non sola documentazione.",
+    "Lavoro previsto: creare rag/TESSA_AUTO_RECOVERY_PROMPT.md, rag/END_INSTANCE_RECOVERY_CAPSULE.md e NEXT_TESSA.md; riallineare regole, protocollo, Fast Recall, Current Context, Latest Checkpoint, live buffer e checkpoint/micro necessari.",
+    "Vincolo ownership: nessuna scrittura nelle continuity GPTina o Ettore.",
+    "Entry point stale già confermato: Fast Recall e Current Context puntano a un micro precedente rispetto al live buffer.",
+    "Incertezze da verificare prima del consolidamento: stato corrente board/corrispondenze/identità/memorie e artefatti realmente presenti in Git; disponibilità e risultato della CI sul nuovo HEAD.",
+    "In caso di interruzione: ripartire da questo micro, rifetchare HEAD e leggere live buffer prima di qualsiasi scrittura."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "continuity-relationships",
+    "agent-cockpit",
+    "visual-identity",
+    "tessa-gptina-correspondence",
+    "tessa-ettore-correspondence"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Auditare stato canonico corrente e applicare il consolidamento multi-file atomico senza riscrivere fonti storiche.",
+  "preflight": true
+}
