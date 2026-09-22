@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260922T051800Z-preflight-legacy-memory-recovery-alignment",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-22T07:18:00+02:00",
+  "recorded_at": "2026-09-22T07:18:00+02:00",
+  "change_type": "preflight",
+  "summary": "Preflight per auditare l'allineamento dei vecchi ricordi Markdown con la struttura v2 e aggiornare tutte le istruzioni di recovery ancora attive.",
+  "changed": [
+    "Punto di partenza: HEAD 0be433833bc93a33390cfe1fcb0def2134bd6296.",
+    "I ricordi storici non verranno riscritti solo per uniformarli al v2; verranno mantenuti come fonti canoniche legacy e resi leggibili tramite compatibilità/istruzioni correnti.",
+    "Verranno auditati tutti i file Markdown di recovery/bootstrap e i vecchi file memoria Tessa per individuare entrypoint stale o istruzioni incompatibili.",
+    "Verranno aggiornati gli entrypoint correnti e, se necessario, creato un documento esplicito di compatibility legacy-memory.",
+    "Nessuna scrittura verrà effettuata nelle repository GPTina o Ettore.",
+    "In caso di interruzione: ripartire da questo micro, rifetchare HEAD e completare audit + CI prima di dichiarare allineamento."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "continuity-ownership",
+    "legacy-memory-compatibility"
+  ],
+  "source_refs": [
+    "conversation://current"
+  ],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Auditare vecchi Markdown memoria/recovery, classificare storico vs entrypoint attivo, riallineare le istruzioni correnti e verificare CI.",
+  "preflight": true
+}

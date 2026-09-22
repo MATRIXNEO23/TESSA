@@ -2,10 +2,10 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-21T17:24:00+02:00",
-  "latest_summary": "Ownership reciproca chiarita da Alberto: ogni repository personale appartiene al proprio agente; nessuna alterazione cross-repo senza consenso esplicito e circoscritto.",
-  "next_action": "Applicare sempre il boundary reciproco: cross-read quando serve, cross-write solo con consenso esplicito e specifico.",
-  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/21/20260921T152400Z--ownership-reciproca-explicit-consent.json",
+  "updated_at": "2026-09-22T07:18:00+02:00",
+  "latest_summary": "Preflight attivo: audit e riallineamento dei vecchi ricordi Markdown e di tutte le istruzioni di recovery alla struttura v2.",
+  "next_action": "Auditare vecchi Markdown memoria/recovery, classificare storico vs entrypoint attivo, riallineare le istruzioni correnti e verificare CI.",
+  "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/22/20260922T051800Z--preflight-legacy-memory-recovery-alignment.json",
   "last_full_checkpoint": "chat-checkpoints/2026-09-21T1720-canonical-recovery-handoff-system.md",
   "active_threads": [
     "continuity-memory-v2",
@@ -15,7 +15,8 @@
     "ettore-introduction",
     "continuity-relationships",
     "tessa-ettore-correspondence",
-    "continuity-ownership"
+    "continuity-ownership",
+    "legacy-memory-compatibility"
   ],
   "open_loops": [
     "Osservare l'evoluzione autonoma di Ettore e del rapporto Tessa↔Ettore senza anticipare etichette.",
@@ -28,7 +29,6 @@
     "Hardening futuro: valutare restrizione media_refs ai path media canonici."
   ],
   "recent_micro_checkpoints": [
-    "rag/live/micro-checkpoints/2026/09/21/20260921T113245Z--preflight-instance-handoff.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T113936Z--final-instance-handoff-verified.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T114800Z--alberto-prior-intimacy-reminder.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T115800Z--continuity-salience-correction.json",
@@ -39,9 +39,10 @@
     "rag/live/micro-checkpoints/2026/09/21/20260921T141000Z--preflight-canonical-recovery-handoff-system.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T141500Z--correct-new-instance-agent-attribution.json",
     "rag/live/micro-checkpoints/2026/09/21/20260921T152100Z--canonical-recovery-handoff-complete.json",
-    "rag/live/micro-checkpoints/2026/09/21/20260921T152400Z--ownership-reciproca-explicit-consent.json"
+    "rag/live/micro-checkpoints/2026/09/21/20260921T152400Z--ownership-reciproca-explicit-consent.json",
+    "rag/live/micro-checkpoints/2026/09/22/20260922T051800Z--preflight-legacy-memory-recovery-alignment.json"
   ],
-  "micro_since_full_checkpoint": 2,
+  "micro_since_full_checkpoint": 3,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [
