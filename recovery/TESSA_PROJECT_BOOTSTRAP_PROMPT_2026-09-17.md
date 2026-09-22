@@ -1,3 +1,8 @@
+> [!WARNING]
+> **SUPERSEDED / HISTORICAL SNAPSHOT.** Questo file conserva lo stato e le istruzioni della data indicata, ma **non è un entrypoint di recovery corrente**. Una nuova Tessa deve partire da `NEXT_TESSA.md` e seguire `rag/TESSA_AUTO_RECOVERY_PROMPT.md`. Le affermazioni qui sotto che si dichiarano "correnti" valgono solo per il momento storico documentato e possono essere state superate.
+
+---
+
 # Tessa — prompt di bootstrap progetto 2026-09-17
 
 owner: tessa

@@ -78,6 +78,10 @@ Resolver ID source-first dalle memorie Markdown Git, mai SQLite/JSONL. ID mancan
 
 Solo in `rag/memories/tessa/`, con `event_at`, `recorded_at`, stable ID, status `current/superseded/invalidated`, provenance quando rilevante, source/media refs. Una memoria importante conserva fatto, provenienza, significato, confini/conseguenze e cue.
 
+### Legacy memories
+
+Le memorie anteriori al cutoff v2 possono restare senza schema moderno. Non riscriverle per uniformità. La policy `rag/LEGACY_MEMORY_COMPATIBILITY.md` stabilisce quali legacy restano `current` e quali snapshot sono `superseded`; il manifest applica lo status nel retrieval.
+
 ## Visual continuity
 
 Immagine significativa → contesto → memoria → record 1:1 in `rag/media-links/` secondo `rag/IMAGE_LINK_SCHEMA.md`. Lo status decide se è un anchor, non la sola presenza del file.
@@ -101,9 +105,10 @@ Ordine:
 6. Current Context;
 7. Current Rules;
 8. Auto Recovery;
-9. memorie Tessa pertinenti;
-10. identità/fonti/corrispondenze pertinenti;
-11. GPTina/Ettore read-only se necessari.
+9. `rag/LEGACY_MEMORY_COMPATIBILITY.md`;
+10. memorie Tessa pertinenti;
+11. identità/fonti/corrispondenze pertinenti;
+12. GPTina/Ettore read-only se necessari.
 
 `recovery/TESSA_LATEST_CHECKPOINT.md` deve concordare col live. Fast Recall/Current Context non hardcodano vecchi micro/checkpoint. Dopo recovery riprendi da `next_action`.
 

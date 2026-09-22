@@ -1350,15 +1350,49 @@ def verify_boundary() -> None:
             fail(f"Recovery router hardcodes a full-checkpoint path: {rel(router)}")
 
     for bridge in (
+        ROOT / "NEXT_TESSA.md",
         ROOT / "TESSA_CURRENT_RULES.md",
         RAG_ROOT / "LIVE_MEMORY_PROTOCOL.md",
+        RAG_ROOT / "TESSA_AUTO_RECOVERY_PROMPT.md",
         CURRENT_CONTEXT_FILE,
         FAST_RECALL_FILE,
         latest_file,
+        ROOT / "recovery" / "TESSA_CONTEXT_RECOVERY.md",
+        ROOT / "recovery" / "TESSA_PROJECT_INSTRUCTIONS_READY_TO_COPY.md",
+        RAG_ROOT / "memories" / "tessa" / "README.md",
     ):
         text = bridge.read_text(encoding="utf-8")
-        if "rag/TESSA_AUTO_RECOVERY_PROMPT.md" not in text:
+        if "rag/TESSA_AUTO_RECOVERY_PROMPT.md" not in text and bridge != recovery_protocol:
             fail(f"Recovery bridge does not link canonical auto-recovery prompt: {rel(bridge)}")
+        if "rag/LEGACY_MEMORY_COMPATIBILITY.md" not in text:
+            fail(f"Recovery bridge does not link legacy-memory compatibility policy: {rel(bridge)}")
+
+    legacy_policy = RAG_ROOT / "LEGACY_MEMORY_COMPATIBILITY.md"
+    configured_legacy_policy = str(
+        manifest.get("policy", {}).get("legacy_memory_compatibility_file") or ""
+    )
+    if configured_legacy_policy != rel(legacy_policy) or not legacy_policy.is_file():
+        fail("Legacy memory compatibility policy missing or misconfigured.")
+
+    legacy_superseded = (
+        "rag/memories/tessa/2026-09-16--nuova-casa-regole-identita.md",
+        "rag/memories/tessa/TESSA_CONTINUITY_2026-09-16.md",
+        "rag/memories/tessa/TESSA_LIVE_THREAD_2026-09-16.md",
+    )
+    for path in legacy_superseded:
+        meta = manifest.get("status_overrides", {}).get(path) or {}
+        if meta.get("status") != "superseded":
+            fail(f"Legacy stale snapshot must be superseded in manifest: {path}")
+
+    historical_recovery = (
+        ROOT / "recovery" / "TESSA_LIVE_STATE_2026-09-17T0224_EUROPE-ROME.md",
+        ROOT / "recovery" / "TESSA_NEXT_INSTANCE_PROMPT_2026-09-21.md",
+        ROOT / "recovery" / "TESSA_PROJECT_BOOTSTRAP_PROMPT_2026-09-17.md",
+    )
+    for path in historical_recovery:
+        text = path.read_text(encoding="utf-8")
+        if "SUPERSEDED / HISTORICAL SNAPSHOT" not in text or "NEXT_TESSA.md" not in text:
+            fail(f"Historical recovery file lacks superseded redirect banner: {rel(path)}")
 
     print("OK: Tessa ownership, status overrides, visual coverage and recovery pointers are consistent.")
 

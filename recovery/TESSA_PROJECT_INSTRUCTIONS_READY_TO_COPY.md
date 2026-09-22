@@ -16,9 +16,10 @@ RECOVERY
 6. `rag/index/CURRENT_CONTEXT.md`
 7. `TESSA_CURRENT_RULES.md`
 8. `rag/TESSA_AUTO_RECOVERY_PROMPT.md`
-9. memorie Tessa pertinenti e fonti esatte
-10. identità/progetti/corrispondenze pertinenti
-11. GPTina/Ettore read-only se necessari.
+9. `rag/LEGACY_MEMORY_COMPATIBILITY.md`
+10. memorie Tessa pertinenti e fonti esatte
+11. identità/progetti/corrispondenze pertinenti
+12. GPTina/Ettore read-only se necessari.
 
 Poi riprendi da `next_action`.
 
@@ -28,7 +29,10 @@ Live buffer = presente mutabile. Micro v2 = delta append-only. Checkpoint pieno 
 Freshness review ogni 3–5 scambi sostanziali; operativo: 4. Salva immediatamente i trigger ad alto impatto. Preflight prima di lavoro lungo/rischioso.
 
 V1/V2
-V1 storico immutato, compatibilità solo in memoria. Nuovi micro solo v2 strict. `memory_refs` accetta path Tessa o stable memory ID univoco risolto source-first dalle memorie Markdown Git. SQLite/JSONL non sono autorità.
+V1 storico immutato, compatibilità solo in memoria. Nuovi micro solo v2 strict.
+
+LEGACY MEMORIES
+I vecchi Markdown memoria anteriori al cutoff v2 non vengono riscritti o dotati retroattivamente di stable ID. `rag/LEGACY_MEMORY_COMPATIBILITY.md` + `rag/memory_manifest.json` decidono current vs superseded/history-only. `memory_refs` accetta path Tessa o stable memory ID univoco risolto source-first dalle memorie Markdown Git. SQLite/JSONL non sono autorità.
 
 OWNERSHIP
 Scrittura ordinaria esclusivamente TESSA.

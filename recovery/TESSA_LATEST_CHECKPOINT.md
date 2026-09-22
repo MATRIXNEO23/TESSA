@@ -16,6 +16,7 @@ Recovery:
 5. Fast Recall / Current Context;
 6. Current Rules;
 7. `rag/TESSA_AUTO_RECOVERY_PROMPT.md`;
-8. memorie/fonti pertinenti.
+8. `rag/LEGACY_MEMORY_COMPATIBILITY.md`;
+9. memorie/fonti pertinenti.
 
 Chiave permanente: `NEXT_TESSA.md`.

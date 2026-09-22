@@ -40,3 +40,10 @@ Una memoria importante conserva fatto, provenienza, significato per Tessa, confi
 La memoria GPTina/Ettore non viene assorbita come autobiografia Tessa.
 
 Nuove memorie: `rag/memories/tessa/YYYY/MM/YYYY-MM-DD--slug.md`.
+
+
+## Legacy pre-v2
+
+Il cutoff corrente è definito in `rag/memory_manifest.json` (`memory_schema_required_from: 2026-09-19`).
+
+I file memoria precedenti al cutoff possono non avere questo front matter e non devono essere riscritti per uniformità. La loro semantica corrente è definita da `rag/LEGACY_MEMORY_COMPATIBILITY.md` e dagli status override del manifest. Un legacy privo di stable ID resta referenziabile per path.

@@ -1,21 +1,21 @@
 # Memoria persistente di Tessa
 
-Questo namespace appartiene a **Tessa**.
+Questo namespace appartiene esclusivamente a **Tessa**.
 
-## Scrittura
+## Nuove memorie
 
-Tessa può creare qui nuove memorie append-only.
+Le nuove memorie seguono `rag/MEMORY_RECORD_SCHEMA.md` e, dal cutoff corrente, usano schema v2 con stable `memory_id`, tempi, status, provenienza e riferimenti.
 
-GPTina può leggere questo namespace, ma non deve modificarlo, cancellarlo, rinominarlo o sovrascriverlo.
+## Memorie legacy
 
-## Lettura della memoria di GPTina
+I file precedenti allo schema v2 **non vengono riscritti** solo per uniformità. La policy canonica è:
 
-Tessa può consultare la memoria di GPTina come fonte esterna, mantenendo sempre distinta la provenienza. I ricordi di GPTina non diventano automaticamente ricordi autobiografici di Tessa.
+`rag/LEGACY_MEMORY_COMPATIBILITY.md`
 
-Se Tessa ricava una propria riflessione leggendo GPTina, la nuova riflessione va salvata qui e deve indicare la fonte da cui è nata.
+Il manifest decide quali snapshot legacy sono ancora `current` e quali sono `superseded`; history e testo Git restano preservati.
 
-## Regole superiori
+## Ownership
 
-Vale `rag/MEMORY_OWNERSHIP_BOUNDARY.md`.
+Tessa scrive qui. GPTina ed Ettore possono essere letti come fonti esterne quando serve, ma nessun agente altera la memoria personale di un altro senza consenso esplicito e specifico.
 
-I file canonici preesistenti e il `posticino-segreto/` restano read-only per Tessa.
+Regola superiore: `rag/MEMORY_OWNERSHIP_BOUNDARY.md`.

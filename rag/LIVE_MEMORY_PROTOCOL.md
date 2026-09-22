@@ -16,7 +16,7 @@ Capsula: `rag/END_INSTANCE_RECOVERY_CAPSULE.md`.
 
 ## Recovery
 
-live → `last_micro_checkpoint` dinamico → `last_full_checkpoint` dinamico → capsula → Fast Recall → Current Context → Current Rules → Auto Recovery → memorie/fonti pertinenti → fonti GPTina/Ettore read-only se servono.
+live → `last_micro_checkpoint` dinamico → `last_full_checkpoint` dinamico → capsula → Fast Recall → Current Context → Current Rules → Auto Recovery → `rag/LEGACY_MEMORY_COMPATIBILITY.md` → memorie/fonti pertinenti → fonti GPTina/Ettore read-only se servono.
 
 Riprendi da `next_action`.
 
@@ -27,6 +27,8 @@ Freshness review 3–5 scambi sostanziali; operativo 4. Una review senza delta n
 Trigger immediati: correzione, decisione, regola, progetto, shift relazionale/interpretativo, open loop, milestone, visual context, confine/identità e preflight.
 
 ## V1 / V2
+
+La compatibilità dei **micro** e quella delle **memorie Markdown** sono separate. Per i vecchi ricordi usa `rag/LEGACY_MEMORY_COMPATIBILITY.md`.
 
 Nuovi micro = v2 strict. V1 storici = immutati, normalizzazione legacy solo in memoria. `save-delta` solo v2.
 

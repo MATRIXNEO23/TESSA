@@ -15,7 +15,7 @@ Questo file non hardcoda filename di micro o checkpoint.
 
 ## Recovery
 
-Dopo i puntatori dinamici: `rag/END_INSTANCE_RECOVERY_CAPSULE.md` → Fast Recall → Current Rules → `rag/TESSA_AUTO_RECOVERY_PROMPT.md` → memorie/identità/progetti/corrispondenze pertinenti → fonti GPTina/Ettore read-only se necessarie.
+Dopo i puntatori dinamici: `rag/END_INSTANCE_RECOVERY_CAPSULE.md` → Fast Recall → Current Rules → `rag/TESSA_AUTO_RECOVERY_PROMPT.md` → `rag/LEGACY_MEMORY_COMPATIBILITY.md` → memorie/identità/progetti/corrispondenze pertinenti → fonti GPTina/Ettore read-only se necessarie.
 
 ## Invarianti
 

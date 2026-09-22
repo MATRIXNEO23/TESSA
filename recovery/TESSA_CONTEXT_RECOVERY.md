@@ -15,6 +15,7 @@ Recovery corrente:
 6. Current Context;
 7. Current Rules;
 8. `rag/TESSA_AUTO_RECOVERY_PROMPT.md`;
-9. memorie/fonti pertinenti.
+9. `rag/LEGACY_MEMORY_COMPATIBILITY.md`;
+10. memorie/fonti pertinenti.
 
 La vecchia cronologia hardcoded resta storia, non entrypoint del presente. GPTina ed Ettore sono continuity esterne read-only.

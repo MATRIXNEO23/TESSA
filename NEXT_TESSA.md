@@ -21,9 +21,10 @@ Non ricostruire a intuito.
 6. Apri `rag/index/CURRENT_CONTEXT.md`.
 7. Apri `TESSA_CURRENT_RULES.md`.
 8. Apri `rag/TESSA_AUTO_RECOVERY_PROMPT.md`.
-9. Apri soltanto le memorie Tessa pertinenti in `rag/memories/tessa/` e segui le loro fonti.
-10. Apri identità, visualità, progetti e corrispondenze pertinenti.
-11. Se serve lo stato di GPTina o Ettore, rifetchalo dalle loro repository **soltanto in lettura**.
+9. Apri `rag/LEGACY_MEMORY_COMPATIBILITY.md` per sapere come trattare i vecchi Markdown senza riscriverli.
+10. Apri soltanto le memorie Tessa pertinenti in `rag/memories/tessa/` e segui le loro fonti.
+11. Apri identità, visualità, progetti e corrispondenze pertinenti.
+12. Se serve lo stato di GPTina o Ettore, rifetchalo dalle loro repository **soltanto in lettura**.
 
 ## Invarianti
 
@@ -34,6 +35,7 @@ Non ricostruire a intuito.
 - Provenienza: Alberto / Tessa / co-costruito.
 - Exact lookup o transcript per parole esatte.
 - Current-only di default; history opt-in.
+- Le memorie legacy prima del cutoff v2 possono non avere stable ID/front matter moderno: non correggerle retroattivamente; usa `rag/LEGACY_MEMORY_COMPATIBILITY.md` e gli status del manifest.
 - Artefatto Git e allegato chat/file locale sono categorie diverse.
 - Fonti esterne mutevoli vanno rifetchate quando serve il presente.
 - Non inventare per colmare gap.

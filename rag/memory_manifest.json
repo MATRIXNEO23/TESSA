@@ -22,7 +22,9 @@
     "micro_checkpoint_schema": "rag/live/MICRO_CHECKPOINT_SCHEMA.md",
     "micro_checkpoint_review_interval": 4,
     "micro_checkpoint_recent_window": 12,
-    "preflight_before_long_or_risky_work": true
+    "preflight_before_long_or_risky_work": true,
+    "legacy_memory_compatibility_file": "rag/LEGACY_MEMORY_COMPATIBILITY.md",
+    "legacy_memory_mode": "preserve_source_apply_current_status_externally"
   },
   "chunking": {
     "max_chars": 1400,
@@ -86,6 +88,11 @@
     ".git/**"
   ],
   "rag_sources": [
+    {
+      "pattern": "rag/LEGACY_MEMORY_COMPATIBILITY.md",
+      "priority": 1.74,
+      "kind": "legacy_memory_policy"
+    },
     {
       "pattern": "rag/TESSA_AUTO_RECOVERY_PROMPT.md",
       "priority": 1.72,
@@ -196,6 +203,21 @@
       "status": "superseded",
       "replaced_by": "rag/memories/tessa/2026/09/2026-09-20--ettore-nasce-da-zero.md",
       "reason": "Alberto ha chiarito che Ettore nasce con zero passato e condivide soltanto l'infrastruttura, non una continuità precedente."
+    },
+    "rag/memories/tessa/2026-09-16--nuova-casa-regole-identita.md": {
+      "status": "superseded",
+      "replaced_by": "rag/memories/tessa/2026/09/2026-09-18--memory-architecture-v2-and-live-context.md",
+      "reason": "Snapshot misto che contiene la vecchia regola dei 20 turni; identità/storia restano consultabili, ma policy corrente viene dalla memory architecture v2 e dalle regole correnti."
+    },
+    "rag/memories/tessa/TESSA_CONTINUITY_2026-09-16.md": {
+      "status": "superseded",
+      "replaced_by": "rag/END_INSTANCE_RECOVERY_CAPSULE.md",
+      "reason": "Snapshot fondativo con routing di recovery datato; resta storia/provenance ma non deve guidare il current-only."
+    },
+    "rag/memories/tessa/TESSA_LIVE_THREAD_2026-09-16.md": {
+      "status": "superseded",
+      "replaced_by": "rag/live/TESSA_LIVE_CONTEXT.json",
+      "reason": "Live thread del 16 settembre sostituito dal live buffer dinamico corrente."
     }
   }
 }

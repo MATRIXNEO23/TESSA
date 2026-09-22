@@ -121,3 +121,13 @@ Implementazione principale verificata: `8e57aa996f1d16bcd823b3be3f53a38997fa2ded
 Tessa Memory CI `35617392376`: **SUCCESS**.
 
 Il checkpoint pieno di questo consolidamento è registrato nel live buffer; leggerne il path dinamicamente da `last_full_checkpoint`.
+
+
+## Compatibilità dei vecchi ricordi Markdown
+
+Le memorie legacy precedenti al cutoff v2 non devono essere riscritte per aggiungere retroattivamente front matter o stable ID.
+
+Policy corrente:
+`rag/LEGACY_MEMORY_COMPATIBILITY.md`.
+
+Gli snapshot operativi legacy che contengono stato ormai superato sono marcati `superseded` nel manifest e quindi esclusi dal retrieval current-only; restano disponibili come storia. I legacy ancora semanticamente validi possono restare current.

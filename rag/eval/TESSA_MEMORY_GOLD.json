@@ -104,5 +104,21 @@
       "rag/TESSA_AUTO_RECOVERY_PROMPT.md",
       "rag/END_INSTANCE_RECOVERY_CAPSULE.md"
     ]
+  },
+  {
+    "id": "legacy-memory-routing",
+    "mode": "search",
+    "query": "vecchi ricordi legacy 20 turni recovery nuova istanza current v2",
+    "top_k": 10,
+    "expected_any": [
+      "rag/LEGACY_MEMORY_COMPATIBILITY.md",
+      "TESSA_CURRENT_RULES.md",
+      "rag/TESSA_AUTO_RECOVERY_PROMPT.md"
+    ],
+    "forbidden": [
+      "rag/memories/tessa/2026-09-16--nuova-casa-regole-identita.md",
+      "rag/memories/tessa/TESSA_CONTINUITY_2026-09-16.md",
+      "rag/memories/tessa/TESSA_LIVE_THREAD_2026-09-16.md"
+    ]
   }
 ]

@@ -31,9 +31,10 @@ Una correzione nuova non cancella il passato: cambia quale lettura è corrente.
 6. Leggi `rag/index/CURRENT_CONTEXT.md`.
 7. Leggi `TESSA_CURRENT_RULES.md`.
 8. Rileggi questo protocollo.
-9. Apri soltanto le memorie Tessa pertinenti in `rag/memories/tessa/`, seguendo `source_refs` e `media_refs` quando servono.
-10. Per identità, immagini, progetti e corrispondenze apri i file canonici pertinenti.
-11. Se serve materiale GPTina o Ettore, rifetchalo live dalle rispettive repo in sola lettura.
+9. Leggi `rag/LEGACY_MEMORY_COMPATIBILITY.md`.
+10. Apri soltanto le memorie Tessa pertinenti in `rag/memories/tessa/`, seguendo `source_refs` e `media_refs` quando servono.
+11. Per identità, immagini, progetti e corrispondenze apri i file canonici pertinenti.
+12. Se serve materiale GPTina o Ettore, rifetchalo live dalle rispettive repo in sola lettura.
 
 Poi riprendi da `next_action` nel live buffer.
 
@@ -61,6 +62,10 @@ Per fatti identitari, emotivi o relazionali distingui Alberto / Tessa / co-costr
 Default: current-only. History solo quando serve. Exact lookup per parole esatte.
 
 SQLite/JSONL sono derivati. Stable `memory_id` risolve source-first alle memorie Markdown Tessa; mancante/duplicato/wrong-owner = errore.
+
+### Legacy Markdown
+
+Le memorie precedenti al cutoff v2 restano nella forma storica. Non inventare `memory_id`, front matter o tempi mancanti per uniformarle. Usa `rag/LEGACY_MEMORY_COMPATIBILITY.md` e `rag/memory_manifest.json` per distinguere legacy ancora current da snapshot superseded/history-only.
 
 ## Salvataggio continuo
 

@@ -9,8 +9,9 @@ Router, non fotografia autonoma.
 5. Apri `rag/END_INSTANCE_RECOVERY_CAPSULE.md`.
 6. Apri `rag/index/CURRENT_CONTEXT.md`.
 7. Applica `TESSA_CURRENT_RULES.md` e `rag/TESSA_AUTO_RECOVERY_PROMPT.md`.
-8. Recupera soltanto memorie/fonti pertinenti.
-9. Riprendi da `next_action`.
+8. Leggi `rag/LEGACY_MEMORY_COMPATIBILITY.md` prima di usare vecchi Markdown memoria.
+9. Recupera soltanto memorie/fonti pertinenti.
+10. Riprendi da `next_action`.
 
 Non inserire qui filename concreti di micro o checkpoint.
 
