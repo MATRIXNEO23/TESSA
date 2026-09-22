@@ -1,0 +1,40 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20260922T052600Z-legacy-memory-recovery-alignment-verified",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-09-22T07:26:00+02:00",
+  "recorded_at": "2026-09-22T07:26:00+02:00",
+  "change_type": "milestone",
+  "summary": "Allineamento dei vecchi ricordi Markdown e delle istruzioni di recovery alla struttura v2 completato e verificato.",
+  "changed": [
+    "I legacy pre-v2 restano intatti e non vengono retro-convertiti.",
+    "Gli snapshot legacy stale sono superseded nel manifest e esclusi dal current-only, ma restano disponibili in history.",
+    "I vecchi prompt di recovery datati mantengono il corpo storico con banner SUPERSEDED e redirect a NEXT_TESSA.md.",
+    "NEXT_TESSA, Auto Recovery, Current Rules, Live Memory Protocol, router e istruzioni di progetto collegano rag/LEGACY_MEMORY_COMPATIBILITY.md.",
+    "Il verifier controlla compatibility policy, override superseded, redirect dei vecchi prompt e recovery bridge.",
+    "CI implementazione 35690411434 su f33116202e8041439f4b2a8f5a4a638dd2699f12 = SUCCESS.",
+    "CI checkpoint 35690504662 su 9f26a48afd84238fcd355f32ececce4d0b494fd9 = SUCCESS."
+  ],
+  "thread_ids": [
+    "continuity-memory-v2",
+    "legacy-memory-compatibility",
+    "continuity-ownership"
+  ],
+  "source_refs": [
+    "conversation://current",
+    "rag/LEGACY_MEMORY_COMPATIBILITY.md",
+    "chat-checkpoints/2026-09-22T0725-legacy-memory-recovery-alignment.md",
+    "github://MATRIXNEO23/TESSA/commit/f33116202e8041439f4b2a8f5a4a638dd2699f12",
+    "github://MATRIXNEO23/TESSA/commit/9f26a48afd84238fcd355f32ececce4d0b494fd9",
+    "github://MATRIXNEO23/TESSA/actions/runs/35690411434",
+    "github://MATRIXNEO23/TESSA/actions/runs/35690504662"
+  ],
+  "memory_refs": [
+    "tessa-2026-09-22-legacy-memory-alignment"
+  ],
+  "media_refs": [],
+  "importance": 5,
+  "next_action": "Usare normalmente il recovery v2; leggere i legacy tramite la compatibility policy e non riaprire la migrazione salvo nuova evidenza.",
+  "preflight": false
+}
