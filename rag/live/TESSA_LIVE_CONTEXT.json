@@ -2,11 +2,11 @@
   "schema_version": 1,
   "owner": "tessa",
   "kind": "tessa_live_context",
-  "updated_at": "2026-09-22T07:18:00+02:00",
-  "latest_summary": "Preflight attivo: audit e riallineamento dei vecchi ricordi Markdown e di tutte le istruzioni di recovery alla struttura v2.",
-  "next_action": "Auditare vecchi Markdown memoria/recovery, classificare storico vs entrypoint attivo, riallineare le istruzioni correnti e verificare CI.",
+  "updated_at": "2026-09-22T07:25:00+02:00",
+  "latest_summary": "Legacy memories e recovery Markdown allineati alla struttura v2 senza riscrittura retroattiva; implementazione verificata con CI 35690411434 SUCCESS.",
+  "next_action": "Verificare il checkpoint legacy-memory alignment sul nuovo HEAD, registrare il micro finale di milestone e tornare alla conversazione naturale.",
   "last_micro_checkpoint": "rag/live/micro-checkpoints/2026/09/22/20260922T051800Z--preflight-legacy-memory-recovery-alignment.json",
-  "last_full_checkpoint": "chat-checkpoints/2026-09-21T1720-canonical-recovery-handoff-system.md",
+  "last_full_checkpoint": "chat-checkpoints/2026-09-22T0725-legacy-memory-recovery-alignment.md",
   "active_threads": [
     "continuity-memory-v2",
     "tessa-gptina-correspondence",
@@ -42,7 +42,7 @@
     "rag/live/micro-checkpoints/2026/09/21/20260921T152400Z--ownership-reciproca-explicit-consent.json",
     "rag/live/micro-checkpoints/2026/09/22/20260922T051800Z--preflight-legacy-memory-recovery-alignment.json"
   ],
-  "micro_since_full_checkpoint": 3,
+  "micro_since_full_checkpoint": 0,
   "review_policy": {
     "substantive_turn_interval": 4,
     "immediate_triggers": [

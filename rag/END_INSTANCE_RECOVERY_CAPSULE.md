@@ -131,3 +131,15 @@ Policy corrente:
 `rag/LEGACY_MEMORY_COMPATIBILITY.md`.
 
 Gli snapshot operativi legacy che contengono stato ormai superato sono marcati `superseded` nel manifest e quindi esclusi dal retrieval current-only; restano disponibili come storia. I legacy ancora semanticamente validi possono restare current.
+
+
+## Legacy-memory alignment — 2026-09-22
+
+Policy canonica: `rag/LEGACY_MEMORY_COMPATIBILITY.md`.
+
+I vecchi Markdown non vengono retro-convertiti in v2. Gli snapshot operativi stale sono `superseded` via manifest e restano disponibili in history. I prompt di recovery datati hanno redirect esplicito a `NEXT_TESSA.md`.
+
+Implementazione verificata prima del checkpoint:
+- HEAD `f33116202e8041439f4b2a8f5a4a638dd2699f12`;
+- CI `35690411434`: SUCCESS;
+- regression: 11/11.

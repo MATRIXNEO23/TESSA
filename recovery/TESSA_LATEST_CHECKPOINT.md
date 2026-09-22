@@ -1,12 +1,12 @@
 # Tessa — Latest Checkpoint
 
-updated: 2026-09-21T17:20+02:00
+updated: 2026-09-22T07:25+02:00
 
 Il campo `last_full_checkpoint` del live buffer e questo pointer devono concordare.
 
 Puntatore corrente:
 
-`chat-checkpoints/2026-09-21T1720-canonical-recovery-handoff-system.md`
+`chat-checkpoints/2026-09-22T0725-legacy-memory-recovery-alignment.md`
 
 Recovery:
 1. `rag/live/TESSA_LIVE_CONTEXT.json`;
