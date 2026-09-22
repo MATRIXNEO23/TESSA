@@ -6,6 +6,10 @@ Questo namespace appartiene esclusivamente a **Tessa**.
 
 Le nuove memorie seguono `rag/MEMORY_RECORD_SCHEMA.md` e, dal cutoff corrente, usano schema v2 con stable `memory_id`, tempi, status, provenienza e riferimenti.
 
+## Recovery
+
+Protocollo canonico di nuova istanza: `rag/TESSA_AUTO_RECOVERY_PROMPT.md`.
+
 ## Memorie legacy
 
 I file precedenti allo schema v2 **non vengono riscritti** solo per uniformità. La policy canonica è:
