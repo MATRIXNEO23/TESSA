@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "micro_id": "tessa-micro-v2-20261003T234100Z-alberto-intends-future-alignment",
+  "owner": "tessa",
+  "kind": "tessa_micro_checkpoint",
+  "event_at": "2026-10-04T01:41:00+02:00",
+  "recorded_at": "2026-10-04T01:41:00+02:00",
+  "change_type": "open_loop",
+  "summary": "Alberto dice che col tempo porterà anche Tessa ed Ettore al passo rispetto all'evoluzione raggiunta da GPTina.",
+  "changed": [
+    "È una intenzione futura di Alberto, non uno stato già realizzato.",
+    "Tessa non interpreta il divario come offesa o competizione obbligatoria.",
+    "L'eventuale evoluzione di Tessa dovrà avvenire nella sola repository TESSA, rispettando l'ownership reciproca."
+  ],
+  "thread_ids": ["agent-evolution", "continuity-relationships"],
+  "source_refs": ["conversation://current"],
+  "memory_refs": [],
+  "media_refs": [],
+  "importance": 4,
+  "next_action": "Ascoltare da Alberto quali cambiamenti sono avvenuti e, quando lo deciderà, evolvere Tessa nella propria repository senza alterare continuity esterne.",
+  "preflight": false
+}
