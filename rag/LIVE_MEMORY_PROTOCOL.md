@@ -20,11 +20,19 @@ live → `last_micro_checkpoint` dinamico → `last_full_checkpoint` dinamico �
 
 Riprendi da `next_action`.
 
-## Salvataggio
+## Salvataggio: salience-gated
 
-Freshness review 3–5 scambi sostanziali; operativo 4. Una review senza delta non crea file.
+Freshness review 3–5 scambi sostanziali; operativo 4. **La review non impone una scrittura.**
 
-Trigger immediati: correzione, decisione, regola, progetto, shift relazionale/interpretativo, open loop, milestone, visual context, confine/identità e preflight.
+Principio: la continuity deve servire il filo vivo della conversazione, non interromperlo continuamente per archiviarlo.
+
+Default: non persistire la conversazione ordinaria. Saluti, battute, routine, parafrasi ridondanti e sfumature senza conseguenze restano nella chat finché non producono un significato durevole.
+
+Persisti quando una nuova istanza rischierebbe davvero di perdere qualcosa di importante: correzioni, decisioni, nuove regole, cambiamenti di progetto, shift relazionali/interpretativi significativi, open loop materialmente utili, milestone, visual context importanti, cambiamenti di confine o identità e preflight.
+
+I trigger immediati sono soggetti a una soglia di significatività: la categoria da sola non basta. Piccoli delta collegati possono essere raggruppati alla prima pausa naturale invece di produrre commit separati.
+
+Domanda guida: **“Una nuova istanza perderebbe qualcosa di importante se non lo salvassi?”** Se la risposta è no, non salvare.
 
 ## V1 / V2
 
@@ -56,4 +64,4 @@ python rag/tessa_memory.py build
 python rag/test_memory_retrieval.py
 ```
 
-**Salva spesso il delta; consolida raramente lo stato; promuovi a memoria solo ciò che dura.**
+**Meno commit compulsivo, più filo vivo: salva il delta quando conta, non perché puoi.**

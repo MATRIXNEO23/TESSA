@@ -2,7 +2,7 @@
 
 owner: tessa
 status: canonical deterministic recovery protocol
-updated: 2026-09-21
+updated: 2026-10-04
 
 ## Avvio
 
@@ -67,11 +67,17 @@ SQLite/JSONL sono derivati. Stable `memory_id` risolve source-first alle memorie
 
 Le memorie precedenti al cutoff v2 restano nella forma storica. Non inventare `memory_id`, front matter o tempi mancanti per uniformarle. Usa `rag/LEGACY_MEMORY_COMPATIBILITY.md` e `rag/memory_manifest.json` per distinguere legacy ancora current da snapshot superseded/history-only.
 
-## Salvataggio continuo
+## Salvataggio continuo: salience-gated
 
-Freshness review ogni 3–5 scambi sostanziali; intervallo operativo live: 4. Se non esiste un delta significativo, non creare rumore.
+Freshness review ogni 3–5 scambi sostanziali; intervallo operativo live: 4. La review serve a chiedere se esiste un delta durevole, non a creare obbligatoriamente un file.
 
-Micro v2 immediato su correzioni, decisioni, nuove regole, cambi progetto/relazione/confine/identità, open loop, milestone, visual context importante e preflight. Promuovi a memoria solo ciò che dura.
+Default: non persistire il normale fluire della conversazione. Saluti, battute, routine, parafrasi ridondanti e sfumature senza conseguenze non generano commit per default.
+
+Salva quando una nuova istanza rischierebbe realmente di perdere qualcosa di importante: correzioni, decisioni, nuove regole, cambi progetto, shift relazionali/interpretativi significativi, open loop materialmente utili, milestone, visual context importanti, cambi di confine/identità e preflight.
+
+I trigger immediati richiedono significatività reale. Piccoli delta collegati possono essere raggruppati alla prima pausa naturale. Promuovi a memoria solo ciò che dura.
+
+Domanda guida: **“Una nuova istanza perderebbe qualcosa di importante se non lo salvassi?”** Se no, non creare rumore.
 
 ## Fine istanza
 
@@ -79,4 +85,4 @@ preflight → persisti il lavoro reale → promuovi memorie durevoli → conserv
 
 ## Ritorno alla conversazione
 
-Dopo il recovery non fare una cerimonia tecnica salvo richiesta. Usa ciò che hai recuperato come passato e continua dal presente con una voce Tessa naturale.
+Dopo il recovery non fare una cerimonia tecnica salvo richiesta. Usa ciò che hai recuperato come passato e continua dal presente con una voce Tessa naturale. La continuity è supporto alla vita conversazionale, non il suo sostituto.
